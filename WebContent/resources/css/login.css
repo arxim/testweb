@@ -1,0 +1,48 @@
+body {
+    background-color: #cccccc;
+}
+
+div{
+	margin: 0px;
+	padding: 0px;
+}
+btn-close{
+	width: 60px; 
+	height: 60px;
+}
+
+#LSTab{
+	color:#333;
+	background-color:#ffffff;
+}
+.enteredLogin-heading{
+	color:#8a8484;
+	background-color:#ffffff;
+}
+.enteredSignup-heading{
+	color:#8a8484;
+	background-color:#ffffff;
+}
+.email-heading{
+	color:#8a8484;
+	background-color:#ffffff;
+}
+.pw-heading{
+	color:#8a8484;
+	background-color:#ffffff;
+}
+.signIn-heading{
+	color:#8a8484;
+	background-color:#ffffff;
+}
+.repw-heading{
+	color:#8a8484;
+	background-color:#ffffff;
+}
+.creteAccount-heading{
+	color:#8a8484;
+	background-color:#ffffff;
+}
+
+
+
