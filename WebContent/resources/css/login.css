@@ -10,6 +10,18 @@ btn-close{
 	width: 60px; 
 	height: 60px;
 }
+.nav {
+    background-color: #ffffff;
+}
+
+.nav>li>a {
+	background-color: #d2d8d8;
+    color: #809191;
+}
+.nav>li>a:hover {
+	background-color: #d2d8d8;
+	color: #809191;
+}
 
 #LSTab{
 	color:#333;
@@ -43,6 +55,10 @@ btn-close{
 	color:#8a8484;
 	background-color:#ffffff;
 }
+/* .nav>li>a>#clickHere:hover{ */
+/* 	transition: all 0.15s ease-out; */
+/* } */
+
 
 
 
