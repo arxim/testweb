@@ -72,6 +72,9 @@
 							<div class="col-xs-12 col-sm-6 text-center text-danger" id="LSTab">
 								 Forgot your password?<br><a href="#" class="text-danger" >Click here</a>
 						      	 <br>
+						      	 <div class="col hidden-sm">
+						      	 	<br>
+						      	 </div>
 					      	</div>
 					      	<div class="col-xs-12 col-sm-6 text-center" id="LSTab">
 								<button type="button" class="btn btn-primary btn-block btn-lg text-white" id="btnLogin">Login</button> 	 
@@ -120,6 +123,9 @@
 						<div class="col-xs-12 col-sm-6 text-center text-danger" id="LSTab">
 							 By creating an account you agree to our 
 							 <br><a href="#" class="text-danger">Terms & Privacy</a>
+							 <div class="col hidden-sm">
+						      	 <br>
+						     </div>
 				      	</div>
 				      	<div class="col-xs-12 col-sm-6 text-center" id="LSTab">
 							<button type="button" class="btn btn-primary btn-block btn-lg" id="btnLogin">Create Account</button> 	 
