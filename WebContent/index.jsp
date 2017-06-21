@@ -2,13 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<title>Index</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!-- 	script-header import -->
 	<jsp:include page="resources/template/script-header.jsp"></jsp:include>
+	<jsp:include page="resources/template/modalLoginMessage.jsp"></jsp:include>
 	<script type="text/javascript" src="resources/js/pages/login.js"></script>
 	<title>login</title>
 	<!-- 	css using -->
-	<link rel="stylesheet" type="text/css" href="resources/css/login.css" media="all" /> 
+	
 	
 
 </head>
@@ -77,7 +79,8 @@
 						      	 </div>
 					      	</div>
 					      	<div class="col-xs-12 col-sm-6 text-center" id="LSTab">
-								<button type="button" class="btn btn-primary btn-block btn-lg text-white" id="btnLogin">Login</button> 	 
+								<button type="button" class="btn btn-primary btn-block btn-lg text-white" id="btnLogin" onclick="checkLogin()" >Login</button>
+										
 					      		<br>
 					      	</div>
 				      	</div>
@@ -109,11 +112,11 @@
 			     	<div class="row container-fluid">
 				      	<div class="col-xs-12 col-sm-6 text-left" id="LSTab">
 							<label><b>Password*</b></label><br>
-							<input id="txtPw" class="form-control" type="text" name="txtPw" placeholder="Password" maxlength="255">
+							<input id="txtPw" class="form-control" type="password" name="txtPw" placeholder="Password" maxlength="255">
 						</div>
 						<div class="col-xs-12 col-sm-6 text-left" id="LSTab">
 							<label><b>Repeat Password*</b></label><br>
-							<input id="txtPw" class="form-control" type="text" name="txtRepw" placeholder="Repeat Password" maxlength="255">
+							<input id="txtPw" class="form-control" type="password" name="txtRepw" placeholder="Repeat Password" maxlength="255">
 						</div>
 					</div>
 				</div>
