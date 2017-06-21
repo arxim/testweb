@@ -2,15 +2,15 @@ $(document).ready(function(){
 	
 });
 
-//function changeTabColor1(){
-//	$("#login").style.backgroundcolor = "#ffffff";
-//	$("#sign-up").style.backgroundcolor = "blue";
-//}
-//
-//function changeTabColor2(){
-//	$("#sign-up").style.backgroundcolor = "#ffffff";
-//	$("#login").style.backgroundcolor = "blue";
-//}
+function changeTabColor1(){
+	$("#login").style.backgroundcolor = "#ffffff";
+	$("#sign-up").style.backgroundcolor = "blue";
+}
+
+function changeTabColor2(){
+	$("#sign-up").style.backgroundcolor = "#ffffff";
+	$("#login").style.backgroundcolor = "blue";
+}
 
 
 function hidePassword(){
