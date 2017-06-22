@@ -12,12 +12,12 @@
         <div class="modal-content">
         	<div class="modal-header bg-primary">
           		<button type="button" class="close" data-dismiss="modal">&times;</button>
-          		<h2 class="modal-title text-center"><b>Warning !!!</b></h2>
+          		<h3 class="modal-title text-center"><b>Warning !!!</b></h3>
         	</div>
-        	<div class="modal-body ">
-          		<h4 id="msgModal" class="text-center text-primary"><b></b></h4>
+        	<div class="modal-body">
+          		<h5 id="msgModal" class="text-center text-primary"><b></b></h5>
         	</div>
-        	<div class="modal-footer bg-primary">
+        	<div class="modal-footer bg-info">
           		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         	</div>
       	</div>
