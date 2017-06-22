@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Massage</title>
 </head>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-sm">
