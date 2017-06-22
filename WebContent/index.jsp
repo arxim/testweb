@@ -115,6 +115,9 @@
 							<input id="txtPw" class="form-control" type="password" name="txtPw" placeholder="Password" maxlength="255">
 						</div>
 						<div class="col-xs-12 col-sm-6 text-left" id="LSTab">
+							<div class="col hidden-sm">
+						      	 <br>
+						    </div>
 							<label><b>Repeat Password*</b></label><br>
 							<input id="txtPw" class="form-control" type="password" name="txtRepw" placeholder="Repeat Password" maxlength="255">
 						</div>
@@ -125,7 +128,10 @@
 					<div class="row container-fluid">
 						<div class="col-xs-12 col-sm-6 text-center text-danger" id="LSTab">
 							 By creating an account you agree to our 
-							 <br><a href="#" class="text-danger">Terms & Privacy</a>
+							 <div class="col hidden-xs">
+						      	 
+						    </div>
+							 <a href="#" class="text-danger">Terms & Privacy</a>
 							 <div class="col hidden-sm">
 						      	 <br>
 						     </div>
