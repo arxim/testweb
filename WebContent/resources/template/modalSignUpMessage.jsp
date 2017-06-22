@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Massage</title>
 </head>
-<div class="modal fade" id="myModalLogin" role="dialog">
+<div class="modal fade" id="myModalSignUp" role="dialog">
     <div class="modal-dialog modal-sm">
     	<!-- Modal content-->
         <div class="modal-content">
@@ -15,7 +15,7 @@
           		<h3 class="modal-title text-center"><b>Warning !!!</b></h3>
         	</div>
         	<div class="modal-body">
-          		<h5 id="msgModalLogin" class="text-center text-primary"><b></b></h5>
+          		<h5 id="msgModalSignUp" class="text-center text-primary"><b></b></h5>
         	</div>
         	<div class="modal-footer bg-info">
           		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

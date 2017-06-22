@@ -7,6 +7,7 @@
 	<!-- 	script-header import -->
 	<jsp:include page="resources/template/script-header.jsp"></jsp:include>
 	<jsp:include page="resources/template/modalLoginMessage.jsp"></jsp:include>
+	<jsp:include page="resources/template/modalSignUpMessage.jsp"></jsp:include>
 	<script type="text/javascript" src="resources/js/pages/login.js"></script>
 	<title>login</title>
 	<!-- 	css using -->
@@ -50,7 +51,7 @@
 						<div class="row container-fluid">
 							<div class="col-xs-24 col-sm-12" id="LSTab">
 							     <label><b>Email*</b></label><br>
-								 <input id="txtEmail" class="form-control" type="text" name="txtEmail" placeholder="Email" maxlength="255">
+								 <input id="txtEmailLogin" class="form-control" type="text" name="txtEmailLogin" placeholder="Email" maxlength="255">
 	  	 					</div>
   	 					</div>
 				     </div>
@@ -60,9 +61,9 @@
 							<div class="col-xs-24 col-sm-12" id="LSTab">
 								<label><b>Password*</b></label><br>
 								<div class="input-group">
-							    	<input id="txtPw" type="text" class="form-control" name="txtPw" placeholder="Password" maxlength="255">
+							    	<input id="txtPwdLogin" type="text" class="form-control" name="txtPwdLogin" placeholder="Password" maxlength="255">
 							        <span class="input-group-btn">
-							        	<button class="btn btn-default" type="button" id="btnpw" onclick="hidePassword()">Show</button>
+							        	<button class="btn btn-default" type="button" id="btnPwdHide" onclick="hidePassword()">Show</button>
 							      	</span>
 							    </div>
 							</div>
@@ -103,7 +104,7 @@
 		      	 	<div class="row container-fluid">
 		      	 		<div class="col-xs-24 col-sm-12" id="LSTab">
 					      	<label><b>Email*</b></label><br>
-					      	<input id="txtEmail" class="form-control" type="text" name="txtEmail" placeholder="Email" maxlength="255">
+					      	<input id="txtEmailSignUp" class="form-control" type="text" name="txtEmailSignUp" placeholder="Email" maxlength="255">
 				      	</div>
 				    </div>  	
 			     </div>
@@ -112,14 +113,14 @@
 			     	<div class="row container-fluid">
 				      	<div class="col-xs-12 col-sm-6 text-left" id="LSTab">
 							<label><b>Password*</b></label><br>
-							<input id="txtPw" class="form-control" type="password" name="txtPw" placeholder="Password" maxlength="255">
+							<input id="txtPwdSignUp" class="form-control" type="password" name="txtPwdSignUp" placeholder="Password" maxlength="255">
 						</div>
 						<div class="col-xs-12 col-sm-6 text-left" id="LSTab">
 							<div class="col hidden-sm col visible-xs">
 							    <br>  	 
 							</div>
 							<label><b>Repeat Password*</b></label><br>
-							<input id="txtPw" class="form-control" type="password" name="txtRepw" placeholder="Repeat Password" maxlength="255">
+							<input id="txtRePwdSignUp" class="form-control" type="password" name="txtRePwdSignUp" placeholder="Repeat Password" maxlength="255">
 						</div>
 					</div>
 				</div>
@@ -137,7 +138,7 @@
 						     </div>
 				      	</div>
 				      	<div class="col-xs-12 col-sm-6 text-center" id="LSTab">
-							<button type="button" class="btn btn-primary btn-block btn-lg" id="btnLogin">Create Account</button> 	 
+							<button type="button" class="btn btn-primary btn-block btn-lg" id="btnSignUp" onclick="createAccount();">Create Account</button> 	 
 				      		<br>
 				      	</div>
 			      	</div>
