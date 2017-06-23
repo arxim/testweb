@@ -94,7 +94,7 @@
 		      	  	 	 	 <br>
 					      	 Enter your personal details 
 					      	 <b class="text-primary">
-					      	 	to create an acount
+					      	 	to create an account
 					      	 </b>
 				      	 </div>
 				      </div>
