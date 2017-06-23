@@ -24,7 +24,11 @@ public class LoginService {
 	}
 	public static void main(String [] args){
 		LoginService service = new LoginService();
-		String chkLogin = service.checkLogin("topandapisit@hotmail.com","5555555");
+		String email="topandapisit@hotmail.com";
+		String password="5555555";
+		System.out.println("E-mail User : "+email);
+		System.out.println("Password : "+password);
+		String chkLogin = service.checkLogin(email,password);
 		System.out.println(chkLogin);
 	}
 }
