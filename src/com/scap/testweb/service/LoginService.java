@@ -2,6 +2,7 @@ package com.scap.testweb.service;
 
 public class LoginService {
 
+
 	public String checkLogin(String email,String pwd){
 		if(email=="topandapisit@hotmail.com" && pwd=="5555555"){
 			String result="Success";
@@ -32,4 +33,5 @@ public class LoginService {
 		String chkLogin = service.checkLogin(email,password);
 		System.out.println(chkLogin);
 	}
+
 }
