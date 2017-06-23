@@ -28,6 +28,7 @@ public class AlertService {
 				int day = c.get(Calendar.DATE);
 				System.out.println("Day : " + day);
 				
+				
 			//	System.out.println("Hour : " + c.get(Calendar.HOUR_OF_DAY));
 			//	System.out.println("Minute : " + c.get(Calendar.MINUTE));
 			//	System.out.println("Second : " + c.get(Calendar.SECOND));
