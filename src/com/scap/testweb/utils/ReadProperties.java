@@ -12,10 +12,7 @@ import java.util.Set;
 
 public class ReadProperties {
 	
-	
-	
-	////sssssssss
-	
+
 	public static void main(String[] args){
 		 
 		String propertiesName = "db.properties";
@@ -102,6 +99,5 @@ public class ReadProperties {
         } 
        return dataList;
 		
-	}
-	//test
+	} 
 }
