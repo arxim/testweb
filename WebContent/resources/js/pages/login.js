@@ -15,29 +15,51 @@ function hidePassword(){
 
 function checkLogin(){
     if((!$("#txtEmailLogin").val() == "")&& (!$("#txtPwdLogin").val() == "")){
-    	
-//    	var email=$("#txtEmail").val();
-//    	var pw=$("#txtPw").val();
-//    	$("#msgModal").text("Email: "+email+"\n"+"Password: "+pw);
-    	var ls="Login Success !!";
-    	$("#msgModalLogin").text(ls);
-    	$("#myModalLogin").modal("show");
-
+//    	console.log(ctx);
+    	var email=$("#txtEmailLogin").val();
+    	var pwd=$("#txtPwdLogin").val();   	
+//    	console.log('Send ajax request');
+    	$.ajax({
+    	      type: 'POST',
+    	      url: ctx + '/LoginSrvl',
+    	      data: {
+    	    	  	emailLogin : email,
+              		pwdLogin : pwd
+    	      },
+    	      dataType: "text",
+    	      success: function(data) {
+    	    	  var ls1="Login Success !!";
+	    	      var ls2="Email : "+email;
+	    	      var ls3="Password : "+pwd;
+	    	      $("#msgModalLoginResult").text(ls1);
+	    	      $("#msgModalLoginShowEmail").text(ls2);
+	    	      $("#msgModalLoginShowPwd").text(ls3);
+	    	      $("#myModalLogin").modal("show");
+//    	    	  alert(data);
+	    	  }
+    	});
+  	
 	}
 	else{
 		if(($("#txtEmailLogin").val() == "")&& (!$("#txtPwdLogin").val() == "")){
 			var ene="Please enter your e-mail !!";
-			$("#msgModalLogin").text(ene);
+			$("#msgModalLoginResult").text(ene);
+			$("#msgModalLoginShowEmail").text("");
+  	      	$("#msgModalLoginShowPwd").text("");
 	    	$("#myModalLogin").modal("show");
 		}
 		else if(($("#txtPwdLogin").val() == "")&& (!$("#txtEmailLogin").val() == "")){
 			var enp="Please enter your password !!";
-			$("#msgModalLogin").text(enp);
+			$("#msgModalLoginResult").text(enp);
+			$("#msgModalLoginShowEmail").text("");
+  	      	$("#msgModalLoginShowPwd").text("");
 	    	$("#myModalLogin").modal("show");
 		}
 		else{
 			var enep="Please enter your e-mail and password !!";
-			$("#msgModalLogin").text(enep);
+			$("#msgModalLoginResult").text(enep);
+			$("#msgModalLoginShowEmail").text("");
+  	      	$("#msgModalLoginShowPwd").text("");
 	    	$("#myModalLogin").modal("show");
 		}
 	}

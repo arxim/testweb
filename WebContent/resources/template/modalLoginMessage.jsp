@@ -15,7 +15,9 @@
           		<h3 class="modal-title text-center"><b>Warning !!!</b></h3>
         	</div>
         	<div class="modal-body">
-          		<h5 id="msgModalLogin" class="text-center text-primary"><b></b></h5>
+          		<h5 id="msgModalLoginResult" class="text-center text-primary"><b></b></h5>
+          		<h5 id="msgModalLoginShowEmail" class="text-center text-primary"><b></b></h5>
+          		<h5 id="msgModalLoginShowPwd" class="text-center text-primary"><b></b></h5>
         	</div>
         	<div class="modal-footer bg-info">
           		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
