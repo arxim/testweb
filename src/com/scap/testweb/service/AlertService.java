@@ -59,19 +59,26 @@ public class AlertService {
 	
 	public boolean calculate(String email, int year, int month, int day){
 	//	SELECT Date from database	
+		
 		ArrayList<HashMap<String, String>> dPast = getDate(email);
 		
-	//	String dPast = "20170326";
 		
+		
+	//	String str = new String();
+		
+	//	String dPast = "20170326";
+		DateFormat df = new SimpleDateFormat("yyyyMMdd");
 		
 		try{
+			
 			System.out.println("  Date : " + dPast);
-			DateFormat df = new SimpleDateFormat("yyyyMMdd");
-			System.out.println("Update : " + df.format(dPast));
+			
+	
+			
+		
 			
 			Calendar c = Calendar.getInstance();
 			
-		
 			int pastyear = c.get(Calendar.YEAR);		
 			int pastmonth = c.get(Calendar.MONTH) + 1;
 			int pastday = c.get(Calendar.DATE);
@@ -109,13 +116,17 @@ public class AlertService {
 	}
 
 	private ArrayList<HashMap<String, String>> getDate(String email) {
-		String sql = "SELECT CREATE_DATE FROM LEAVE_MST_SIGNUP_PEAR WHERE EMAIL='" + email + "'"; ;
+		String sql = "SELECT CREATE_DATE FROM LEAVE_MST_SIGNUP_PEAR WHERE EMAIL='" + email +"'";
 		DbConnector dbconn = new DbConnector();
 		ArrayList<HashMap<String, String>> dPast = null;
 		try{
 			dbconn.doConnect();
+
 			
-			dPast = dbconn.getData(sql);
+		//	System.out.println(" " + dbconn.getData("SELECT CREATE_DATE FROM LEAVE_MST_SIGNUP_PEAR WHERE EMAIL='" + email +"'").get(0));
+
+			dPast = (dbconn.getData(sql));
+
 			return dPast;
 		
 		}
