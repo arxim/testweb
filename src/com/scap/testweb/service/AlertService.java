@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.scap.testweb.utils.DbConnector;
 
@@ -16,7 +17,7 @@ public class AlertService {
 		
 		String email = "yui@gmail.com";
 		
-/*	//	UPDATE Date in database
+/*	//	UPDATEorInsert Date in database
 		String sql = "INSERT INTO ALERT (UPDATE) VALUES getdate() WHERE EMAIL='" + email + "'"; ;
 		DbConnector dbconn = new DbConnector();
 		dbconn.doConnect();
@@ -25,7 +26,7 @@ public class AlertService {
 		dbconn.doDisconnect();	*/
 		
 	
-	//	String upDate = "20170520";
+	//	String upDate = "20170626";
 	//	System.out.println("Update : " + upDate);
 		
 		try{
@@ -59,24 +60,21 @@ public class AlertService {
 	
 	public boolean calculate(String email, int year, int month, int day){
 	//	SELECT Date from database	
+		String y, m, d;
+		HashMap<String, String> dPast = getData(email);
 		
-		ArrayList<HashMap<String, String>> dPast = getDate(email);
+		for(String date: dPast.values()){
+			System.out.println("  Date : " + date);
 		
+		y = date.substring(0,4);
+		m = date.substring(4,6);
+		d = date.substring(6,8);
 		
-		
-	//	String str = new String();
-		
-	//	String dPast = "20170326";
-		DateFormat df = new SimpleDateFormat("yyyyMMdd");
+		}
 		
 		try{
 			
-			System.out.println("  Date : " + dPast);
-			
-	
-			
 		
-			
 			Calendar c = Calendar.getInstance();
 			
 			int pastyear = c.get(Calendar.YEAR);		
@@ -115,18 +113,17 @@ public class AlertService {
 	
 	}
 
-	private ArrayList<HashMap<String, String>> getDate(String email) {
+	private HashMap<String, String> getData(String email) {
 		String sql = "SELECT CREATE_DATE FROM LEAVE_MST_SIGNUP_PEAR WHERE EMAIL='" + email +"'";
 		DbConnector dbconn = new DbConnector();
-		ArrayList<HashMap<String, String>> dPast = null;
+		HashMap<String, String> dPast = new HashMap<String, String>();
 		try{
 			dbconn.doConnect();
-
-			
+	
 		//	System.out.println(" " + dbconn.getData("SELECT CREATE_DATE FROM LEAVE_MST_SIGNUP_PEAR WHERE EMAIL='" + email +"'").get(0));
 
-			dPast = (dbconn.getData(sql));
-
+			dPast = dbconn.getData(sql).get(0);
+			
 			return dPast;
 		
 		}
