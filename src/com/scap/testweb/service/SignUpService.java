@@ -13,16 +13,17 @@ public class SignUpService {
 
 	public static void main(String[] args) {
 		SignUpService service = new SignUpService();
-		String email = "yui@gmail.com";
-		String passwd = "Yui555+";
+		String email = "PpP@gmail.com";
+		String passwd = "@#+^65ftwdF";
 		boolean chkEmail = service.checkEmail(email);
-		boolean chkPwd = service.chackPassword(passwd);  
+		boolean chkPwd = service.chackPassword(passwd); 
+
 		if(chkEmail == false && chkPwd == true){
 			System.out.println("E-mail : Unique");
 			System.out.println("Password : Approve");
-			String pwd = service.cryptWithMD5(passwd);
-			boolean createUser = service.createAccount(email,pwd);
-			if(createUser == true){
+			//String pwd = service.cryptWithMD5(passwd);
+			boolean createUser = service.createAccount(email,passwd);
+			if(createUser){
 				System.out.println("Sign up success!!");
 			}
 			else
@@ -33,7 +34,7 @@ public class SignUpService {
 				System.out.println("Password : Approve");
 				System.out.println("Please change e-mail.");
 			}
-		else if(chkEmail == false && chkPwd == false){
+		else if(!chkEmail && chkPwd == false){
 				System.out.println("E-mail : Unique");
 				System.out.println("Password : Do not approve");
 				System.out.println("Please change password.");
@@ -44,7 +45,11 @@ public class SignUpService {
 				System.out.println("Please change e-mail and password.");
 			}
 	}
-
+	
+	public void chktest(){
+		
+	}
+	
 	public boolean checkEmail(String email){
 			UserDao userDao = new UserDao();
 			ArrayList<HashMap<String,String>> chkEmail = userDao.getEmail(email);
@@ -56,6 +61,7 @@ public class SignUpService {
 				return false;
 	}
 	
+	
 	public boolean chackPassword(String password){
 		String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@S#$%^&+=])(?=\\S+$).{6,}";
 		if(password.matches(pattern) == true){
@@ -65,7 +71,7 @@ public class SignUpService {
 			return false;
 	}
 	
-	public String cryptWithMD5(String pass){
+	/*public String cryptWithMD5(String pass){
 		   MessageDigest md;
 	    try {
 	        md = MessageDigest.getInstance("MD5");
@@ -81,7 +87,7 @@ public class SignUpService {
 	        Logger.getLogger(SignUpService.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 	        return null;
-	   }
+	   }*/
 	
 	public boolean createAccount(String email,String passwd){
 		UserDao userDao = new UserDao();
