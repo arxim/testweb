@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import com.scap.testweb.utils.DbConnector;
+import com.scap.testweb.utils.Utils;
 
 public class UserDao {
 	
@@ -27,7 +28,8 @@ public class UserDao {
 	public ArrayList<HashMap<String,String>> setUserAccount(String userEmail, String userPassword){
 		String dateStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
 		String timeStamp = new SimpleDateFormat("HHmmss").format(Calendar.getInstance().getTime());
-	    String account = "INSERT INTO LEAVE_MST_USER(EMAIL, PASSWORD, CREATE_DATE, CREATE_TIME) VALUES('"+userEmail+"','"+userPassword+"','"+dateStamp+"','"+timeStamp+"')";
+		int signUpCode = Utils.generateSignUpCode();
+	    String account = "INSERT INTO LEAVE_MST_USER(SIGNUP_CODE,EMAIL, PASSWORD, CREATE_DATE, CREATE_TIME) VALUES('"+signUpCode+"','"+userEmail+"','"+userPassword+"','"+dateStamp+"','"+timeStamp+"')";
 		String chkAccount = "SELECT * FROM LEAVE_MST_USER WHERE EMAIL='" + userEmail + "'";
 		DbConnector dbconn = new DbConnector();
 		ArrayList<HashMap<String,String>> resultDataAccount = null;

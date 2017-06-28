@@ -28,17 +28,19 @@ function checkLogin(){
     	      },
     	      dataType: "text",
     	      success: function(data) {
-    	    	  var ls1="Login Success !!";
-	    	      var ls2="Email : "+email;
-	    	      var ls3="Password : "+pwd;
-	    	      $("#msgModalLoginResult").text(ls1);
-	    	      $("#msgModalLoginShowEmail").text(ls2);
-	    	      $("#msgModalLoginShowPwd").text(ls3);
-	    	      $("#myModalLogin").modal("show");
-//    	    	  alert(data);
+    	    	  var msgFlag;
+    	    	  if (data === 'success') {
+    	    		 /*msgFlag = 'Redirect to home page.';
+    	    		 $("#msgModalLoginResult").text(msgFlag);
+   	    	      	 $("#myModalLogin").modal("show");*/
+   	    	      	 location.href='home.jsp';
+    	    	  }else {
+    	    		  msgFlag = 'Email and/or Password not found - database';
+    	    		  $("#msgModalLoginResult").text(msgFlag);
+    	    	      $("#myModalLogin").modal("show");
+    	    	  }
 	    	  }
     	});
-  	
 	}
 	else{
 		if(($("#txtEmailLogin").val() == "")&& (!$("#txtPwdLogin").val() == "")){
@@ -107,15 +109,6 @@ function createAccount(){
 			var success="Sign up success!!";
 			$("#msgModalSignUp").text(success);
 	    	$("#myModalSignUp").modal("show");
-			
-			// Send data to server side
-			/*
-			$.ajax({
-			  method: "POST",
-			  url: "",
-			  data: { name: "John", location: "Boston" }
-			})
-			*/
 		}
 		else{
 			var pwdNotMatch="Passwords do not match!!";

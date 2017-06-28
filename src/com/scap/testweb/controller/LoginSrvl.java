@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.scap.testweb.service.LoginService;
+
 /**
  * Servlet implementation class LoginSrvl
  */
@@ -40,20 +42,27 @@ public class LoginSrvl extends HttpServlet {
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); 
-		rd.forward(request, response);
-		
+//		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); 
+//		rd.forward(request, response);
 		String emailSrvl = request.getParameter("emailLogin");
 		String pwdSrvl = request.getParameter("pwdLogin");
-		System.out.println("Email :"+emailSrvl);
-		System.out.println("Password : "+pwdSrvl);
+		
+		String flag = null;
+		try {
+			LoginService loginServ = new LoginService();
+			if (loginServ.chkLogin(emailSrvl, pwdSrvl)) {
+				flag = "success";
+			}else {
+				flag = "fail";
+			}
+		}catch(Exception e) {
+			flag = "fail";
+		}
 		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
 	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-	    PrintWriter print = response.getWriter();
-	    print.write(emailSrvl+"\n");
-	    print.write(pwdSrvl+"\n");
-	    print.close();
+	    
+	    // Response
+	    response.getWriter().write(flag);
 	}
 	
-
 }
