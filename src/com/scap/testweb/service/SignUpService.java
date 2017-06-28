@@ -40,7 +40,7 @@ public class SignUpService {
 			return false;
 	}
 	
-	/*public String cryptWithMD5(String pass){
+	public String cryptWithMD5(String pass){
 		   MessageDigest md;
 	    try {
 	        md = MessageDigest.getInstance("MD5");
@@ -56,7 +56,7 @@ public class SignUpService {
 	        Logger.getLogger(SignUpService.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 	        return null;
-	   }*/
+	   }
 	
 	public boolean createAccount(String email,String passwd){
 		UserDao userDao = new UserDao();

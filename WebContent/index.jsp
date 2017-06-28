@@ -19,11 +19,11 @@
 <body class="bg-info">
 	<form id="frmLogin" action="/testweb/LoginSrvl" method="post">
 		<div class="container" style="margin-top:10%;margin-bottom:12%;">
-			<div class="col-xs-6 col-sm-3">
+			<div class="col-xs-6 col-sm-2">
 			
 			</div>
-			<div class="col-xs-12 col-sm-6 text-center">
-		    	<ul id="LSTab" class="nav nav-tabs nav-default nav-justified" >
+			<div class="col-xs-12 col-sm-8 text-center" >
+		    	<ul id="LSTab" class="nav nav-tabs nav-default nav-justified" style="box-shadow:0 0 18px rgba(6, 0, 255, 0.3);">
 				   <li class="active">
 				   		<a href="#login" data-toggle="tab">
 				   			<b>LOGIN</b>
@@ -35,7 +35,7 @@
 				   		</a>
 				   	</li>
 				</ul>
-				<div class="tab-content tab-default" id="LSTab" style="background-color:#ffffff;" >
+				<div class="tab-content tab-default" id="LSTab" style="background-color:#ffffff;box-shadow:0 0 18px rgba(6, 0, 255, 0.3);" >
 				   <div class="tab-pane fade active in" id="login">
 				   		 <div class="enteredLogin-heading text-center">
 				   		 	 <div class="row container-fluid">
@@ -75,7 +75,7 @@
 						<div class="signIn-heading" style="border-bottom: 1px solid #E5E5E5;">
 							<div class="row container-fluid">
 								<div class="col-xs-12 col-sm-6 text-center text-danger" id="LSTab">
-									 Forgot your password?<br><a href="#" class="text-danger" >Click here</a>
+									 Forgot your password?<br><a href="/testweb/ForgotPwdSrvl"  class="text-danger" >Click here</a>
 							      	 <br>
 							      	 <div class="col hidden-sm">
 							      	 	<br>
@@ -148,10 +148,12 @@
 			     </div>
 	    	</div>
 	    </div>
-	    <div class="col-xs-6 col-sm-3">
+	    <div class="col-xs-6 col-sm-2">
 	    
 		</div>	
 		</div>
-	</form>   
+	</form> 
+	<form id="frmChangePwd" action="/testweb/ChangePwdSrvl" method="post">
+	</form>  
 </body>
 </html>
