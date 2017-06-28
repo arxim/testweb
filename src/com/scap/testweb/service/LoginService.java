@@ -10,20 +10,20 @@ import java.security.NoSuchAlgorithmException;
 import com.scap.testweb.utils.DbConnector;
 
 public class LoginService {
-	private static Scanner i;
-	public String chkLogin(String email,String pwd){
+	//private static Scanner i;
+	public boolean chkLogin(String email,String pwd){
 		LoginService service = new LoginService();
-		String s="";
-		String md5=service.getMD5(pwd);
-		String data = "select EMAIL,PASSWORD from LEAVE_MST_SIGNUP_TOPMYZA where EMAIL = '"+email+"' and PASSWORD = '"+md5+"'";
+		boolean s = false;
+		//String md5=service.getMD5(pwd);
+		String data = "select EMAIL,PASSWORD from LEAVE_MST_USER where EMAIL = '"+email+"' and PASSWORD = '"+pwd+"'";
 		DbConnector dbconn = new DbConnector();
 		try{
 			dbconn.getConnection();
 			if(dbconn.getData(data).size()==1){
-				s="Login Success!!!";
+				s=true;
 			}
 			else{
-				s="E-mail or Password wrong!!";
+				s=false;
 			}
 		}
 		catch (Exception e) {
@@ -60,20 +60,20 @@ public class LoginService {
         }
         return result;
     }
-	public static void main(String [] args){
+	/*public static void main(String [] args){
 		LoginService service = new LoginService();
 		i = new Scanner(System.in);
         System.out.print("Email : ");
         String email = i.nextLine();
         System.out.print("Password : ");
         String password = i.nextLine();
-		String result=service.chkLogin(email,password);
-		if(result=="Login Success!!!"){
-			System.out.println(result);
+		boolean result=service.chkLogin(email,password);
+		if(result){
+			System.out.println("Login Success!!!");
 		}
 		else{
-			System.out.println(result);
+			System.out.println("Login wrong!!!");
 		}
-	}
+	}*/
 
 }

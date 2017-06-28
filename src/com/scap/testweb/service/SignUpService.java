@@ -13,41 +13,11 @@ public class SignUpService {
 
 	public static void main(String[] args) {
 		SignUpService service = new SignUpService();
-		String email = "PpP@gmail.com";
+		String email = "ABC@gmail.com";
 		String passwd = "@#+^65ftwdF";
 		boolean chkEmail = service.checkEmail(email);
 		boolean chkPwd = service.chackPassword(passwd); 
-
-		if(chkEmail == false && chkPwd == true){
-			System.out.println("E-mail : Unique");
-			System.out.println("Password : Approve");
-			//String pwd = service.cryptWithMD5(passwd);
-			boolean createUser = service.createAccount(email,passwd);
-			if(createUser){
-				System.out.println("Sign up success!!");
-			}
-			else
-				System.out.println("Sign up failed!!");
-		}
-		else if((chkEmail == true) && (chkPwd == true)){
-				System.out.println("E-mail : Duplicate");
-				System.out.println("Password : Approve");
-				System.out.println("Please change e-mail.");
-			}
-		else if(!chkEmail && chkPwd == false){
-				System.out.println("E-mail : Unique");
-				System.out.println("Password : Do not approve");
-				System.out.println("Please change password.");
-			}
-		else{
-				System.out.println("E-mail : Duplicate");
-				System.out.println("Password : Do not approve");
-				System.out.println("Please change e-mail and password.");
-			}
-	}
-	
-	public void chktest(){
-		
+		service.chktest(chkEmail,chkPwd,email,passwd);
 	}
 	
 	public boolean checkEmail(String email){
@@ -60,7 +30,6 @@ public class SignUpService {
 			else
 				return false;
 	}
-	
 	
 	public boolean chackPassword(String password){
 		String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@S#$%^&+=])(?=\\S+$).{6,}";
@@ -98,5 +67,35 @@ public class SignUpService {
 		}
 		else
 			return false;
+	}
+	
+	public void chktest(boolean chkEmail,boolean chkPwd,String email,String passwd){
+		if(!chkEmail && chkPwd){
+			System.out.println("E-mail : Unique");
+			System.out.println("Password : Approve");
+			//String pwd = service.cryptWithMD5(passwd);
+			SignUpService service = new SignUpService();
+			boolean createUser = service.createAccount(email,passwd);
+			if(createUser){
+				System.out.println("Sign up success!!");
+			}
+			else
+				System.out.println("Sign up failed!!");
+		}
+		else if(chkEmail && chkPwd){
+				System.out.println("E-mail : Duplicate");
+				System.out.println("Password : Approve");
+				System.out.println("Please change e-mail.");
+			}
+		else if(!chkEmail && !chkPwd){
+				System.out.println("E-mail : Unique");
+				System.out.println("Password : Do not approve");
+				System.out.println("Please change password.");
+			}
+		else{
+				System.out.println("E-mail : Duplicate");
+				System.out.println("Password : Do not approve");
+				System.out.println("Please change e-mail and password.");
+			}
 	}
 }

@@ -10,7 +10,7 @@ import com.scap.testweb.utils.DbConnector;
 public class UserDao {
 	
 	public ArrayList<HashMap<String,String>> getEmail(String mail){
-		String sql = "SELECT EMAIL FROM LEAVE_MST_SIGNUP_PEAR WHERE EMAIL='" + mail + "'";
+		String sql = "SELECT EMAIL FROM LEAVE_MST_USER WHERE EMAIL='" + mail + "'";
 		DbConnector dbconn = new DbConnector();
 		ArrayList<HashMap<String,String>> resultDataEmail = null;
 		try{
@@ -27,8 +27,8 @@ public class UserDao {
 	public ArrayList<HashMap<String,String>> setUserAccount(String userEmail, String userPassword){
 		String dateStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
 		String timeStamp = new SimpleDateFormat("HHmmss").format(Calendar.getInstance().getTime());
-	    String account = "INSERT INTO LEAVE_MST_SIGNUP_PEAR(EMAIL, PASSWORD, CREATE_DATE, CREATE_TIME) VALUES('"+userEmail+"','"+userPassword+"','"+dateStamp+"','"+timeStamp+"')";
-		String chkAccount = "SELECT * FROM LEAVE_MST_SIGNUP_PEAR WHERE EMAIL='" + userEmail + "'";
+	    String account = "INSERT INTO LEAVE_MST_USER(EMAIL, PASSWORD, CREATE_DATE, CREATE_TIME) VALUES('"+userEmail+"','"+userPassword+"','"+dateStamp+"','"+timeStamp+"')";
+		String chkAccount = "SELECT * FROM LEAVE_MST_USER WHERE EMAIL='" + userEmail + "'";
 		DbConnector dbconn = new DbConnector();
 		ArrayList<HashMap<String,String>> resultDataAccount = null;
 		try{
