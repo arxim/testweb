@@ -19,10 +19,10 @@
 <body class="bg-info">
 	<form id="frmLogin" action="/testweb/LoginSrvl" method="post">
 		<div class="container" style="margin-top:10%;margin-bottom:12%;">
-			<div class="col-xs-6 col-sm-2">
+			<div class="col-xs-6 col-sm-3">
 			
 			</div>
-			<div class="col-xs-12 col-sm-8 text-center">
+			<div class="col-xs-12 col-sm-6 text-center">
 		    	<ul id="LSTab" class="nav nav-tabs nav-default nav-justified" >
 				   <li class="active">
 				   		<a href="#login" data-toggle="tab">
@@ -75,7 +75,7 @@
 						<div class="signIn-heading" style="border-bottom: 1px solid #E5E5E5;">
 							<div class="row container-fluid">
 								<div class="col-xs-12 col-sm-6 text-center text-danger" id="LSTab">
-									 Forgot your password?<br><a href="/testweb/ForgotPwdSrvl"  class="text-danger" >Click here</a>
+									 Forgot your password?<br><a href="#" class="text-danger" >Click here</a>
 							      	 <br>
 							      	 <div class="col hidden-sm">
 							      	 	<br>
@@ -148,12 +148,10 @@
 			     </div>
 	    	</div>
 	    </div>
-	    <div class="col-xs-6 col-sm-2">
+	    <div class="col-xs-6 col-sm-3">
 	    
 		</div>	
 		</div>
-	</form> 
-	<form id="frmChangePwd" action="/testweb/ChangePwdSrvl" method="post">
-	</form>  
+	</form>   
 </body>
 </html>
