@@ -60,8 +60,8 @@ public class ChkEmailForSendSrvl extends HttpServlet {
 				 String md5=suService.cryptWithMD5(newPwd); //md5 new password
 				 if(!newPwd.isEmpty()){ //if genpassword is not " "
 					 pwdDao.updateGenPassword(emailForgotSrvl,md5); // update data for md5 new genpassword
-					 seService.sendEmail(emailForgotSrvl,newPwd); // send new password to Email
-					 if(seService.sendEmail(emailForgotSrvl,newPwd)=="PASS"){
+					 String sendEmail=seService.sendEmail(emailForgotSrvl,newPwd); // send new password to Email
+					 if(sendEmail=="PASS"){
 						 print.write("Send Email : "+emailForgotSrvl+" Success !!"); // send new password complete
 					 }
 					 else{

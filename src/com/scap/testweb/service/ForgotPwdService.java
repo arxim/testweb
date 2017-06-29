@@ -21,12 +21,14 @@ public class ForgotPwdService {// Find Email in DB for genpassword
 	}
 	public String genPassword(int minRange,int maxRange){ // gen new password
 		SignUpService suService = new SignUpService();
-		String pattern = "([a-zA-Z0-9@S#$%^&+=]{"+minRange+","+maxRange+"})"; //pattern for genpass
+//		String pattern = "([a-zA-Z0-9@S#$%^&+=]{"+minRange+","+maxRange+"})"; //pattern for genpass
+		String pattern = "([A-Z]{1}[a-z]{1}[0-9]{1}[@S#$%^&+=]{1}[a-zA-Z0-9@S#$%^&+=]{"+(minRange-4)+","+(maxRange-4)+"})";
+		
 		Generex gen=new Generex(pattern);//genpass
 		String str=gen.random();
 		try{
 			if(!suService.chackPassword(str)){//is genpassword incorrect pattern
-				genPassword(6,8);	// gen password repeat 
+				str="";
 			}	
 		}catch (Exception e) {
 			e.printStackTrace();

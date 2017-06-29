@@ -75,7 +75,7 @@
 						<div class="signIn-heading" style="border-bottom: 1px solid #E5E5E5;">
 							<div class="row container-fluid">
 								<div class="col-xs-12 col-sm-6 text-center text-danger" id="LSTab">
-									 Forgot your password?<br><a href="/testweb/ForgotPwdSrvl"  class="text-danger" >Click here</a>
+									 Forgot your password?<br><a href="/testweb/ForgotPwdSrvl" id="clickHere" class="text-danger" >Click here</a>
 							      	 <br>
 							      	 <div class="col hidden-sm">
 							      	 	<br>
