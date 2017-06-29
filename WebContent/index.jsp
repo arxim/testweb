@@ -12,6 +12,7 @@
 		var ctx = '${pageContext.request.contextPath}';
 	</script>
 	<script type="text/javascript" src="resources/js/pages/login.js"></script>
+	<script type="text/javascript" src="resources/js/pages/signup.js"></script>
 	<title>login</title>
 	<!-- 	css using -->
 

@@ -11,14 +11,14 @@ import com.scap.testweb.dao.UserDao;
 
 public class SignUpService {
 
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		SignUpService service = new SignUpService();
 		String email = "ABC@gmail.com";
 		String passwd = "@#+^65ftwdF";
 		boolean chkEmail = service.checkEmail(email);
 		boolean chkPwd = service.chackPassword(passwd); 
 		service.chktest(chkEmail,chkPwd,email,passwd);
-	}
+	}	*/
 	
 	public boolean checkEmail(String email){
 			UserDao userDao = new UserDao();
@@ -69,33 +69,38 @@ public class SignUpService {
 			return false;
 	}
 	
-	public void chktest(boolean chkEmail,boolean chkPwd,String email,String passwd){
+	public String chktest(boolean chkEmail,boolean chkPwd,String email,String passwd){
 		if(!chkEmail && chkPwd){
-			System.out.println("E-mail : Unique");
-			System.out.println("Password : Approve");
+//			System.out.println("E-mail : Unique");
+//			System.out.println("Password : Approve");
 			//String pwd = service.cryptWithMD5(passwd);
 			SignUpService service = new SignUpService();
 			boolean createUser = service.createAccount(email,passwd);
 			if(createUser){
-				System.out.println("Sign up success!!");
+			/*	System.out.println("Sign up success!!");	*/
+				return "Success";
 			}
 			else
-				System.out.println("Sign up failed!!");
+			/*	System.out.println("Sign up failed!!");		*/
+				return "Failed";
 		}
 		else if(chkEmail && chkPwd){
-				System.out.println("E-mail : Duplicate");
+			/*	System.out.println("E-mail : Duplicate");
 				System.out.println("Password : Approve");
-				System.out.println("Please change e-mail.");
+				System.out.println("Please change e-mail.");	*/
+				return "Please change e-mail";
 			}
 		else if(!chkEmail && !chkPwd){
-				System.out.println("E-mail : Unique");
+			/*	System.out.println("E-mail : Unique");
 				System.out.println("Password : Do not approve");
-				System.out.println("Please change password.");
+				System.out.println("Please change password.");	*/
+				return "Please change password";
 			}
 		else{
-				System.out.println("E-mail : Duplicate");
+			/*	System.out.println("E-mail : Duplicate");
 				System.out.println("Password : Do not approve");
-				System.out.println("Please change e-mail and password.");
+				System.out.println("Please change e-mail and password.");	*/
+				return "Please change e-mail and password";
 			}
 	}
 }
