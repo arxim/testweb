@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 
 
+
 import com.scap.testweb.utils.DbConnector;
 
 public class AlertService {
@@ -31,7 +32,7 @@ public class AlertService {
 			
 			Date dNow = new Date();
 			DateFormat df = new SimpleDateFormat("yyyyMMdd");
-			System.out.println("Update : " + df.format(dNow));	
+			System.out.println("      Current date : " + df.format(dNow));	
 			
 			Calendar c = Calendar.getInstance();	
 
@@ -39,7 +40,7 @@ public class AlertService {
 			int month = c.get(Calendar.MONTH) + 1;
 			int day = c.get(Calendar.DATE);
 			
-			System.out.printf("%d %d %d\n",year, month, day);
+	//		System.out.printf("%d %d %d\n",year, month, day);
 
 			boolean calculate = service.calculate(email, year, month, day);
 				
@@ -60,27 +61,26 @@ public class AlertService {
 	public boolean calculate(String email, int year, int month, int day){
 	//	SELECT Date from database	
 		
-		HashMap<String, String> dPast = getData(email);
-		ArrayList<HashMap<String, String>> past = getDate(email);
-		System.out.println("Past : " + past);
+		ArrayList<HashMap<String, String>> dPast2 = getData(email);
 
 		try{
-			
-			String dPastdate = dPast.get("CREATE_DATE");
-
+			String dPastdate = dPast2.get(0).get("");
+		
 			DateFormat df = new SimpleDateFormat("yyyyMMdd");
 			
 			Date date = df.parse(dPastdate);
 			Calendar c = Calendar.getInstance();
 			c.setTime(date);
+	
 		
-			System.out.println("  Date : " + df.format(date));
-
+			System.out.println("Create/Update date : " + df.format(date));
+		
+			
 			int pastyear = c.get(Calendar.YEAR);		
 			int pastmonth = c.get(Calendar.MONTH) + 1;
 			int pastday = c.get(Calendar.DATE);
 			
-			System.out.printf("%d %d %d\n",pastyear, pastmonth, pastday);
+	//		System.out.printf("%d %d %d\n",pastyear, pastmonth, pastday);
 				
 			if(year == pastyear ){
 				if(month == pastmonth){
@@ -102,7 +102,6 @@ public class AlertService {
 						}
 					}
 				}
-				
 			}
 			
 			else if(year != pastyear){
@@ -153,18 +152,20 @@ public class AlertService {
 		}
 		return false;
 	}
-
-	private HashMap<String, String> getData(String email) {
-		String sql = "SELECT CREATE_DATE FROM LEAVE_MST_USER WHERE EMAIL='" + email +"'";
+		
+	private ArrayList<HashMap<String, String>> getData(String email) {
+		String sql = "SELECT "
+				+ "CASE WHEN UPDATE_DATE IS NULL THEN CREATE_DATE "
+				+ "ELSE UPDATE_DATE END "
+				+ "FROM LEAVE_MST_USER "
+				+ "WHERE EMAIL = '" + email +"'"; 
 
 		DbConnector dbconn = new DbConnector();
-		HashMap<String, String> dPast = new HashMap<String, String>();
+		ArrayList<HashMap<String, String>> dPast = new ArrayList<HashMap<String, String>>();
 		try{
 			dbconn.doConnect();
-	
-		//	System.out.println(" " + dbconn.getData("SELECT CREATE_DATE FROM LEAVE_MST_USER WHERE EMAIL='" + email +"'").get(0));
 			
-			dPast = dbconn.getData(sql).get(0);
+			dPast = dbconn.getData(sql);
 			
 			return dPast;
 		
@@ -174,21 +175,6 @@ public class AlertService {
 			System.out.println(e);
 			}
 		return dPast;
-	}		
+	}	
 		
-	
-	private ArrayList<HashMap<String, String>> getDate(String email) {
-		String sql = "SELECT CREATE_DATE, UPDATE_DATE"
-				+ "CASE UPDATE_DATE"
-				+ "WHEN NULL THEN SELECT CREATE_DATE"
-				+ "FROM LEAVE_MST_USER WHERE EMAIL='" + email +"'";
-		DbConnector dbconn = new DbConnector();
-		ArrayList<HashMap<String, String>> past = new ArrayList<HashMap<String, String>>();
-		dbconn.doConnect();
-		
-		past = dbconn.getData(sql);
-		
-		return past;
-		
-	}
 }
