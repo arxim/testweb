@@ -39,7 +39,7 @@
 					   		 	 <div class="col-xs-24 col-sm-12 text-center">
 					   		 	 	 <br>
 							      	 	 <button type="button" class="btn btn-primary text-white" id="btnSendEmail" onclick="resultSendEmail()" >Send Email</button>
-							      	 	 <button type="button" class="btn btn-primary text-white" id="btnBackToLogin" onclick="window.location.href='/testweb/LoginSrvl'" >Back</button>
+							      	 	 <button type="button" class="btn btn-primary text-white" id="btnBackToLogin" onclick="window.location.href='/testweb/LoadLoginSrvl'" >Back</button>
 						      	 </div>
 						     </div>
 					    </div>
