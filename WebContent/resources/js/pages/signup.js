@@ -35,15 +35,15 @@ function createAccount(){
     	$("#myModalSignUp").modal("show");
 	}
 	
-	else{
+	else{		
 		if($("#txtPwdSignUp").val() == $("#txtRePwdSignUp").val()){
 		/*	var success="Sign up success!!";
 			$("#msgModalSignUp").text(success);
 	    	$("#myModalSignUp").modal("show");		*/
 	    	
-//	    	console.log('Send ajax request');
-			var email=$("#txtEmailLogin").val();
-	    	var pwd=$("#txtPwdLogin").val();
+//	    	console.log('Send ajax request');		
+			var email=$("#txtEmailSignUp").val();
+	    	var pwd=$("#txtPwdSignUp").val();
 	    	$.ajax({
 	    	      type: 'POST',
 	    	      url: ctx + '/SignUpSrvl',
@@ -54,31 +54,29 @@ function createAccount(){
 	    	      dataType: "text",
 	    	      success: function(data) {
 	    	    	  var msgFlag;
-	    	    	  if (data === "Success") {
-	    	    		 /*msgFlag = "Redirect to home page.";
-	    	    		 $("#msgModalLoginResult").text(msgFlag);
-	   	    	      	 $("#myModalLogin").modal("show");*/
-	   	    	      	 location.href='mainMenu.jsp';
+	    	    	  if (data == "Success") {
+	    	    	//	 msgFlag = "Redirect to home page.";
+	    	    		 location.href ="index.jsp";
 	    	    	  }
-	    	    	  else if(data === "Failed"){
-	    	    		  msgFlag = 'Sign up failed!!';
-	    	    		  $("#msgModalLoginResult").text(msgFlag);
-	    	    	      $("#myModalLogin").modal("show");
+	    	    	  else if(data == "Failed"){
+	    	    		  msgFlag = "Sign up failed!!";
+	    	    		  $("#msgModalSignUp").text(msgFlag);
+	    	    	      $("#myModalSignUp").modal("show");
 	    	    	  }
-	    	    	  else if(data === "Please change e-mail"){
+	    	    	  else if(data == "ChangeEmail"){
 	    	    		  msgFlag = "Please change e-mail";
-	    	    		  $("#msgModalLoginResult").text(msgFlag);
-	    	    	      $("#myModalLogin").modal("show");
+	    	    		  $("#msgModalSignUp").text(msgFlag);
+	    	    	      $("#myModalSignUp").modal("show");
 	    	    	  }
-	    	    	  else if(data === "Please change password"){
+	    	    	  else if(data == "ChangePassword"){
 	    	    		  msgFlag = "Please change password";
-	    	    		  $("#msgModalLoginResult").text(msgFlag);
-	    	    	      $("#myModalLogin").modal("show");
+	    	    		  $("#msgModalSignUp").text(msgFlag);
+	    	    	      $("#myModalSignUp").modal("show");
 	    	    	  }
 	    	    	  else{
-	    	    		  msgFlag = 'Email and/or Password not found';
-	    	    		  $("#msgModalLoginResult").text(msgFlag);
-	    	    	      $("#myModalLogin").modal("show");
+	    	    		  msgFlag = "Email and/or Password not found";
+	    	    		  $("#msgModalSignUp").text(msgFlag);
+	    	    	      $("#myModalSignUp").modal("show");
 	    	    	  }
 		    	  }
 	    	});

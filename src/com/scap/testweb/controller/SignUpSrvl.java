@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.scap.testweb.service.SignUpService;
 
 /**
@@ -59,16 +60,17 @@ public class SignUpSrvl extends HttpServlet {
 			else if(chktest == "Failed"){
 				result = "Failed";
 			}
-			else if(chktest == "Please change e-mail"){
-				result = "Please change e-mail";
+			else if(chktest == "ChangeEmail"){
+				result = "ChangeEmail";
 			}
-			else if(chktest == "Please change password"){
-				result = "Please change password";
+			else if(chktest == "ChangePassword"){
+				result = "ChangePassword";
 			}
 			else{
-				result = "Please change e-mail and password";
+				result = "ChangeEmailandPassword";
 			}
 		}catch(Exception e) {
+			e.printStackTrace();
 			result = "Failed";
 		}
 		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.

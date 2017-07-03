@@ -1,11 +1,9 @@
 package com.scap.testweb.service;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.math.*;
 
 import com.scap.testweb.dao.UserDao;
 
@@ -13,11 +11,14 @@ public class SignUpService {
 
 /*	public static void main(String[] args) {
 		SignUpService service = new SignUpService();
-		String email = "ABC@gmail.com";
-		String passwd = "@#+^65ftwdF";
+		String email = "haha@gmail.com";
+		String passwd = "Ten=10";
 		boolean chkEmail = service.checkEmail(email);
+		System.out.println(chkEmail);
 		boolean chkPwd = service.chackPassword(passwd); 
-		service.chktest(chkEmail,chkPwd,email,passwd);
+		System.out.println(chkPwd);
+		String checktest = service.chktest(chkEmail,chkPwd,email,passwd);
+		System.out.println(checktest);
 	}	*/
 	
 	public boolean checkEmail(String email){
@@ -41,26 +42,22 @@ public class SignUpService {
 	}
 	
 	public String cryptWithMD5(String pass){
-		   MessageDigest md;
-	    try {
-	        md = MessageDigest.getInstance("MD5");
-	        byte[] passBytes = pass.getBytes();
-	        md.reset();
-	        byte[] digested = md.digest(passBytes);
-	        StringBuffer sb = new StringBuffer();
-	        for(int i=0;i<digested.length;i++){
-	            sb.append(Integer.toHexString(0xff & digested[i]));
-	        }
-	        return sb.toString();
-	    } catch (NoSuchAlgorithmException ex) {
-	        Logger.getLogger(SignUpService.class.getName()).log(Level.SEVERE, null, ex);
-	    }
-	        return null;
-	   }
+        try{
+        	String s = pass;
+        	 MessageDigest m = MessageDigest.getInstance("MD5");
+             m.update(s.getBytes(),0,s.length());
+             return new BigInteger(1,m.digest()).toString(16);
+        }catch(Exception e) {
+			e.printStackTrace();
+        }
+		return pass;
+    }
 	
 	public boolean createAccount(String email,String passwd){
 		UserDao userDao = new UserDao();
-		ArrayList<HashMap<String,String>> chkCorrect = userDao.setUserAccount(email,passwd);
+		SignUpService createpwd = new SignUpService();
+		String pwd = createpwd.cryptWithMD5(passwd);
+		ArrayList<HashMap<String,String>> chkCorrect = userDao.setUserAccount(email,pwd);
 		int sizeOfDataUser = chkCorrect.size();
 		if(sizeOfDataUser == 1){
 			return true;
@@ -88,19 +85,19 @@ public class SignUpService {
 			/*	System.out.println("E-mail : Duplicate");
 				System.out.println("Password : Approve");
 				System.out.println("Please change e-mail.");	*/
-				return "Please change e-mail";
+				return "ChangeEmail";
 			}
 		else if(!chkEmail && !chkPwd){
 			/*	System.out.println("E-mail : Unique");
 				System.out.println("Password : Do not approve");
 				System.out.println("Please change password.");	*/
-				return "Please change password";
+				return "ChangePassword";
 			}
 		else{
 			/*	System.out.println("E-mail : Duplicate");
 				System.out.println("Password : Do not approve");
 				System.out.println("Please change e-mail and password.");	*/
-				return "Please change e-mail and password";
+				return "ChangeEmailandPassword";
 			}
 	}
 }
