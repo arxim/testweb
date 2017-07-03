@@ -78,6 +78,7 @@ public class ChkEmailForSendSrvl extends HttpServlet {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			print.write("Send Email fail !!");// send new password fail (Problem in internet)
 		}
 	    print.close();
 	}

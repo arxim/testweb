@@ -6,6 +6,9 @@ function checkResultClose(){
 	if($("#msgModalForgotPwdResult").text()=="Send Email : "+$("#txtEmailSendPwd").val()+" Success !!"){
 		location.href='/testweb/LoadLoginSrvl';
 	}
+	else{
+		location.href='/testweb/ForgotPwdSrvl';
+	}
 }
 
 function resultSendEmail(){  // respond massage
@@ -24,9 +27,16 @@ function resultSendEmail(){  // respond massage
 		      },
 		      dataType: "text",
 		      success: function(data) { // found Email and send success
-		    	  $("#modalTitleForgotPwdResult").text("Success!!!");
-		    	  $("#msgModalForgotPwdResult").text(data);
-		    	  $("#myModalForgotPwd").modal("show");
+		    	  if(data=="Send Email fail !!"){
+		    		  $("#modalTitleForgotPwdResult").text("Warning!!!");
+		    		  $("#msgModalForgotPwdResult").text(data);
+			    	  $("#myModalForgotPwd").modal("show");
+		    	  }
+		    	  else{
+		    		  $("#modalTitleForgotPwdResult").text("Success!!!");
+			    	  $("#msgModalForgotPwdResult").text(data);
+			    	  $("#myModalForgotPwd").modal("show");
+		    	  }
 	    	  }
 		});
 	}
