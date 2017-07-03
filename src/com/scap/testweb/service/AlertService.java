@@ -11,18 +11,18 @@ import java.util.HashMap;
 import com.scap.testweb.dao.AlertDao;
 
 public class AlertService {
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		AlertService service = new AlertService();
 		
 		String email = "yui@gmail.com";
 		
-/*	//	UPDATEorInsert Date in database
+	//	UPDATEorInsert Date in database
 		String sql = "INSERT INTO ALERT (UPDATE) VALUES getdate() WHERE EMAIL='" + email + "'"; ;
 		DbConnector dbconn = new DbConnector();
 		dbconn.doConnect();
 		
 	//	database	
-		dbconn.doDisconnect();	*/
+		dbconn.doDisconnect();	
 		
 		try{
 			
@@ -53,7 +53,7 @@ public class AlertService {
 		   
 		}
 	
-	}
+	}*/
 	
 	public boolean compareDate(String email){
 		AlertService service = new AlertService();

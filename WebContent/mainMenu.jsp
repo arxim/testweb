@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- 	script-header import -->
 	<jsp:include page="/resources/template/script-header.jsp"></jsp:include>
-	<jsp:include page="resources/template/modalLoginMessage.jsp"></jsp:include>
+	<jsp:include page="resources/template/modalAlertDate.jsp"></jsp:include>
 	<script type="text/javascript">
 		var ctx = '${pageContext.request.contextPath}';
 	</script>
@@ -16,14 +16,16 @@
 <title>Main menu</title>
 </head>
 <body class="bg-info">
+	<form id="frmMainMenu" action="/testweb/LogoutSrvl" method="post" onsubmit="return validateLogout();">
 	<c:if test="${empty sessionScope.userLogin}">
 		<c:redirect url = "/"/>
 	</c:if>
 	<div class="container" style="margin-top:10%; margin-bottom:12%;">
 	<div class="col-xs-12 col-sm-12 text-center">
 	<h2>Welcome : ${sessionScope.userLogin}</h2>
-	<button type="button" class="btn btn-primary btn-block btn-lg" id="btnLogout" onclick="logoutUser();">Logout</button>
+	<button type="submit" class="btn btn-primary btn-block btn-lg" id="btnLogout">Logout</button>
 	</div>
 	</div> 
+	</form>
 </body>
 </html>

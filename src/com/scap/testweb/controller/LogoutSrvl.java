@@ -2,6 +2,7 @@ package com.scap.testweb.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,11 +43,11 @@ public class LogoutSrvl extends HttpServlet implements Servlet {
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
+	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 		HttpSession session = request.getSession();
 		session.invalidate();
-//		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
-//	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-//	     //Response
-//	    response.getWriter().write("OK");
+		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); 
+		rd.forward(request, response);
 	}
 }

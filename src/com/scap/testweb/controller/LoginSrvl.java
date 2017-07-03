@@ -1,6 +1,8 @@
 package com.scap.testweb.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.scap.testweb.service.AlertService;
 import com.scap.testweb.service.LoginService;
 
 /**
@@ -40,27 +43,33 @@ public class LoginSrvl extends HttpServlet {
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String emailSrvl = request.getParameter("emailLogin");
-		String pwdSrvl = request.getParameter("pwdLogin");
-		
-		String flag = null;
+		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
+	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+	    
+		String emailSrvl = request.getParameter("txtEmailLogin");
+		String pwdSrvl = request.getParameter("txtPwdLogin");
 		try {
 			LoginService loginServ = new LoginService();
 			if (loginServ.chkLogin(emailSrvl, pwdSrvl)) {
-				flag = "success";
 				HttpSession session = request.getSession();
 				session.setAttribute("userLogin", emailSrvl);
+				
+				AlertService pwdDate = new AlertService();
+				if(pwdDate.compareDate(emailSrvl)){
+					RequestDispatcher rd = request.getRequestDispatcher("/mainMenu.jsp");
+					rd.forward(request, response);
+				}
+				else{
+					RequestDispatcher rd = request.getRequestDispatcher("/mainMenu.jsp");
+					rd.forward(request, response);
+				}
 			}else {
-				flag = "fail";
+				response.sendRedirect("/testweb/index.jsp");
 			}
 		}catch(Exception e) {
-			flag = "fail";
+			e.printStackTrace();
+			response.sendRedirect("Fail");
 		}
-		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
-	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-	    
-	    // Response
-	    response.getWriter().write(flag);
 	}
 	
 }

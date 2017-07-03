@@ -18,10 +18,9 @@
 
 </head>
 <body class="bg-info">
-	<form id="frmLogin" action="/testweb/LoginSrvl" method="post">
+	<form id="frmLogin" action="/testweb/LoginSrvl" method="post" onsubmit="return validateLogin();">
 		<div class="container" style="margin-top:10%;margin-bottom:12%;">
 			<div class="col-xs-6 col-sm-2">
-			
 			</div>
 			<div class="col-xs-12 col-sm-8 text-center" >
 		    	<ul id="LSTab" class="nav nav-tabs nav-default nav-justified" style="box-shadow:0 0 18px rgba(6, 0, 255, 0.3);">
@@ -64,7 +63,7 @@
 								<div class="col-xs-24 col-sm-12" id="LSTab">
 									<label><b>Password*</b></label><br>
 									<div class="input-group">
-								    	<input id="txtPwdLogin" type="text" class="form-control" name="txtPwdLogin" placeholder="Password" maxlength="255">
+								    	<input id="txtPwdLogin" type="password" class="form-control" name="txtPwdLogin" placeholder="Password" maxlength="255">
 								        <span class="input-group-btn">
 								        	<button class="btn btn-default" type="button" id="btnPwdHide" onclick="hidePassword()">Show</button>
 								      	</span>
@@ -83,8 +82,7 @@
 							      	 </div>
 						      	</div>
 						      	<div class="col-xs-12 col-sm-6 text-center" id="LSTab">
-									<button type="button" class="btn btn-primary btn-block btn-lg text-white" id="btnLogin" onclick="checkLogin()" >Login</button>
-											
+									<button type="submit" class="btn btn-primary btn-block btn-lg text-white" id="btnLogin">Login</button>
 						      		<br>
 						      	</div>
 					      	</div>
@@ -150,10 +148,9 @@
 	    	</div>
 	    </div>
 	    <div class="col-xs-6 col-sm-2">
-	    
 		</div>	
 		</div>
-	</form> 
+	</form>
 	<form id="frmChangePwd" action="/testweb/ChangePwdSrvl" method="post">
 	</form>  
 </body>
