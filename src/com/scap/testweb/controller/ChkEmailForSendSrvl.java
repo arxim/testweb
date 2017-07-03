@@ -65,7 +65,7 @@ public class ChkEmailForSendSrvl extends HttpServlet {
 						 print.write("Send Email : "+emailForgotSrvl+" Success !!"); // send new password complete
 					 }
 					 else{
-						 print.write("Send Email fail !!");// send new password fail (Problem in internet)
+						 print.write("Send Email Fail !!");// send new password fail (Problem in internet)
 					 } 
 				 }
 				 else{
