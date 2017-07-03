@@ -59,9 +59,9 @@ public class ChkEmailForSendSrvl extends HttpServlet {
 				 String newPwd=email.genPassword(6,8);
 				 String md5=suService.cryptWithMD5(newPwd); //md5 new password
 				 if(!newPwd.isEmpty()){ //if genpassword is not " "
-					 pwdDao.updateGenPassword(emailForgotSrvl,md5); // update data for md5 new genpassword
 					 String sendEmail=seService.sendEmail(emailForgotSrvl,newPwd); // send new password to Email
 					 if(sendEmail=="PASS"){
+						 pwdDao.updateGenPassword(emailForgotSrvl,md5); // update data for md5 new genpassword
 						 print.write("Send Email : "+emailForgotSrvl+" Success !!"); // send new password complete
 					 }
 					 else{
@@ -73,7 +73,7 @@ public class ChkEmailForSendSrvl extends HttpServlet {
 				 }
 				 
 			}else{
-				 print.write("This email is not in DB");//Email not in DB
+				 print.write("This email is not in DB !!");//Email not in DB
 			}
 			
 		} catch (Exception e) {

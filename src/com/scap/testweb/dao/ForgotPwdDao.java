@@ -19,7 +19,6 @@ public class ForgotPwdDao {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(e);
 			}
 		return result;
 	}
@@ -34,8 +33,7 @@ public class ForgotPwdDao {
 			dbconn.doCommit();//confilm data for save in DB
 		}
 		catch (Exception e) { 
-			e.printStackTrace();
-			System.out.println(e);
+			e.printStackTrace();;
 		}
 	}
 }

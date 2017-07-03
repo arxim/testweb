@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="resources/js/pages/forgotPwd/forgotPwd.js"></script>
 <title>Massage</title>
 </head>
 <div class="modal fade" id="myModalForgotPwd" role="dialog"><!-- modal box -->
@@ -14,11 +15,11 @@
           		<button type="button" class="close" data-dismiss="modal">&times;</button>
           		<h3 id="modalTitleForgotPwdResult" class="modal-title text-center"><b>Warning !!!</b></h3>
         	</div>
-        	<div class="modal-body"> <!-- modal body -->
-          		<h5 id="msgModalForgotPwdResult" class="text-center text-primary"><b></b></h5>
+        	<div class="modal-body text-center"> <!-- modal body -->
+          		<h5 id="msgModalForgotPwdResult" class="text-center text-primary"></h5>
         	</div>
         	<div class="modal-footer bg-info"> 
-          		<button type="button" class="btn btn-default" id="btnModalForgotPwdClose" data-dismiss="modal">Close</button>
+          		<button type="button" class="btn btn-default" id="btnModalForgotPwdClose" data-dismiss="modal" onclick="checkResultClose()">Close</button>
         	</div>
       	</div>
     </div>
