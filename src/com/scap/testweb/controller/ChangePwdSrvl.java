@@ -1,7 +1,6 @@
 package com.scap.testweb.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-
-import com.scap.testweb.service.SignUpService;
+import com.scap.testweb.service.ChangePwdService;
 
 /**
- * Servlet implementation class SignUpSrvl
+ * Servlet implementation class LoginSrvl
  */
-@WebServlet("/SignUpSrvl")
-public class SignUpSrvl extends HttpServlet {
+@WebServlet("/LoginSrvl")
+public class ChangePwdSrvl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignUpSrvl() {
+    public ChangePwdSrvl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,40 +42,29 @@ public class SignUpSrvl extends HttpServlet {
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
+		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
 	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 	    
-		String emailSrvl = request.getParameter("emailSignUp");
-		String pwdSrvl = request.getParameter("pwdSignUp");
-
+		String emailSrvl = request.getParameter("txtEmailLogin");
+		String pwdSrvl = request.getParameter("txtConfirmPwd");
+		String newpwdSrvl = request.getParameter("txtNewPwd");
+		String renewpwdSrvl = request.getParameter("txtReNewPwd");
+		
 		String result = null;
 		try {
-			SignUpService signupserv = new SignUpService();
-			
-			boolean chkEmail = signupserv.checkEmail(emailSrvl);
-			boolean chkPwd = signupserv.chackPassword(pwdSrvl); 
-			String chktest = signupserv.chktest(chkEmail,chkPwd,emailSrvl,pwdSrvl);
-			
-			if (chktest == "Success") {
-				result = "Success";
+			ChangePwdService changePass = new ChangePwdService();
+			boolean ConfPwd = changePass.ConfirmPwd(emailSrvl,pwdSrvl);
+			if (ConfPwd) {
+				result = "true";
 			}
-			else if(chktest == "Failed"){
-				result = "Failed";
-			}
-			else if(chktest == "ChangeEmail"){
-				result = "ChangeEmail";
-			}
-			else if(chktest == "ChangePassword"){
-				result = "ChangePassword";
-			}
-			else{
-				result = "ChangeEmailandPassword";
+			else {
+				result = "false";
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			result = "Failed";
-		}	    
-	    // Response
+			result = "fail";
+		}
+		// Response
 	    response.getWriter().write(result);
 	}
 	

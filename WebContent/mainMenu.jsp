@@ -20,12 +20,19 @@
 	<c:if test="${empty sessionScope.userLogin}">
 		<c:redirect url = "/"/>
 	</c:if>
+	
 	<div class="container" style="margin-top:10%; margin-bottom:12%;">
-	<div class="col-xs-12 col-sm-12 text-center">
-	<h2>Welcome : ${sessionScope.userLogin}</h2>
-	<button type="submit" class="btn btn-primary btn-block btn-lg" id="btnLogout">Logout</button>
+		<div class="col-xs-12 col-sm-12 text-center">
+			<h2>Welcome : ${sessionScope.userLogin}</h2>
+			<button type="submit" class="btn btn-primary btn-block btn-lg" id="btnLogout">Logout</button>
+			
+			<br><br>
+			<a href="changePwd.jsp">Change Password</a>
+		</div> 
 	</div>
-	</div> 
+	
+	
+	
 	</form>
 </body>
 </html>

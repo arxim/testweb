@@ -48,9 +48,9 @@ public class SignUpService {
              m.update(s.getBytes(),0,s.length());
              return new BigInteger(1,m.digest()).toString(16);
         }catch(Exception e) {
-			e.printStackTrace();
+			 e.printStackTrace();
+			 return pass;
         }
-		return pass;
     }
 	
 	public boolean createAccount(String email,String passwd){

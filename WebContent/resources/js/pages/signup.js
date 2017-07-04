@@ -55,8 +55,14 @@ function createAccount(){
 	    	      success: function(data) {
 	    	    	  var msgFlag;
 	    	    	  if (data == "Success") {
-	    	    	//	 msgFlag = "Redirect to home page.";
-	    	    		 location.href ="index.jsp";
+	    	    		 msgFlag = "Sign up success!!";
+	    	    		 $("#msgModalSignUp").text(msgFlag);
+	    	    	     $("#myModalSignUp").modal("show");
+	    	    	     // clear text
+	    	    	     $("#txtEmailSignUp").val("");
+	    	    	     $("#txtPwdSignUp").val("");
+	    	    	     $("#txtRePwdSignUp").val("");
+	    	    	//	 location.href ="index.jsp";
 	    	    	  }
 	    	    	  else if(data == "Failed"){
 	    	    		  msgFlag = "Sign up failed!!";
