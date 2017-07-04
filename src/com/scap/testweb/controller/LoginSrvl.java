@@ -56,20 +56,17 @@ public class LoginSrvl extends HttpServlet {
 				
 				AlertService pwdDate = new AlertService();
 				if(pwdDate.compareDate(emailSrvl)){
-					RequestDispatcher rd = request.getRequestDispatcher("/mainMenu.jsp");
-					rd.forward(request, response);
+					response.sendRedirect("mainMenu.jsp");
 				}
 				else{
-					RequestDispatcher rd = request.getRequestDispatcher("/mainMenu.jsp");
-					rd.forward(request, response);
+					session.setAttribute("msgTimeout", "You have been using your password for more than 90 days. Please change your password.");
+					response.sendRedirect("mainMenu.jsp");
 				}
 			}else {
 				response.sendRedirect("/testweb/index.jsp");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("Fail");
 		}
 	}
-	
 }

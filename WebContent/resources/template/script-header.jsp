@@ -1,8 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- CSS Import -->
 <link href="${pageContext.request.contextPath}/resources/libraries/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
@@ -18,10 +13,3 @@
 <script src="${pageContext.request.contextPath}/resources/libraries/datatables-1.10.13/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/libraries/datatables-1.10.13/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/resources/libraries/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-
-</head>
-
-<body>
-
-</body>
-</html>

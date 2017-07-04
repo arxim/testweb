@@ -1,38 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 	
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- 	script-header import -->
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<!-- 	script-header import -->
 	<jsp:include page="/resources/template/script-header.jsp"></jsp:include>
-	<jsp:include page="resources/template/modalAlertDate.jsp"></jsp:include>
+	
 	<script type="text/javascript">
 		var ctx = '${pageContext.request.contextPath}';
+		var msgTimeout = '${sessionScope.msgTimeout}';
 	</script>
 	<script type="text/javascript" src="resources/js/pages/logout.js"></script>
-<title>Main menu</title>
+	<title>Main menu</title>
 </head>
 <body class="bg-info">
-	<form id="frmMainMenu" action="/testweb/LogoutSrvl" method="post" onsubmit="return validateLogout();">
-	<c:if test="${empty sessionScope.userLogin}">
-		<c:redirect url = "/"/>
-	</c:if>
-	
-	<div class="container" style="margin-top:10%; margin-bottom:12%;">
+	<form id="frmMainMenu" action="/testweb/LogoutSrvl" method="post"
+		onsubmit="return validateLogout();">
+		<c:if test="${empty sessionScope.userLogin}">
+			<c:redirect url="/" />
+		</c:if>
+		<div class="container" style="margin-top: 10%; margin-bottom: 12%;">
+			<div class="col-xs-12 col-sm-12 text-center">
+				<h2>Welcome : ${sessionScope.userLogin}</h2>
+				<br>
+				<br>
+				<div class="col-xs-12 col-sm-offset-5 col-sm-2  text-center">
+					<button type="submit" class="btn btn-primary btn-block btn-lg"
+						id="btnLogout">Logout</button>
+				</div>
+			</div>
+		</div>
+		<div class="container" style="margin-top:10%; margin-bottom:12%;">
 		<div class="col-xs-12 col-sm-12 text-center">
 			<h2>Welcome : ${sessionScope.userLogin}</h2>
 			<button type="submit" class="btn btn-primary btn-block btn-lg" id="btnLogout">Logout</button>
-			
 			<br><br>
 			<a href="changePwd.jsp">Change Password</a>
 		</div> 
 	</div>
-	
-	
-	
 	</form>
+
+	<c:if test="${not empty sessionScope.msgTimeout}">
+		<div class="modal fade" id="msg-modal" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h3 class="modal-title text-center">
+							<b>Password !!!</b>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<p>${sessionScope.msgTimeout}</p>
+					</div>
+					<div class="modal-footer bg-info">
+						<button type="button" class="btn btn-default" id="close-msg-modal" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:if>
 </body>
 </html>

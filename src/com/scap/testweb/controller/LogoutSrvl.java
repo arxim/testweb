@@ -47,7 +47,6 @@ public class LogoutSrvl extends HttpServlet implements Servlet {
 	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 		HttpSession session = request.getSession();
 		session.invalidate();
-		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); 
-		rd.forward(request, response);
+		response.sendRedirect("/testweb/index.jsp");
 	}
 }
