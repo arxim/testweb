@@ -11,7 +11,7 @@ function checkResultClose(){
 	}
 }
 
-function resultSendEmail(){  // respond massage
+function resultResetPwd(){  // respond massage
 	if($("#txtEmailSendPwd").val()==""){  // if email is null
 		var pse="Please enter your send to e-mail !!";
 		$("#msgModalForgotPwdResult").text(pse);

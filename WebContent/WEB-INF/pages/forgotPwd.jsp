@@ -15,7 +15,7 @@
 
 </head>
 <body class="bg-info">
-	<form id="frmChangePwd" action="/testweb/ChangePwdSrvl" method="post">
+	<form id="frmForgotPwd" action="/testweb/ForgotPwdSrvl" method="post">
 		<div class="container" style="margin-top:10%; margin-bottom:12%;">
 			<div class="col-xs-6 col-sm-3">
 			
@@ -38,7 +38,7 @@
 				   		 	 <div class="row">
 					   		 	 <div class="col-xs-24 col-sm-12 text-center">
 					   		 	 	 <br>
-							      	 	 <button type="button" class="btn btn-primary text-white" id="btnSendEmail" onclick="resultSendEmail()" >Reset password</button>
+							      	 	 <button type="button" class="btn btn-primary text-white" id="btnResetPwd" onclick="resultResetPwd()" >Reset password</button>
 							      	 	 <button type="button" class="btn btn-primary text-white" id="btnBackToLogin" onclick="location.href='/testweb/LoadLoginSrvl'" >Go to login</button>
 						      	 </div>
 						     </div>

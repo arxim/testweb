@@ -33,7 +33,7 @@ public class ForgotPwdDao {
 			dbconn.doCommit();//confilm data for save in DB
 		}
 		catch (Exception e) { 
-			e.printStackTrace();;
+			e.printStackTrace();
 		}
 	}
 }
