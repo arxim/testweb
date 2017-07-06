@@ -28,7 +28,7 @@ public class UserDao {
 	public ArrayList<HashMap<String,String>> setUserAccount(String userEmail, String userPassword){
 		String dateStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
 		String timeStamp = new SimpleDateFormat("HHmmss").format(Calendar.getInstance().getTime());
-		int signUpCode = Utils.generateSignUpCode();
+		long signUpCode = Utils.generateSignUpCode();
 	    String account = "INSERT INTO LEAVE_MST_USER(SIGNUP_CODE,EMAIL, PASSWORD, CREATE_DATE, CREATE_TIME) VALUES('"+signUpCode+"','"+userEmail+"','"+userPassword+"','"+dateStamp+"','"+timeStamp+"')";
 		String chkAccount = "SELECT * FROM LEAVE_MST_USER WHERE EMAIL='" + userEmail + "'";
 		DbConnector dbconn = new DbConnector();

@@ -36,12 +36,7 @@ function createAccount(){
 	}
 	
 	else{		
-		if($("#txtPwdSignUp").val() == $("#txtRePwdSignUp").val()){
-		/*	var success="Sign up success!!";
-			$("#msgModalSignUp").text(success);
-	    	$("#myModalSignUp").modal("show");		*/
-	    	
-//	    	console.log('Send ajax request');		
+		if($("#txtPwdSignUp").val() == $("#txtRePwdSignUp").val()){	
 			var email=$("#txtEmailSignUp").val();
 	    	var pwd=$("#txtPwdSignUp").val();
 	    	$.ajax({
@@ -62,7 +57,6 @@ function createAccount(){
 	    	    	     $("#txtEmailSignUp").val("");
 	    	    	     $("#txtPwdSignUp").val("");
 	    	    	     $("#txtRePwdSignUp").val("");
-	    	    	//	 location.href ="index.jsp";
 	    	    	  }
 	    	    	  else if(data == "Failed"){
 	    	    		  msgFlag = "Sign up failed!!";

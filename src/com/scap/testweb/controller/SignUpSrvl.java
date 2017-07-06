@@ -54,7 +54,7 @@ public class SignUpSrvl extends HttpServlet {
 			SignUpService signupserv = new SignUpService();
 			
 			boolean chkEmail = signupserv.checkEmail(emailSrvl);
-			boolean chkPwd = signupserv.chackPassword(pwdSrvl); 
+			boolean chkPwd = signupserv.checkPassword(pwdSrvl); 
 			String chktest = signupserv.chktest(chkEmail,chkPwd,emailSrvl,pwdSrvl);
 			
 			if (chktest == "Success") {

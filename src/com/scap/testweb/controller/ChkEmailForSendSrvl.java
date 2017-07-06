@@ -68,9 +68,6 @@ public class ChkEmailForSendSrvl extends HttpServlet {
 						 print.write("Send Email Fail !!");// send new password fail (Problem in internet)
 					 } 
 				 }
-				 else{
-					 
-				 }
 				 
 			}else{
 				 print.write("This email is not in DB !!");//Email not in DB

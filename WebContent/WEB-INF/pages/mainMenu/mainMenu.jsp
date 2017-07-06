@@ -13,7 +13,7 @@
 		var ctx = '${pageContext.request.contextPath}';
 		var msgTimeout = '${sessionScope.msgTimeout}';
 	</script>
-	<script type="text/javascript" src="resources/js/pages/logout.js"></script>
+	<script type="text/javascript" src="resources/js/pages/mainMenu/mainMenu.js"></script>
 	<title>Main menu</title>
 </head>
 <body class="bg-info">
@@ -27,14 +27,25 @@
 				<h2>Welcome : ${sessionScope.userLogin}</h2>
 				<br>
 				<br>
-				<div class="col-xs-12 col-sm-offset-5 col-sm-2  text-center">
+				<div class="col-xs-12 col-sm-offset-5 col-sm-2 text-center">
 					<button type="submit" class="btn btn-primary btn-block btn-lg"
 						id="btnLogout">Logout</button>
 				</div>
 			</div>
+			<div class="col-xs-12 col-sm-4  text-center">
+					<button type="submit" class="btn btn-primary btn-block btn-lg"
+						id="btnLogout">request</button>
+				</div>
+				<div class="col-xs-12 col-sm-4  text-center">
+					<button type="submit" class="btn btn-primary btn-block btn-lg"
+						id="btnLogout">approve</button>
+				</div>
+				<div class="col-xs-12 col-sm-4  text-center">
+					<button type="submit" class="btn btn-primary btn-block btn-lg"
+						id="btnLogout">report</button>
+				</div>
 		</div>
 	</form>
-	
 	<c:if test="${not empty sessionScope.msgTimeout}">
 		<div class="modal fade" id="msg-modal" role="dialog">
 			<div class="modal-dialog modal-sm">

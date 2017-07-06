@@ -19,7 +19,6 @@ import com.scap.testweb.utils.ReadProperties;
 
 public class SendEmailService {
 	public String sendEmail(String email,String newPassword){
-//		System.out.println("Begin Send Mail");
 		ReadProperties prop=new ReadProperties();
 		Map<String,String> propData=prop.getDataReadPropertiesFile("mailserver.properties");
 		String auth_host = propData.get("auth_host");
@@ -55,8 +54,6 @@ public class SendEmailService {
 		   /*** Recipient ***/
 		   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email)); // To
 		   message.setSubject(subject);
-//		   message.setContent(body);
-		//   message.setText("Hello mr.win, Please do not reply this mail");
 		   BodyPart messageBodyPart = new MimeBodyPart();
 		   messageBodyPart.setText(body);
 		   Multipart multipart = new MimeMultipart();
@@ -64,7 +61,6 @@ public class SendEmailService {
 		   message.setContent(multipart);
 		   
 		   Transport.send(message);
-//		   System.out.println("Send mail success!!");
 		   msg = "PASS";
 		  }catch (MessagingException e) {
 			 msg = "FAIL";

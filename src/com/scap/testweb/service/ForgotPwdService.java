@@ -26,7 +26,7 @@ public class ForgotPwdService {// Find Email in DB for genpassword
 		Generex gen=new Generex(pattern);//genpass
 		String str=gen.random();
 		try{
-			if(!suService.chackPassword(str)){//is genpassword incorrect pattern
+			if(!suService.checkPassword(str)){//is genpassword incorrect pattern
 				str="";
 			}	
 		}catch (Exception e) {
