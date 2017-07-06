@@ -50,19 +50,21 @@ public class LoginSrvl extends HttpServlet {
 		String pwdSrvl = request.getParameter("txtPwdLogin");
 		try {
 			LoginService loginServ = new LoginService();
+			HttpSession session = request.getSession();
 			if (loginServ.chkLogin(emailSrvl, pwdSrvl)) {
-				HttpSession session = request.getSession();
+				
 				session.setAttribute("userLogin", emailSrvl);
 				
 				AlertService pwdDate = new AlertService();
 				if(pwdDate.compareDate(emailSrvl)){
-					response.sendRedirect("mainMenu.jsp");
+					response.sendRedirect("WEB-INF/pages/mainMenu/mainMenu.jsp");
 				}
 				else{
 					session.setAttribute("msgTimeout", "You have been using your password for more than 90 days. Please change your password.");
-					response.sendRedirect("mainMenu.jsp");
+					response.sendRedirect("WEB-INF/pages/mainMenu/mainMenu.jsp");
 				}
 			}else {
+				session.setAttribute("msgLoginError", "E-mail or password is incorrect");
 				response.sendRedirect("/testweb/index.jsp");
 			}
 		}catch(Exception e) {

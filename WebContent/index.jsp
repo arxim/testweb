@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,9 +11,10 @@
 	<jsp:include page="resources/template/modalSignUpMessage.jsp"></jsp:include>
 	<script type="text/javascript">
 		var ctx = '${pageContext.request.contextPath}';
+		var msgLoginError = '${sessionScope.msgLoginError}';
 	</script>
-	<script type="text/javascript" src="resources/js/pages/login.js"></script>
-	<script type="text/javascript" src="resources/js/pages/signup.js"></script>
+	<script type="text/javascript" src="resources/js/pages/login/login.js"></script>
+	<script type="text/javascript" src="resources/js/pages/login/signup.js"></script>
 	<title>login</title>
 	<!-- 	css using -->
 
@@ -152,6 +154,29 @@
 		</div>
 	</form>
 	<form id="frmChangePwd" action="/testweb/ChangePwdSrvl" method="post">
-	</form>  
+	</form> 
+	
+	<c:if test="${not empty sessionScope.msgLoginError}">
+		<div class="modal fade" id="msg-modalLoginError" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h3 class="modal-title text-center">
+							<b>Warning !!!</b>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<p align="center">${sessionScope.msgLoginError}</p>
+					</div>
+					<div class="modal-footer bg-info">
+						<button type="button" class="btn btn-default" id="close-msg-modal" data-dismiss="modal" onclick="closeModalLoginError();">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:if> 
+	
 </body>
 </html>
