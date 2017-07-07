@@ -39,3 +39,16 @@ function validateLogin() {
 		}
 	}
 }
+
+$(document).ready(function() {
+	if (msgLoginError) {
+		$('#msg-modalLoginError').modal();
+	}
+});
+
+function closeModalLoginError(){
+	$.ajax({
+	      type: 'POST',
+	      url: ctx + '/ClearSession'
+	});
+}

@@ -17,8 +17,7 @@
 	<title>Main menu</title>
 </head>
 <body class="bg-info">
-	<form id="frmMainMenu" action="/testweb/LogoutSrvl" method="post"
-		onsubmit="return validateLogout();">
+	<form id="frmMainMenu" method="post">
 		<c:if test="${empty sessionScope.userLogin}">
 			<c:redirect url="/" />
 		</c:if>
@@ -29,21 +28,21 @@
 				<br>
 				<div class="col-xs-12 col-sm-offset-5 col-sm-2 text-center">
 					<button type="submit" class="btn btn-primary btn-block btn-lg"
-						id="btnLogout">Logout</button>
+						id="btnLogout" formaction="/testweb/LogoutSrvl">Logout</button>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-4  text-center">
-					<button type="submit" class="btn btn-primary btn-block btn-lg"
-						id="btnLogout">request</button>
-				</div>
-				<div class="col-xs-12 col-sm-4  text-center">
-					<button type="submit" class="btn btn-primary btn-block btn-lg"
-						id="btnLogout">approve</button>
-				</div>
-				<div class="col-xs-12 col-sm-4  text-center">
-					<button type="submit" class="btn btn-primary btn-block btn-lg"
-						id="btnLogout">report</button>
-				</div>
+				<button type="submit" class="btn btn-primary btn-block btn-lg"
+					id="btnRequest" formaction="/testweb/RequestSrvl">request</button>
+			</div>
+			<div class="col-xs-12 col-sm-4  text-center">
+				<button type="submit" class="btn btn-primary btn-block btn-lg"
+					id="btnLogout">approve</button>
+			</div>
+			<div class="col-xs-12 col-sm-4  text-center">
+				<button type="submit" class="btn btn-primary btn-block btn-lg"
+					id="btnLogout">report</button>
+			</div>
 		</div>
 	</form>
 	<c:if test="${not empty sessionScope.msgTimeout}">
