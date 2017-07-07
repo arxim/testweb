@@ -11,7 +11,7 @@
 	<script type="text/javascript">
 		var ctx = '${pageContext.request.contextPath}';
 	</script>
-	<script type="text/javascript" src="resources/js/pages/forgotPwd/forgotPwd.js"></script>
+	<script type="text/javascript" src="resources/js/pages/login/forgotPwd.js"></script>
 
 </head>
 <body class="bg-info">

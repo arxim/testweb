@@ -41,9 +41,10 @@
 					id="btnLogout">approve</button>
 			</div>
 			<div class="col-xs-12 col-sm-4  text-center">
-				<button type="submit" class="btn btn-primary btn-block btn-lg"
-					id="btnLogout">report</button>
+				<button type="button" class="btn btn-primary btn-block btn-lg"
+					id="btnLogout" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">report</button>
 			</div>
+					
 		</div>
 	</form>
 	<c:if test="${not empty sessionScope.msgTimeout}">

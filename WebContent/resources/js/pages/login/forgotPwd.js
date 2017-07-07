@@ -1,7 +1,12 @@
 $(document).ready(function(){   
-	
+	$('#txtEmailSendPwd').keypress(function(e){
+		if(e.keyCode == 13){
+			resultResetPwd();
+			return false;
+		}
+	});
 });
-
+	
 function checkResultClose(){
 	if($("#msgModalForgotPwdResult").text()=="Send Email : "+$("#txtEmailSendPwd").val()+" Success !!"){
 		location.href='/testweb/LoadLoginSrvl';
