@@ -31,6 +31,7 @@
 						id="btnLogout" formaction="/testweb/LogoutSrvl">Logout</button>
 				</div>
 			</div>
+			<br>
 			<div class="col-xs-12 col-sm-4  text-center">
 				<button type="submit" class="btn btn-primary btn-block btn-lg"
 					id="btnRequest" formaction="/testweb/RequestSrvl">request</button>
@@ -43,6 +44,7 @@
 				<button type="button" class="btn btn-primary btn-block btn-lg"
 					id="btnLogout" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">report</button>
 			</div>
+					
 		</div>
 	</form>
 	<c:if test="${not empty sessionScope.msgTimeout}">

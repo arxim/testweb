@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Index</title>
+	<title>login</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<!-- 	script-header import -->
 	<jsp:include page="resources/template/script-header.jsp"></jsp:include>
@@ -15,7 +15,6 @@
 	</script>
 	<script type="text/javascript" src="resources/js/pages/login/login.js"></script>
 	<script type="text/javascript" src="resources/js/pages/login/signup.js"></script>
-	<title>login</title>
 	<!-- 	css using -->
 
 </head>

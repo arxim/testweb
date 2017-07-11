@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src="resources/js/pages/forgotPwd/forgotPwd.js"></script>
+<!-- <script type="text/javascript" src="resources/js/pages/login/forgotPwd.js"></script> -->
 <title>Massage</title>
 </head>
 <div class="modal fade" id="myModalForgotPwd" role="dialog"><!-- modal box -->
