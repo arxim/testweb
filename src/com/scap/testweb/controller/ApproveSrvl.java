@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.scap.testweb.service.ApproveService;
+
 /**
  * Servlet implementation class ApproveSrvl
  */
@@ -45,8 +47,18 @@ public class ApproveSrvl extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
 		rd.forward(request, response);
 		
-//		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
-//	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
+	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+	    
+	    String statusSrvl = request.getParameter("status");
+	    System.out.println("ST Parameter: "+statusSrvl);
+	    ApproveService dt = new ApproveService();
+	    String status = dt.showData(statusSrvl);
+	 
+	    
+
+	    
+	    response.getWriter().write(status);
 	}
 
 }
