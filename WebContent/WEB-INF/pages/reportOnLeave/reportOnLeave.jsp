@@ -7,7 +7,6 @@
 	<title>Report</title>
 	<!-- 	script-header import -->
 	<jsp:include page="/resources/template/script-header.jsp"></jsp:include>
-	<jsp:include page="/resources/js/pages/reportOnLeave/reportTable.jsp"></jsp:include>
 	<script type="text/javascript">
 		var ctx = '${pageContext.request.contextPath}';
 	</script>
@@ -18,29 +17,29 @@
 			<div class="col-xs-12 col-sm-12">
 				<div class="panel panel-primary text-center">
 				    <div class="panel-heading">
-				    	<h4 class="panel-title"><b>à¸£à¸²à¸¢à¸à¸²à¸à¸à¸²à¸£à¸à¸³à¹à¸£à¸·à¹à¸­à¸à¸¥à¸²à¸à¸­à¸à¸à¸¸à¸à¸¥à¸²à¸à¸£</b></h4>
+				    	<h4 class="panel-title"><b>รายงานแสดงการลาของพนักงาน</b></h4>
 				 	</div>
 				    <div class="panel-body">
 				    	<div class="dataSearch-heading text-center">
 				   		 	 <div class="form-group">
 					   		 	 <div class="col-xs-4 col-sm-2">
 					   		 	 	 <p class="text-center">
-					   		 	 	 	 <b>à¸à¸·à¹à¸­</b>
+					   		 	 	 	 <b>ชื่อ</b>
 					   		 	 	 </p>
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-4">
-						      	 	 <input id="txtNameEmployee" class="form-control" type="text" name="txtNameEmployee" placeholder="à¸à¸·à¹à¸­" maxlength="50">
+						      	 	 <input id="txtNameEmployee" class="form-control" type="text" name="txtNameEmployee" placeholder="ชื่อ" maxlength="50">
 						      	 	 <div class="visible-xs">
 						      	 		<br>
 						      	 	 </div>
 						      	 </div>
 						      	 <div class="col-xs-4 col-sm-2">
 						      	     <p class="text-center">
-					   		 	 	 	 <b>à¸à¸²à¸¡à¸ªà¸à¸¸à¸¥</b>
+					   		 	 	 	 <b>นามสกุล</b>
 					   		 	 	 </p>
 						      	 </div>
 							     <div class="col-xs-8 col-sm-4">
-									 <input id="txtSurnameEmployee" class="form-control" type="text" name="txtSurnameEmployee" placeholder="à¸à¸²à¸¡à¸ªà¸à¸¸à¸¥" maxlength="50">
+									 <input id="txtSurnameEmployee" class="form-control" type="text" name="txtSurnameEmployee" placeholder="นามสกุล" maxlength="50">
 						      		 <div class="visible-xs">
 						      	 		<br>
 						      	 	 </div>
@@ -52,14 +51,14 @@
 						     <div class="form-group">
 					   		 	 <div class="col-xs-4 col-sm-2">
 					   		 	 	 <p class="text-center">
-					   		 	 	 	 <b>à¹à¸à¸à¸</b>
+					   		 	 	 	 <b>แผนก</b>
 					   		 	 	 </p>
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-4">
 						      	 	 <select id="txtDepartment" name="txtDepartment" class="form-control">
-										<option value="departmentA">à¹à¸à¸à¸ A</option>
-										<option value="departmentB">à¹à¸à¸à¸ B</option>
-										<option value="departmentC">à¹à¸à¸à¸ C</option>
+										<option value="แผนกA">แผนกA</option>
+										<option value="แผนกB">แผนกB</option>
+										<option value="แผนกC">แผนกC</option>
 									 </select>
 									 <div class="visible-xs">
 						      	 		<br>
@@ -67,14 +66,14 @@
 						      	 </div>
 						      	 <div class="col-xs-4 col-sm-2">
 						      	     <p class="text-center">
-					   		 	 	 	 <b>à¸à¸³à¹à¸«à¸à¹à¸</b>
+					   		 	 	 	 <b>ตำแหน่ง</b>
 					   		 	 	 </p>
 						      	 </div>
 							     <div class="col-xs-8 col-sm-4">
 						      	 	 <select id="txtPosition" name="txtPosition" class="form-control">
-										<option value="positionA">à¸à¸³à¹à¸«à¸à¹à¸ A</option>
-										<option value="positionB">à¸à¸³à¹à¸«à¸à¹à¸ B</option>
-										<option value="positionC">à¸à¸³à¹à¸«à¸à¹à¸ C</option>
+										<option value="ตำแหน่งA">ตำแหน่งA</option>
+										<option value="ตำแหน่งB">ตำแหน่งB</option>
+										<option value="ตำแหน่งC">ตำแหน่งC</option>
 									 </select>
 									 <div class="visible-xs">
 						      	 		<br>
@@ -86,14 +85,14 @@
 						     <div class="form-group">
 					   		 	 <div class="col-xs-4 col-sm-2">
 					   		 	 	 <p class="text-center">
-					   		 	 	 	 <b>à¸à¸£à¸°à¹à¸ à¸</b>
+					   		 	 	 	 <b>ประเภทลา</b>
 					   		 	 	 </p>
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-4">
 						      	 	 <select id="txtLeaveType" name="txtLeaveType" class="form-control">
-										<option value="sickLeave">à¸¥à¸²à¸à¹à¸§à¸¢</option>
-										<option value="à¸³rrand">à¸¥à¸²à¸à¸´à¸</option>
-										<option value="positionC">à¸¥à¸²à¸à¸±à¸à¸£à¹à¸­à¸</option>
+										<option value="ลาป่วย">ลาป่วย</option>
+										<option value="ลากิจ">ลากิจ</option>
+										<option value="ลาพักร้อน">ลาพักร้อน</option>
 									 </select>
 									 <div class="visible-xs">
 						      	 		<br>
@@ -103,38 +102,72 @@
 						     <br>
 						     <br>
 						     <div class="form-group">
-						     	 <div class="col-xs-4 col-sm-2">
+						     	<div class="col-xs-4 col-sm-2">
 						      	     <p class="text-center">
-					   		 	 	 	 <b>à¸§à¸±à¸à¸à¸µà¹</b>
+					   		 	 	 	 <b>วันที่</b>
 					   		 	 	 </p>
-						      	 </div>
-							     <div class="col-xs-8 col-sm-4">
-									 <input id="txtStartDay" class="form-control" type="text" name="txtStartDay" placeholder="à¸§à¸±à¸à¸à¸µà¹" maxlength="50">
+						      	</div>
+						     	<div class="col-xs-8 col-sm-4">
+							     	 <div class="form-group">
+						                <div class='input-group date' id='datepicker1'>
+						                    <input id="txtMinDay" class="form-control date-range-filter" type="text" name="txtMinDay" maxlength="50">
+						                    <span class="input-group-addon" id="iconDate1">
+						                        <span class="glyphicon glyphicon-calendar"></span>
+						                    </span>
+						                </div>
+						             </div>
 						      	 	 <div class="visible-xs">
 						      	 		<br>
 						      	 	 </div>
 						      	 </div>
 						      	 <div class="col-xs-4 col-sm-2">
 						      	     <p class="text-center">
-					   		 	 	 	 <b>à¸à¸¶à¸</b>
+					   		 	 	 	 <b>ถึง</b>
 					   		 	 	 </p>
-						      	 </div>
-							     <div class="col-xs-8 col-sm-4">
-									 <input id="txtFinishDay" class="form-control" type="text" name="txtFinishDay" placeholder="à¸à¸¶à¸" maxlength="50">
+						      	</div>
+						     	<div class="col-xs-8 col-sm-4">
+							     	 <div class="form-group">
+						                <div class='input-group date' id='datepicker2'>
+						                    <input id="txtMaxDay" class="form-control date-range-filter" type="text" name="txtMaxDay" maxlength="50">
+						                    <span class="input-group-addon" id="iconDate2">
+						                        <span class="glyphicon glyphicon-calendar"></span>
+						                    </span>
+						                </div>
+						             </div>
 						      	 	 <div class="visible-xs">
 						      	 		<br>
 						      	 	 </div>
 						      	 </div>
 						     </div>
-						     <br>
-						     <br>
 						     <div class="form-group">
 						     	 <div class="col-xs-12 col-sm-12 text-center">
-							     	 <button type="button" class="btn btn-primary text-white" id="btnSearchReport" onclick="" >à¸à¹à¸à¸«à¸²</button>&nbsp
-							     	 <button type="button" class="btn btn-primary text-white" id="btnCancelSearchReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'" >à¸¢à¸à¹à¸¥à¸´à¸</button>
+							     	 <button type="button" class="btn btn-primary text-white" id="btnSearchReport" onclick="searchEngine()" >ค้นหา</button>&nbsp
+							     	 <button type="button" class="btn btn-primary text-white" id="btnCancelSearchReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'" >ยกเลิก</button>&nbsp
+							     	 <button type="button" class="btn btn-primary text-white" id="btnGoToMain" onclick="location.href='/testweb/LoadMainMenuSrvl'" >กลับสู่หน้าหลัก</button>
+						     	 	 <div class="visible-xs">
+						      	 		<br>
+						      	 	 </div>
 						     	 </div>
 						     </div>
-						    
+						     <div class="form-group">
+						     	<div class="col-xs-12 col-sm-12 text-center">
+						     		<table id="reportTable" class="table table-responsive table-bordered dt-responsive nowrap table-hover" style="width: 100%">
+							     		<thead>
+							     			 <tr>
+								                <th class="text-center">ลำดับ</th>
+								                <th class="text-center">ชื่อ</th>
+								                <th class="text-center">นามสกุล</th>
+								                <th class="text-center">แผนก</th>
+								                <th class="text-center">ตำแหน่ง</th>
+								                <th class="text-center">ประเภทการลา</th>
+								                <th class="text-center">วันเริ่มต้นลา</th>
+								                <th class="text-center">วันสิ้นสุดลา</th>
+								                <th class="text-center">ใบลา</th>
+								             </tr>
+								         </thead>
+						     		</table>
+						        </div>
+						     </div>
 					    </div>
 				    </div>
 				</div>
