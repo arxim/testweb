@@ -7,12 +7,10 @@
 <!-- 	script-header import -->
 <jsp:include page="/resources/template/script-header.jsp"></jsp:include>
 
-<script type="text/javascript">
-	var ctx = '${pageContext.request.contextPath}';
+<!-- <script type="text/javascript">var ctx = '${pageContext.request.contextPath}';
 	//var msgTimeout = '${sessionScope.msgTimeout}';
-</script>
-<script type="text/javascript"
-	src="resources/js/pages/requestOnLeave/requestOnLeave.js"></script>
+</script>   -->
+<script type="text/javascript" src="resources/js/pages/requestOnLeave/requestOnLeave.js"></script> 
 <title>Request on leave</title>
 </head>
 <body class="bg-info">
@@ -84,17 +82,30 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">เวลาเริ่ม :</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="ว/ด/ป" id="txtStartDate">
+							<div class="input-group date" data-provide="datepicker" id="datepickerStart">
+								<input type="text" class="form-control" id="startDate">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</div>
+							</div>
 						</div>
 						<label class="col-sm-2 control-label">เวลาสิ้นสุด :</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="ว/ด/ป" id="txtStopDate">
+							<div class="input-group date" data-provide="datepicker" id="datepickerStop">
+								<input type="text" class="form-control" id="stopDate">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">จำนวนวัน :</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="txtCountDay">
+							<input type="text" class="form-control" id="txtDateDiff" onclick="dateDiff();" disabled>
+						</div>
+						<div class="col-sm-1">
+							<button type="button" class="btn btn-primary btn-block" onclick="dateDiff();">คำนวณ</button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -110,7 +121,7 @@
 						</div>
 						<div class="col-sm-2">
 							<button type="button" class="btn btn-primary btn-block btn-lg"
-								id="btnCancel"onclick="cancelRequest();">ยกเลิก</button>
+								id="btnCancel" onclick="cancelRequest();">ยกเลิก</button>
 						</div>
 					</div>
 				</div>
@@ -157,6 +168,5 @@
 				</div>
 			</div>
 		</div>
-	
 </body>
 </html>
