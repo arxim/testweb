@@ -143,6 +143,9 @@
 						     	 <div class="col-xs-12 col-sm-12 text-center">
 							     	 <button type="button" class="btn btn-primary text-white" id="btnSearchReport" onclick="searchEngine()" >ค้นหา</button>&nbsp
 							     	 <button type="button" class="btn btn-primary text-white" id="btnCancelSearchReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'" >ยกเลิก</button>&nbsp
+							     	 <div class="visible-xs">
+						      	 		<br>
+						      	 	 </div>
 							     	 <button type="button" class="btn btn-primary text-white" id="btnGoToMain" onclick="location.href='/testweb/LoadMainMenuSrvl'" >กลับสู่หน้าหลัก</button>
 						     	 	 <div class="visible-xs">
 						      	 		<br>

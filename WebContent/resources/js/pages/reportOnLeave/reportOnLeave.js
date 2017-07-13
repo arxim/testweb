@@ -104,6 +104,21 @@ $(document).ready(function(){
 });
 
 function searchEngine(){
+	$.ajax({
+	      type: 'POST',
+	      url: ctx + '/ShowListReportDBSrvl',
+	      data: {
+	      },
+	      dataType: "text",
+	      success: function(data) { // found Email and send success
+	    	  if(data=="true"){
+//	    		  alert("true");
+	    	  }
+	    	  else{
+//	    		  alert("false");
+	    	  }
+	  }
+	});
 	var table = $('#reportTable').DataTable();
 	var wantToSearch=$("#txtNameEmployee").val()+" "+$("#txtSurnameEmployee").val()+" "+$("#txtDepartment").val()+" "+$("#txtPosition").val()+" "+$("#txtLeaveType").val();
 	table.search(wantToSearch).draw();

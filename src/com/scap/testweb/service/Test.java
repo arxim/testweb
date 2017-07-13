@@ -1,10 +1,10 @@
 package com.scap.testweb.service;
 
-import com.scap.testweb.utils.Utils;
 
 public class Test {
 	public static void main(String[] args){
-		for(int i=0;i<5;i++)
-			System.out.println(Utils.generateSignUpCode());
+		ShowListReportService test=new ShowListReportService();
+		boolean result=test.getListOnLeave();
+		System.out.println(result);
 	}
 }
