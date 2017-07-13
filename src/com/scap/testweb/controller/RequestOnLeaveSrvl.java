@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.scap.testweb.dao.RequestDao;
+import com.scap.testweb.service.RequestService;
 
 /**
  * Servlet implementation class RequestOnLeaveSrvl
@@ -43,9 +47,16 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
 	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+	    
+	    HttpSession session = request.getSession();
+		String userLogin = session.getAttribute("userLogin").toString();
+		
+		RequestService requestService = new RequestService();
+	    
 	    String approve = request.getParameter("sendApprove");
-	    String notAllowed = request.getParameter("sendNotAllowed");
-		String fNmae = request.getParameter("fullName");
+//	    String notAllowed = request.getParameter("sendNotAllowed");
+	    String fNmae = request.getParameter("fristName");
+		String lNmae = request.getParameter("lastName");
 		String epyDepartment = request.getParameter("comboDepartment");
 		String epyPosition = request.getParameter("comboPosition");
 		String email = request.getParameter("txtemail");
@@ -55,17 +66,22 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		String dateDiff = request.getParameter("txtDateDiff");
 		String note = request.getParameter("txtAreaNote");
-		if(email == "1234")
-			System.out.println("ชื่อ: "+fNmae+"\nแผนก: "+ epyDepartment+"\nตำแหน่ง: "+epyPosition+"\nอีเมลล์: "+email+"\nชื่อหัวหน้า: "+nameBoss+"\nประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
+		String userPosition = requestService.findPosition(userLogin);
+		String employee_id = requestService.findID(userLogin);
+		String boss_id = requestService.findBossID(userLogin);
+		
+		if(userPosition == "Employee"){
+			requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,note);
+			System.out.println("ID : "+employee_id+ "\nชื่อ: "+fNmae+"\nนามสกุล: "+lNmae+"\nแผนก: "+ epyDepartment+"\nตำแหน่ง: "+epyPosition+"\nอีเมลล์: "+email+"\nชื่อหัวหน้า: "+nameBoss+"\nประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
+			
+		}
 		else{
 			if(approve != null)
 				System.out.println("คำร้องขอ : อนุมัติ");
+				
 			else
 				System.out.println("คำร้องขอ : ไม่อนุมัติ");
 		}
-			
-		
-//		response.sendRedirect("/pages/requestOnLeave/requestOnLeave.jsp");
 	}
 
 }

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.scap.testweb.service.RequestService;
+
 /**
  * Servlet implementation class RequestSrvl
  */
@@ -42,23 +44,26 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String fName = "Purasri";
-		String lName = "Prommarin";
-		String comboDepartment = "IT";
-		String comboPosition = "Programmer";
-		String txtemail = "pp@hotmail.com";
-		String comboBoss = "นายABC";
+		HttpSession session = request.getSession();
+		String userLogin = session.getAttribute("userLogin").toString();
+		
+		RequestService requestService = new RequestService();
+		String fName = requestService.findFirstName(userLogin);
+		String lName = requestService.findLastName(userLogin);
+		String comboDepartment = requestService.findDepartment(userLogin);
+		String comboPosition = requestService.findPosition(userLogin);
+		String comboBoss = requestService.findNameBoss(userLogin);
 		String comboTypeLeave = "ลาพักร้อน";
 		String startDate = "2017/07/07";
 		String endDate = "2017/07/14";
-		String txtDateDiff = "8 วัน";
+		String txtDateDiff = "8";
 		String txtAreaNote = "อากาศมันร้อน ขอนอนอยู่บ้านค่ะ";
 		
 		request.setAttribute("fName",fName);
 		request.setAttribute("lName", lName);
 		request.setAttribute("comboDepartment", comboDepartment);
 		request.setAttribute("comboPosition", comboPosition);
-		request.setAttribute("txtemail", txtemail);
+		request.setAttribute("txtemail", userLogin);
 		request.setAttribute("comboBoss", comboBoss);
 		request.setAttribute("comboTypeLeave", comboTypeLeave);
 		request.setAttribute("startDate", startDate);
@@ -68,10 +73,6 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/requestOnLeave/requestOnLeave.jsp"); 
 		rd.forward(request, response);
-		
-//		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
-//	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-//		response.sendRedirect("/pages/requestOnLeave/requestOnLeave.jsp");
 	}
 
 }

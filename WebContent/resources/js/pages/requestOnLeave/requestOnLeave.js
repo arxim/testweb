@@ -13,8 +13,6 @@ $(document).ready(function () {
 		$("#txtDateDiff").val(diff);
 		$("#txtAreaNote").val(note);
 		
-		$("#txtemail").prop('disabled', true);
-		$("#comboBoss").prop('disabled', true);
 		$("#comboTypeLeave").prop('disabled', true);
 		$("#startDate").prop('disabled', true);
 		$("#endDate").prop('disabled', true);
@@ -22,6 +20,7 @@ $(document).ready(function () {
 		
 		$('#btnSubmit').hide();
 		$('#btnCancel').hide();
+		$('#btnBackMainMenuUser').hide();
 	}
 	else{
 		$("#fName").val(firstName);
@@ -29,11 +28,12 @@ $(document).ready(function () {
 		$("#comboDepartment").val(dpm);
 		$("#comboPosition").val(pst);
 		$("#txtemail").val(mail);
+		$("#comboBoss").val(nameBoss);
 		
 		$('#btnApprove').hide();
 		$('#btnNotAllowed').hide();
+		$('#btnBackMainMenuBoss').hide();
 	}
-	
 	
 	$('#datepickerStart').datepicker({
 		format:"yyyy/mm/dd",
@@ -50,8 +50,8 @@ $(document).ready(function () {
 
 function sendRequest() {
 	if((!$("#txtemail").val() == "")&& (!$("#comboBoss").val() == "")&& (!$("#comboTypeLeave").val() == "")&& (!$("#startDate").val() == "")&& (!$("#endDate").val() == "")&& (!$("#txtDateDiff").val() == "")){
-		var fName = $("#fName").val()+" "+$("#lName").val();
-		var lastName = $("#lName").val();
+		var fName = $("#fName").val();
+		var lName = $("#lName").val();
 		var epyDepartment = $("#comboDepartment").val();
 		var epyPosition = $("#comboPosition").val();
 		var email = $("#txtemail").val(); 
@@ -65,7 +65,8 @@ function sendRequest() {
     	      type: 'POST',
     	      url: ctx + '/RequestOnLeaveSrvl',
     	      data: {
-    	    	  fullName : fName,
+    	    	  fristName : fName,
+    	    	  lastName : lName,
     	    	  comboDepartment : epyDepartment,
     	    	  comboPosition : epyPosition,
     	    	  txtemail : email,
@@ -79,8 +80,6 @@ function sendRequest() {
     	      success: function(data) {
     				$("#msgModalRequest").text("สำเร็จ!!");
     		    	$("#myModalRequest").modal("show");
-    				$("#txtemail").val(""); 
-    				$("#comboBoss").val(""); 
     				$("#comboTypeLeave").val(""); 
     				$("#startDate").val(""); 
     				$("#endDate").val(""); 
@@ -92,7 +91,6 @@ function sendRequest() {
 			$("#msgModalRequest").text("กรุณากรอกแบบฟอร์มให้ครบถ้วน");
 	    	$("#myModalRequest").modal("show");
 		}
-	
 }
 
 function sendApprove(){
@@ -142,17 +140,19 @@ function dateDiff(){
 	var last_date = Date.parse(strStop);
 	var diff_date =  last_date - first_date;
 	
-	var num_years = diff_date/(365.25 * 24 * 60 * 60 * 1000);
-	var num_months = (diff_date % (365.25 * 24 * 60 * 60 * 1000))/(365.25 / 12 * 24 * 60 * 60 * 1000);
-	var num_days = ((diff_date % (365.25 * 24 * 60 * 60 * 1000)) % (365.25 / 12 * 24 * 60 * 60 * 1000))/86400000+1;
+//	var num_years = diff_date/(365.25 * 24 * 60 * 60 * 1000);
+//	var num_months = (diff_date % (365.25 * 24 * 60 * 60 * 1000))/(365.25 / 12 * 24 * 60 * 60 * 1000);
+//	var num_days = ((diff_date % (365.25 * 24 * 60 * 60 * 1000)) % (365.25 / 12 * 24 * 60 * 60 * 1000))/86400000+1;
+	
+	var num_days = diff_date/86400000+1;
 	
 	var result ="";
-	if (Math.floor(num_years) > 0)
-		result += (" " + Math.floor(num_years) + " ปี\n");
-	if (Math.floor(num_months) > 0)
-		result += (" " + Math.floor(num_months) + " เดือน\n");
+//	if (Math.floor(num_years) > 0)
+//		result += (" " + Math.floor(num_years) + " ปี\n");
+//	if (Math.floor(num_months) > 0)
+//		result += (" " + Math.floor(num_months) + " เดือน\n");
 	if (Math.floor(num_days) > 0)
-		result += (" " + Math.floor(num_days) + " วัน");
+		result += Math.floor(num_days);
 	$("#txtDateDiff").val(result);
 
 }

@@ -69,17 +69,18 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">อีเมลล์ :</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="อีเมลล์" id="txtemail">
+							<input type="text" class="form-control" id="txtemail" disabled>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">ชื่อหัวหน้า :</label>
 						<div class="col-sm-4">
-							<select class="form-control" id="comboBoss">
+							<!-- <select class="form-control" id="comboBoss">
 								<option value="นายA">นาย A</option>
 								<option value="นายB">นาย B</option>
 								<option value="นายC">นาย C</option>
-							</select>
+							</select> -->
+							<input type="text" class="form-control" id="comboBoss" disabled>
 						</div>
 					</div>
 					<div class="form-group">
@@ -96,7 +97,7 @@
 						<label class="col-sm-2 control-label">เวลาเริ่ม :</label>
 						<div class="col-sm-4">
 							<div class="input-group date" data-provide="datepicker" id="datepickerStart">
-								<input type="text" class="form-control" id="startDate">
+								<input type="text" class="form-control" placeholder="ปี/เดือน/วัน" id="startDate">
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
@@ -105,7 +106,7 @@
 						<label class="col-sm-2 control-label">เวลาสิ้นสุด :</label>
 						<div class="col-sm-4">
 							<div class="input-group date" data-provide="datepicker" id="datepickerEnd">
-								<input type="text" class="form-control" id="endDate">
+								<input type="text" class="form-control" placeholder="ปี/เดือน/วัน" id="endDate">
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
@@ -114,11 +115,12 @@
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">จำนวนวัน :</label>
-						<div class="col-sm-4">
+						<div class="col-sm-1">
 							<input type="text" class="form-control" id="txtDateDiff" onclick="dateDiff();" disabled>
 						</div>
-						<div class="col-sm-1">
-							<button type="button" class="btn btn-primary btn-block" onclick="dateDiff();">คำนวณ</button>
+						<label class="col-sm-1 control-label" style=" text-align: left;">วัน</label>
+						<div class="col-sm-2">
+							<button type="button" class="btn btn-primary btn-block" onclick="dateDiff();">คำนวณวัน</button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -127,25 +129,33 @@
 							<textarea class="form-control" rows="5" id="txtAreaNote"></textarea>
 						</div>
 					</div>
-					
+					<br>
 					<div class="form-group">
-						<div class="col-sm-offset-4 col-sm-2">
-							<button type="button" class="btn btn-primary btn-block btn-lg"
+						<div class="col-sm-offset-3 col-sm-2">
+							<button type="button" class="btn btn-primary btn-block"
 								id="btnSubmit" onclick="sendRequest();">ส่ง</button>
 						</div>
 						<div class="col-sm-2">
-							<button type="button" class="btn btn-primary btn-block btn-lg"
+							<button type="button" class="btn btn-primary btn-block"
 								id="btnCancel" onclick="cancelRequest();">ยกเลิก</button>
+						</div>
+						<div class="col-sm-2">
+							<button type="button" class="btn btn-primary btn-block"
+								id="btnBackMainMenuUser" onclick="location.href='/testweb/LoadMainMenuSrvl'">กลับสู่หน้าหลัก</button>
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-offset-4 col-sm-2">
-							<button type="button" class="btn btn-primary btn-block btn-lg"
+						<div class="col-sm-offset-3 col-sm-2">
+							<button type="button" class="btn btn-primary btn-block"
 								id="btnApprove" onclick="sendApprove();">อนุมัติ</button>
 						</div>
 						<div class="col-sm-2">
-							<button type="button" class="btn btn-primary btn-block btn-lg"
+							<button type="button" class="btn btn-primary btn-block"
 								id="btnNotAllowed" onclick="sendNotAllowed();">ไม่อนุมัติ</button>
+						</div>
+						<div class="col-sm-2">
+							<button type="button" class="btn btn-primary btn-block"
+								id="btnBackMainMenuBoss" onclick="location.href='/testweb/LoadMainMenuSrvl'">กลับสู่หน้าหลัก</button>
 						</div>
 					</div>
 					
