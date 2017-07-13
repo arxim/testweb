@@ -8,6 +8,9 @@
 	<script type="text/javascript" src="resources/libraries/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="resources/libraries/datatables-1.10.13/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="resources/js/pages/approveOnLeave/approveOnLeave.js"></script>
+	<script type="text/javascript">
+		var userLogin = '${sessionScope.userLogin}';
+	</script>
 <title>อนุมัติคำร้องขอลา</title>
 </head>
 <body class="bg-info">
@@ -19,14 +22,17 @@
 						<b>อนุมัติคำร้องขอลา</b>
 					</h2>
 				</div>
+			<div class="col-sm-12">
+				<h4>Welcome : ${sessionScope.userLogin}</h4>
+			</div>
 		<div class="panel-body">
 				<div class="form-group">
-						<label class="col-sm-offset-4 col-sm-1 control-label">สถานะ : </label>
+						<label id="statusname" class="col-sm-offset-4 col-sm-1 control-label">สถานะ : </label>
 					<div class="col-sm-3">
 						<select id="status" class="form-control">
 							<option value="" disabled="disabled" selected="selected">-----------</option>
-							<option value="Pending">รออนุมัติ</option>
-							<option value="Approve">อนุมัติ</option>
+							<option value="รอดำเนินการ">รอดำเนินการ</option>
+							<option value="อนุมัติ">อนุมัติ</option>
 						</select>
 					</div>
 					<br>
@@ -34,30 +40,31 @@
 				</div>
 		
 	
-    <table id="tableApprove" class="display" cellspacing="0" width="100%" align="center">
+    <table id="tableApprove" class="display" cellspacing="0" border="1" bordercolor="#CCCCCC" width="100%">
 	 <thead> 
             <tr> 
-                <th width="10%">วันที่</th> 
-                <th width="18%">ชื่อ-นามสกุล</th> 
-                <th width="15%">แผนก</th> 
-                <th width="15%">ตำแหน่ง</th> 
-                <th width="13%">ประเภทการลา</th> 
-                <th width="10%">สถานะ</th> 
-                <th width="10%">วันที่อนุมัติ</th> 
-                <th width="9%">เลือก</th>
+                <th class="text-center" width="8%">วันที่</th> 
+                <th class="text-center" width="12%">ชื่อ</th>
+                <th class="text-center" width="12%">นามสกุล</th>
+                <th class="text-center" width="13%">แผนก</th> 
+                <th class="text-center" width="13%">ตำแหน่ง</th> 
+                <th class="text-center" width="13%">ประเภทการลา</th> 
+                <th class="text-center" width="13%">สถานะ</th> 
+                <th class="text-center" width="10%">วันที่อนุมัติ</th> 
+                <th class="text-center" width="6%">เลือก</th>
             </tr> 
       </thead>
-	
       <tfoot> 
             <tr> 
-                <th>วันที่</th> 
-                <th>ชื่อ-นามสกุล</th> 
-                <th>แผนก</th> 
-                <th>ตำแหน่ง</th> 
-                <th>ประเภทการลา</th> 
-                <th>สถานะ</th> 
-                <th>วันที่อนุมัติ</th>
-                <th>เลือก</th>
+                <th class="text-center" width="8%">วันที่</th> 
+                <th class="text-center" width="12%">ชื่อ</th>
+                <th class="text-center" width="12%">นามสกุล</th>
+                <th class="text-center" width="13%">แผนก</th> 
+                <th class="text-center" width="13%">ตำแหน่ง</th> 
+                <th class="text-center" width="13%">ประเภทการลา</th> 
+                <th class="text-center" width="13%">สถานะ</th> 
+                <th class="text-center" width="10%">วันที่อนุมัติ</th> 
+                <th class="text-center" width="6%">เลือก</th>
             </tr> 
         </tfoot>
     </table>
@@ -66,9 +73,9 @@
 			<div class="row">
 				<div class="col-xs-24 col-sm-12 text-center">
 				<br>
-					<button type="button" class="btn btn-primary text-white" style="width: 12%;" id="btnGoToRequest" onclick="location.href='/testweb/RequestSrvl'">บันทึกคำร้องขอลา</button> &nbsp;
-					<button type="button" class="btn btn-primary text-white" style="width: 12%;" id="btnBackToMainMenu" onclick="location.href=">กลับหน้าหลัก</button> &nbsp;
-					<button type="button" class="btn btn-primary text-white" style="width: 12%;" id="btnGoToReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">ประวัติการลา</button>
+					<button type="button" class="btn btn-primary text-white" style="width: 12%;" id="btnGoToRequest" onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">บันทึกคำร้องขอลา</button> &nbsp;
+					<button type="button" class="btn btn-primary text-white" style="width: 12%;" id="btnBackToMainMenu" onclick="location.href='/testweb/LoadMainMenuSrvl'">กลับหน้าหลัก</button> &nbsp;
+					<button type="button" class="btn btn-primary text-white" style="width: 12%;" id="btnGoToReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">รายงานการลา</button>
 				</div>
 			</div>
 		</div>

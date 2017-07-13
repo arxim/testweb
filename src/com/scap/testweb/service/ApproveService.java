@@ -6,6 +6,10 @@ import java.util.HashMap;
 import com.scap.testweb.dao.ApproveDao;
 
 public class ApproveService {
+	public String reData(String status){
+		System.out.println("reData: "+status);
+		return status;
+	}
 	
 	public String showData(String status){
 		ApproveDao data = new ApproveDao();

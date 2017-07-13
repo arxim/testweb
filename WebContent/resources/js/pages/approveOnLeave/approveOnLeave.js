@@ -1,22 +1,55 @@
-$(document).ready(function() { 
-    $('#tableApprove').dataTable({ 
+$(document).ready(function() {
+  if(userLogin=='boss'){
+	$(document).on('change','#status',function(){
+	    	var statusForm = randerDataTable();
+	    });
+	var table = $('#tableApprove').dataTable({
+    	//boss
     	"ajax": "resources/js/pages/approveOnLeave/arrays.txt", 
-    	"columnDefs": [ 
-    	{
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<button type='button'>คลิ๊ก</button>"
-        	} 
-    	]
-    });
+    	"columnDefs": 
+    	[{
+            targets: -1,
+            data: null,
+            defaultContent: "<button id='btnStatus' type='button'>คลิ๊ก</button>"
+        }],
+	});
+	$('#tableApprove').on('click','button',function(){
+	     var data = table.row( $(this).parents('tr') ).data();
+	     alert(data[1] +"'s salary is: "+ data[6]);
+	});
+	$('#tableApprove').on('click','tr',function(){
+		if ($(this).hasClass('selected')) {
+		    $(this).removeClass('selected');
+		    //ajax ส่ง name lastname ไปให้หน้า request แสดงข้อมูลในส่วนของ user ทั่วไป
+		    location.href='/testweb/LoadRequestOnLeaveSrvl';
+		}
+		else {
+		    table.$('tr.selected').removeClass('selected');
+		    $(this).addClass('selected');
+		}
+	});
+  }
+  else{
+	$('#statusname').hide();
+	$('#status').hide();
+	$('#tableApprove').dataTable({ 
+		//user
+	});
+  }
 });
 
-
-$(document).on('change','#status',function(){
-	randerDataTable();
-});
 function randerDataTable(){
-	var statusData = $('#status').val(); 
+	var table = $('#tableApprove').DataTable();
+	var wantToSearch=$('#status').val();
+	table.search(wantToSearch).draw();
+	
+/*	var statusData = $('#status').val();
+	if(statusData == "รอดำเนินการ"){
+		statusData = "pending";
+	}
+	else if(statusData == "อนุมัติ"){
+		statusData = "approve";
+	}
 		$('#tableApprove').dataTable({
 			"iDisplayLength" : 10,
 			"iDisplayStart" : 0,
@@ -32,12 +65,10 @@ function randerDataTable(){
 				data : {
 					status : statusData
 				},
-				dataType: "text",
-				success: function(data) {
-					
+				success: function(status) {
+					var msg = status;
 					}	      		
 				}
-	        
-		});
+		});*/
       	
 }

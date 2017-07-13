@@ -31,7 +31,6 @@ public class ApproveSrvl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request,response);
 	}
 
@@ -39,13 +38,12 @@ public class ApproveSrvl extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request,response);
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
-		rd.forward(request, response);
+		rd.forward(request, response);		
 		
 		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
 	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
@@ -53,12 +51,14 @@ public class ApproveSrvl extends HttpServlet {
 	    String statusSrvl = request.getParameter("status");
 	    System.out.println("ST Parameter: "+statusSrvl);
 	    ApproveService dt = new ApproveService();
-	    String status = dt.showData(statusSrvl);
+	  //  String status = dt.showData(statusSrvl);
+	    String status = dt.reData(statusSrvl);
 	 
 	    
 
 	    
 	    response.getWriter().write(status);
+	    
 	}
 
 }
