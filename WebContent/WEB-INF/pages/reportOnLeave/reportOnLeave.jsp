@@ -56,9 +56,12 @@
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-4">
 						      	 	 <select id="txtDepartmentEmployee" name="txtDepartmentEmployee" class="form-control">
-										<option value="แผนกA">แผนกA</option>
-										<option value="แผนกB">แผนกB</option>
-										<option value="แผนกC">แผนกC</option>
+										<option value="บริหารจัดการ">บริหารจัดการ</option>
+										<option value="พัฒนาผลงาน">พัฒนาผลงาน</option>
+										<option value="บัญชีและการเงิน">บัญชีและการเงิน</option>
+										<option value="บุคคล">บุคคล</option>
+										<option value="ประชาสัมพันธ์">ประชาสัมพันธ์</option>
+										<option value="การตลาด">การตลาด</option>
 									 </select>
 									 <div class="visible-xs">
 						      	 		<br>
@@ -71,9 +74,9 @@
 						      	 </div>
 							     <div class="col-xs-8 col-sm-4">
 						      	 	 <select id="txtPositionEmployee" name="txtPositionEmployee" class="form-control">
-										<option value="ตำแหน่งA">ตำแหน่งA</option>
-										<option value="ตำแหน่งB">ตำแหน่งB</option>
-										<option value="ตำแหน่งC">ตำแหน่งC</option>
+										<option value="ลูกจ้างชั่วคราว">ลูกจ้างชั่วคราว</option>
+										<option value="พนักงานทั่วไป">พนักงานทั่วไป</option>
+										<option value="หัวหน้าพนักงาน">หัวหน้าพนักงาน</option>
 									 </select>
 									 <div class="visible-xs">
 						      	 		<br>

@@ -2,16 +2,16 @@ package com.scap.testweb.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.scap.testweb.dao.ApproveDao;
+import com.scap.testweb.model.User;
 
 public class ApproveService {
 	
-	public String showData(String status){
+	public List<User> showData(String status){
 		//data table where status = pending or approve
 		ApproveDao data = new ApproveDao();
-		ArrayList<HashMap<String,String>> dtDao = data.selectData(status);
-		String dataDao = dtDao.get(0).get(0);
-		return dataDao;
+		return data.selectData(status);
 	}
 }

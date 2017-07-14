@@ -1,12 +1,12 @@
 $(document).ready(function(){
 	$('#datepicker1').datepicker({
-		format : "yyyy/mm/dd",
+		format : "dd/mm/yyyy",
 		autoclose : true,
 		todayHighlight : true
 	});
 	$('#datepicker1').datepicker('setDate', 'now');
 	$('#datepicker2').datepicker({
-		format : "yyyy/mm/dd",
+		format : "dd/mm/yyyy",
 		autoclose : true,
 		todayHighlight : true
 	});
@@ -19,55 +19,55 @@ $(document).ready(function(){
       "0":"1",
       "1":"อภิสิทธิ์",
       "2":"โชติรัตนอมรกิจ",
-      "3":"แผนกA",
-      "4":"ตำแหน่งB",
+      "3":"พัฒนาผลงาน",
+      "4":"พนักงานทั่วไป",
       "5":"ลาป่วย",
-      "6":"2017/07/14",
-      "7":"2017/07/15",
+      "6":"14/07/2017",
+      "7":"15/07/2017",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 	table.row.add( {
       "0":"2",
       "1":"อุฟวย",
       "2":"โอซาส",
-      "3":"แผนกC",
-      "4":"ตำแหน่งA",
+      "3":"พัฒนาผลงาน",
+      "4":"พนักงานทั่วไป",
       "5":"ลาพักร้อน",
-      "6":"2017/07/14",
-      "7":"2017/07/18",
+      "6":"14/07/2017",
+      "7":"18/07/2017",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 	table.row.add( {
       "0":"3",
       "1":"วอทด๊าส",
       "2":"เดอะฟ็อกเซย์",
-      "3":"แผนกB",
-      "4":"ตำแหน่งB",
+      "3":"พัฒนาผลงาน",
+      "4":"ลูกจ้างชั่วคราว",
       "5":"ลากิจ",
-      "6":"2017/07/12",
-      "7":"2017/07/13",
+      "6":"12/07/2017",
+      "7":"13/07/2017",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 	table.row.add( {
       "0":"4",
       "1":"เช",
       "2":"สิบล้อ",
-      "3":"แผนกC",
-      "4":"ตำแหน่งA",
+      "3":"การตลาด",
+      "4":"พนักงานทั่วไป",
       "5":"ลาป่วย",
-      "6":"2017/07/11",
-      "7":"2017/07/13",
+      "6":"11/07/2017",
+      "7":"13/07/2017",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 	table.row.add( {
       "0":"5",
       "1":"ดอท",
       "2":"ท๊อปมายซ่า",
-      "3":"แผนกB",
-      "4":"ตำแหน่งC",
+      "3":"บุคคล",
+      "4":"พนักงานทั่วไป",
       "5":"ลาพักร้อน",
-      "6":"2017/07/12",
-      "7":"2017/07/16",
+      "6":"12/07/2017",
+      "7":"16/07/2017",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 //	$.fn.dataTableExt.afnFiltering.push(
@@ -134,7 +134,7 @@ function searchEngine(){
 	  }
 	});
 	var table = $('#reportTable').DataTable();
-	var wantToSearch=$("#txtNameEmployee").val()+" "+$("#txtSurnameEmployee").val()+" "+$("#txtDepartment").val()+" "+$("#txtPosition").val()+" "+$("#txtLeaveType").val();
+	var wantToSearch=$("#txtNameEmployee").val()+" "+$("#txtSurnameEmployee").val()+" "+$("#txtDepartmentEmployee").val()+" "+$("#txtPositionEmployee").val()+" "+$("#txtLeaveType").val();
 	table.search(wantToSearch).draw();
 }
 

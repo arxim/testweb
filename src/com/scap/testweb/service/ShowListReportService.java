@@ -1,6 +1,5 @@
 package com.scap.testweb.service;
 
-import java.sql.SQLDataException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,26 +25,26 @@ public class ShowListReportService {
 		}
 		return s;
 	}
-	public static String changeformatDateToDB(String ymdslash){
+	public static String changeformatDateToDB(String dmyslash){
 		String s="";
-		SimpleDateFormat tymds=new SimpleDateFormat("yyyy/mm/dd");
-		SimpleDateFormat tymd=new SimpleDateFormat("yyyymmdd");
+		SimpleDateFormat tdmys=new SimpleDateFormat("dd/mm/yyyy");
+		SimpleDateFormat tdmy=new SimpleDateFormat("yyyymmdd");
 		try{
-			Date date = tymds.parse(ymdslash);
-	        s=tymd.format(date);
+			Date date = tdmys.parse(dmyslash);
+	        s=tdmy.format(date);
 		}
 		catch(ParseException e){
 			e.printStackTrace();
 		}
 		return s;
 	}
-	public static String changeformatDateToShow(String ymd){
+	public static String changeformatDateToShow(String dmy){
 		String s="";
-		SimpleDateFormat symd=new SimpleDateFormat("yyyymmdd");
-		SimpleDateFormat symds=new SimpleDateFormat("yyyy/mm/dd");
+		SimpleDateFormat sdmy=new SimpleDateFormat("yyyymmdd");
+		SimpleDateFormat sdmys=new SimpleDateFormat("dd/mm/yyyy");
 		try{
-			Date date = symd.parse(ymd);
-	        s=symds.format(date);
+			Date date = sdmy.parse(dmy);
+	        s=sdmys.format(date);
 		}
 		catch(ParseException e){
 			e.printStackTrace();
