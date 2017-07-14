@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-	if(userLogin=='boss'){
+	if(pst == "หัวหน้าพนักงาน"){
 		$("#fName").val(firstName);
 		$("#lName").val(lastName);
 		$("#comboDepartment").val(dpm);
@@ -94,7 +94,7 @@ function sendRequest() {
 }
 
 function sendApprove(){
-	var approve = "Approve";
+	var approve = "อนุมัติ";
 	$.ajax({
 	      type: 'POST',
 	      url: ctx + '/RequestOnLeaveSrvl',
@@ -102,14 +102,20 @@ function sendApprove(){
 	    	  sendApprove : approve
 	      },
 	      success: function(data) {
-				$("#msgModalRequest").text("อนุมัติสำเร็จ!!");
-		    	$("#myModalRequest").modal("show");
+	    	  if(data === "true"){
+					$("#msgModalRequest").text("อนุมัติคำร้องขอสำเร็จ");
+			    	$("#myModalRequest").modal("show");
+		    	  }
+		    	  else{
+		    		$("#msgModalRequest").text("ERROR!!");
+				    $("#myModalRequest").modal("show");  
+		    	  }
 	      }
 	});
 }
 
 function sendNotAllowed(){
-	var notAllowed = "Not Allowed";
+	var notAllowed = "ไม่อนุมัติ";
 	$.ajax({
 	      type: 'POST',
 	      url: ctx + '/RequestOnLeaveSrvl',
@@ -117,8 +123,14 @@ function sendNotAllowed(){
 	    	  sendNotAllowed : notAllowed
 	      },
 	      success: function(data) {
-				$("#msgModalRequest").text("คำร้องขอไม่ถูกอนุมัติ!!");
+	    	  if(data === "true"){
+				$("#msgModalRequest").text("คำร้องขอไม่ถูกอนุมัติ");
 		    	$("#myModalRequest").modal("show");
+	    	  }
+	    	  else{
+	    		$("#msgModalRequest").text("ERROR!!");
+			    $("#myModalRequest").modal("show");  
+	    	  }
 	      }
 	});
 }

@@ -8,14 +8,14 @@ import java.util.HashMap;
 import com.scap.testweb.utils.DbConnector;
 
 public class RequestDao {
-	public boolean setRequestOnLeave(String employee_id,String boss_id,String typeLeave,String startDate,String endDate,String note,String status){
+	public boolean setRequestOnLeave(String employee_id,String boss_id,String typeLeave,String startDate,String endDate,String dateDiff,String note,String status){
 		String request_date = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-		String rqtData = "INSERT INTO LEAVE_MST_LEAVE(EMPLOYEE_ID,BOSS_ID,LEAVE_TYPE,START_DATE,END_DATE,REQUEST_DATE,NOTE,SATUS) VALUES('"+employee_id+"','"+boss_id+"','"+typeLeave+"','"+startDate+"','"+endDate+"','"+request_date+"','"+note+"','"+status+"')";
+		String sql = "INSERT INTO LEAVE_MST_LEAVE(EMPLOYEE_ID,BOSS_ID,LEAVE_TYPE,START_DATE,END_DATE,NUM_LEAVE,REQUEST_DATE,NOTE,STATUS) VALUES('"+employee_id+"','"+boss_id+"','"+typeLeave+"','"+startDate+"','"+endDate+"','"+dateDiff+"','"+request_date+"','"+note+"','"+ status +"')";
 		DbConnector dbconn = new DbConnector();
 		boolean resultRqt = false;
 		try{
 			dbconn.doConnect();
-			dbconn.doSave(rqtData);
+			dbconn.doSave(sql);
 			dbconn.doCommit();
 			resultRqt = true;
 		}
@@ -42,7 +42,7 @@ public class RequestDao {
 	}
 	
 	public ArrayList<HashMap<String, String>> gstDataBoss(String department) {
-		String sql = "SELECT * FROM LEAVE_MST_USER WHERE DEPARTMENT ='" + department + "' AND STATUS = 'BOSS'";
+		String sql = "SELECT * FROM LEAVE_MST_USER WHERE DEPARTMENT ='" + department + "' AND POSITION = 'หัวหน้าพนักงาน'";
 		DbConnector dbconn = new DbConnector();
 		ArrayList<HashMap<String,String>> result = null;
 		try{
@@ -71,5 +71,22 @@ public class RequestDao {
 		return resultFirstName;
 	}
 	
+	public boolean setApprove(String status){
+		String approve_date = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+		String sql = "INSERT INTO LEAVE_MST_LEAVE(APPROVE_DATE,STATUS) VALUES('"+ approve_date +"','"+ status+ "')";
+		DbConnector dbconn = new DbConnector();
+		boolean result = false;
+		try{
+			dbconn.doConnect();
+			dbconn.doSave(sql);
+			dbconn.doCommit();
+			result = true;
+		}
+		catch (Exception e) { 
+			e.printStackTrace();
+			System.out.println(e);
+			}
+		return result;
+	}
 	
 }

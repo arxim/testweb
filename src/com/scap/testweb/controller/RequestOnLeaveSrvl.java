@@ -54,7 +54,7 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		RequestService requestService = new RequestService();
 	    
 	    String approve = request.getParameter("sendApprove");
-//	    String notAllowed = request.getParameter("sendNotAllowed");
+	    String notAllowed = request.getParameter("sendNotAllowed");
 	    String fNmae = request.getParameter("fristName");
 		String lNmae = request.getParameter("lastName");
 		String epyDepartment = request.getParameter("comboDepartment");
@@ -66,22 +66,34 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		String dateDiff = request.getParameter("txtDateDiff");
 		String note = request.getParameter("txtAreaNote");
+		
 		String userPosition = requestService.findPosition(userLogin);
 		String employee_id = requestService.findID(userLogin);
 		String boss_id = requestService.findBossID(userLogin);
 		
-		if(userPosition == "Employee"){
-			requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,note);
-			System.out.println("ID : "+employee_id+ "\nชื่อ: "+fNmae+"\nนามสกุล: "+lNmae+"\nแผนก: "+ epyDepartment+"\nตำแหน่ง: "+epyPosition+"\nอีเมลล์: "+email+"\nชื่อหัวหน้า: "+nameBoss+"\nประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
+		if(userPosition == "หัวหน้าพนักงาน"){
+			if(approve != null){
+				boolean resultApprove = requestService.setDataApprove(approve);
+				//System.out.println("คำร้องขอ : อนุมัติ");
+				if(resultApprove)
+					response.getWriter().write("true");
+				else
+					response.getWriter().write("false");
+			}
+				
+			else{
+				boolean resultnotAllowed = requestService.setDataApprove(notAllowed);
+				//System.out.println("คำร้องขอ : ไม่อนุมัติ");
+				if(resultnotAllowed)
+					response.getWriter().write("true");
+				else
+					response.getWriter().write("false");
+			}
 			
 		}
 		else{
-			if(approve != null)
-				System.out.println("คำร้องขอ : อนุมัติ");
-				
-			else
-				System.out.println("คำร้องขอ : ไม่อนุมัติ");
+			requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,dateDiff,note);
+			System.out.println("ID : "+employee_id+ "\nชื่อ: "+fNmae+"\nนามสกุล: "+lNmae+"\nแผนก: "+ epyDepartment+"\nตำแหน่ง: "+epyPosition+"\nอีเมลล์: "+email+"\nชื่อหัวหน้า: "+nameBoss+"\nประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
 		}
 	}
-
 }

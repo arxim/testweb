@@ -53,11 +53,11 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 		String comboDepartment = requestService.findDepartment(userLogin);
 		String comboPosition = requestService.findPosition(userLogin);
 		String comboBoss = requestService.findNameBoss(userLogin);
-		String comboTypeLeave = "ลาพักร้อน";
-		String startDate = "2017/07/07";
-		String endDate = "2017/07/14";
-		String txtDateDiff = "8";
-		String txtAreaNote = "อากาศมันร้อน ขอนอนอยู่บ้านค่ะ";
+		String comboTypeLeave = requestService.findLeaveType(userLogin);
+		String startDate = requestService.findStartDate(userLogin);
+		String endDate = requestService.findEndDate(userLogin);
+		String txtDateDiff = requestService.findDateDiff(userLogin);
+		String txtAreaNote = requestService.findNote(userLogin);
 		
 		request.setAttribute("fName",fName);
 		request.setAttribute("lName", lName);
@@ -70,6 +70,7 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 		request.setAttribute("endDate", endDate);
 		request.setAttribute("txtDateDiff", txtDateDiff);
 		request.setAttribute("txtAreaNote", txtAreaNote);
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/requestOnLeave/requestOnLeave.jsp"); 
 		rd.forward(request, response);
