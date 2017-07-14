@@ -42,10 +42,10 @@ $(document).ready(function() {
 
 function randerDataTable(){	
 /*	var statusData = $('#status').val();
-	if(statusData == "???????????"){
+	if(statusData == ""){
 		statusData = "pending";
 	}
-	else if(statusData == "???????"){
+	else if(statusData == ""){
 		statusData = "approve";
 	}
 		$('#tableApprove').dataTable({
