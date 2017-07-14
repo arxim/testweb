@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Report</title>
+	<title>ประวัติการลา</title>
 	<!-- 	script-header import -->
 	<jsp:include page="/resources/template/script-header.jsp"></jsp:include>
 	<script type="text/javascript">
@@ -17,7 +17,7 @@
 			<div class="col-xs-12 col-sm-12">
 				<div class="panel panel-primary text-center">
 				    <div class="panel-heading">
-				    	<h4 class="panel-title"><b>รายงานแสดงการลาของพนักงาน</b></h4>
+				    	<h4 class="panel-title"><b>รายงานแสดงประวัติการลาของพนักงาน</b></h4>
 				 	</div>
 				    <div class="panel-body">
 				    	<div class="dataSearch-heading text-center">
@@ -55,7 +55,7 @@
 					   		 	 	 </p>
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-4">
-						      	 	 <select id="txtDepartment" name="txtDepartment" class="form-control">
+						      	 	 <select id="txtDepartmentEmployee" name="txtDepartmentEmployee" class="form-control">
 										<option value="แผนกA">แผนกA</option>
 										<option value="แผนกB">แผนกB</option>
 										<option value="แผนกC">แผนกC</option>
@@ -70,7 +70,7 @@
 					   		 	 	 </p>
 						      	 </div>
 							     <div class="col-xs-8 col-sm-4">
-						      	 	 <select id="txtPosition" name="txtPosition" class="form-control">
+						      	 	 <select id="txtPositionEmployee" name="txtPositionEmployee" class="form-control">
 										<option value="ตำแหน่งA">ตำแหน่งA</option>
 										<option value="ตำแหน่งB">ตำแหน่งB</option>
 										<option value="ตำแหน่งC">ตำแหน่งC</option>
@@ -84,25 +84,6 @@
 						     <br>
 						     <div class="form-group">
 					   		 	 <div class="col-xs-4 col-sm-2">
-					   		 	 	 <p class="text-center">
-					   		 	 	 	 <b>ประเภทลา</b>
-					   		 	 	 </p>
-						      	 </div>
-						      	 <div class="col-xs-8 col-sm-4">
-						      	 	 <select id="txtLeaveType" name="txtLeaveType" class="form-control">
-										<option value="ลาป่วย">ลาป่วย</option>
-										<option value="ลากิจ">ลากิจ</option>
-										<option value="ลาพักร้อน">ลาพักร้อน</option>
-									 </select>
-									 <div class="visible-xs">
-						      	 		<br>
-						      	 	 </div>
-						      	 </div>
-						     </div>
-						     <br>
-						     <br>
-						     <div class="form-group">
-						     	<div class="col-xs-4 col-sm-2">
 						      	     <p class="text-center">
 					   		 	 	 	 <b>วันที่</b>
 					   		 	 	 </p>
@@ -116,9 +97,6 @@
 						                    </span>
 						                </div>
 						             </div>
-						      	 	 <div class="visible-xs">
-						      	 		<br>
-						      	 	 </div>
 						      	 </div>
 						      	 <div class="col-xs-4 col-sm-2">
 						      	     <p class="text-center">
@@ -134,25 +112,46 @@
 						                    </span>
 						                </div>
 						             </div>
-						      	 	 <div class="visible-xs">
-						      	 		<br>
-						      	 	 </div>
 						      	 </div>
 						     </div>
+						     <br>
+						     <br>
 						     <div class="form-group">
-						     	 <div class="col-xs-12 col-sm-12 text-center">
-							     	 <button type="button" class="btn btn-primary text-white" id="btnSearchReport" onclick="searchEngine()" >ค้นหา</button>&nbsp
-							     	 <button type="button" class="btn btn-primary text-white" id="btnCancelSearchReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'" >ยกเลิก</button>&nbsp
-							     	 <div class="visible-xs">
+						        <div class="col-xs-4 col-sm-2">
+					   		 	 	 <p class="text-center">
+					   		 	 	 	 <b>ประเภทลา</b>
+					   		 	 	 </p>
+						      	 </div>
+						      	 <div class="col-xs-8 col-sm-4">
+						      	 	 <select id="txtLeaveType" name="txtLeaveType" class="form-control">
+										<option value="ลาป่วย">ลาป่วย</option>
+										<option value="ลากิจ">ลากิจ</option>
+										<option value="ลาพักร้อน">ลาพักร้อน</option>
+									 </select>
+									 <div class="visible-xs">
 						      	 		<br>
 						      	 	 </div>
-							     	 <button type="button" class="btn btn-primary text-white" id="btnGoToMain" onclick="location.href='/testweb/LoadMainMenuSrvl'" >กลับสู่หน้าหลัก</button>
-						     	 	 <div class="visible-xs">
-						      	 		<br>
+						      	</div>
+						     	<div class="col-xs-12 col-sm-6 text-center">
+						     		 <div class="visible-xs text-center">
+								     	 <button type="button" class="btn btn-primary text-white" id="btnSearchReport" onclick="searchEngine()" >ค้นหา</button>&nbsp;
+								     	 <button type="button" class="btn btn-primary text-white" id="btnCancelSearchReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'" >ยกเลิก</button>&nbsp
+							      	 	 <br>
+							      	 	 <br>						      	 	 
 						      	 	 </div>
-						     	 </div>
+						      	 	 <div class="hidden-xs text-left">
+						      	 	     <div class="col-sm-1">
+						      	 	     </div>
+						      	 	     <div class="col-sm-5">
+									     	 <button type="button" class="btn btn-primary text-white" id="btnSearchReport" onclick="searchEngine()" >ค้นหา</button>&nbsp
+									     	 <button type="button" class="btn btn-primary text-white" id="btnCancelSearchReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'" >ยกเลิก</button>&nbsp
+						      	 	 	 </div>
+						      	 	 </div>
+						     	</div>
 						     </div>
-						     <div class="form-group">
+						     <br>
+						     <br>
+						     <div class="form-group">						     	
 						     	<div class="col-xs-12 col-sm-12 text-center">
 						     		<table id="reportTable" class="table table-responsive table-bordered dt-responsive nowrap table-hover" style="width: 100%">
 							     		<thead>
@@ -169,7 +168,19 @@
 								             </tr>
 								         </thead>
 						     		</table>
+						     		<div class="visible-xs">
+						      	 	    <br>
+						      	    </div>
 						        </div>
+						     </div>
+						     <br>
+						     <br>
+						     <div class="form-group">
+							     <button type="button" class="btn btn-primary text-white" id="btnGoToMain" onclick="location.href='/testweb/LoadMainMenuSrvl'" >กลับสู่หน้าหลัก</button>&nbsp
+							     <div class="visible-xs">
+						      	 	  <br>
+						      	 </div>
+							     <button type="button" class="btn btn-primary text-white" id="btnGoToApprove" onclick="location.href='/testweb/ApproveSrvl'" >อนุมัติคำร้องขอลา</button>
 						     </div>
 					    </div>
 				    </div>

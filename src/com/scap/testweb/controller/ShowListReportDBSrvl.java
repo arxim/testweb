@@ -42,17 +42,25 @@ public class ShowListReportDBSrvl extends HttpServlet {
 		processRequest(request,response);
 	}
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("nameEmployee");
+		String surname = request.getParameter("surnameEmployee");
+		String department = request.getParameter("departmentEmployee");
+		String position = request.getParameter("positionEmployee");
+		String minday = request.getParameter("minDay");
+		String maxday = request.getParameter("maxDay");
+		String leavetype = request.getParameter("leaveType");
 		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
 	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 		ShowListReportService slrService=new ShowListReportService();
 		PrintWriter print = response.getWriter();
 		try{
-			if(slrService.getListOnLeave()){	
-				print.write("true");
-			}
-			else{
-				print.write("false");
-			}
+			slrService.getListOnLeave(name,surname,department,position,minday,maxday,leavetype);
+//			if(){	
+//				print.write("true");
+//			}
+//			else{
+//				print.write("false");
+//			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

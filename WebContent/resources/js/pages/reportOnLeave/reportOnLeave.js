@@ -1,12 +1,12 @@
 $(document).ready(function(){
 	$('#datepicker1').datepicker({
-		format : "dd/mm/yyyy",
+		format : "yyyy/mm/dd",
 		autoclose : true,
 		todayHighlight : true
 	});
 	$('#datepicker1').datepicker('setDate', 'now');
 	$('#datepicker2').datepicker({
-		format : "dd/mm/yyyy",
+		format : "yyyy/mm/dd",
 		autoclose : true,
 		todayHighlight : true
 	});
@@ -22,8 +22,8 @@ $(document).ready(function(){
       "3":"แผนกA",
       "4":"ตำแหน่งB",
       "5":"ลาป่วย",
-      "6":"14/07/2017",
-      "7":"15/07/2017",
+      "6":"2017/07/14",
+      "7":"2017/07/15",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 	table.row.add( {
@@ -33,8 +33,8 @@ $(document).ready(function(){
       "3":"แผนกC",
       "4":"ตำแหน่งA",
       "5":"ลาพักร้อน",
-      "6":"14/07/2017",
-      "7":"18/07/2017",
+      "6":"2017/07/14",
+      "7":"2017/07/18",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 	table.row.add( {
@@ -44,8 +44,8 @@ $(document).ready(function(){
       "3":"แผนกB",
       "4":"ตำแหน่งB",
       "5":"ลากิจ",
-      "6":"12/07/2017",
-      "7":"13/07/2017",
+      "6":"2017/07/12",
+      "7":"2017/07/13",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 	table.row.add( {
@@ -55,8 +55,8 @@ $(document).ready(function(){
       "3":"แผนกC",
       "4":"ตำแหน่งA",
       "5":"ลาป่วย",
-      "6":"11/07/2017",
-      "7":"13/07/2017",
+      "6":"2017/07/11",
+      "7":"2017/07/13",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 	table.row.add( {
@@ -66,8 +66,8 @@ $(document).ready(function(){
       "3":"แผนกB",
       "4":"ตำแหน่งC",
       "5":"ลาพักร้อน",
-      "6":"12/07/2017",
-      "7":"16/07/2017",
+      "6":"2017/07/12",
+      "7":"2017/07/16",
       "8":"<a href='#'>คลิกที่นี่</a>",
     } ).draw();
 //	$.fn.dataTableExt.afnFiltering.push(
@@ -104,10 +104,24 @@ $(document).ready(function(){
 });
 
 function searchEngine(){
+	var nameEmployee=$("#txtNameEmployee").val();
+	var surnameEmployee=$("#txtSurnameEmployee").val();
+	var departmentEmployee=$("#txtDepartmentEmployee").val();
+	var positionEmployee=$("#txtPositionEmployee").val();
+	var minDay=$("#txtMinDay").val();
+	var maxDay=$("#txtMaxDay").val();
+	var leaveType=$("#txtLeaveType").val();
 	$.ajax({
 	      type: 'POST',
 	      url: ctx + '/ShowListReportDBSrvl',
 	      data: {
+	    	  nameEmployee: nameEmployee,
+	    	  surnameEmployee: surnameEmployee,
+	    	  departmentEmployee: departmentEmployee,
+	    	  positionEmployee: positionEmployee,
+	    	  minDay: minDay,
+	    	  maxDay: maxDay,
+	    	  leaveType: leaveType
 	      },
 	      dataType: "text",
 	      success: function(data) { // found Email and send success
