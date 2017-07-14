@@ -51,14 +51,13 @@ public class ApproveSrvl extends HttpServlet {
 	    String statusSrvl = request.getParameter("status");
 	    System.out.println("ST Parameter: "+statusSrvl);
 	    ApproveService dt = new ApproveService();
-	  //  String status = dt.showData(statusSrvl);
-	    String status = dt.reData(statusSrvl);
-	 
+	  //  String status = dt.reData(statusSrvl);
+	    String status = dt.showData(statusSrvl);
 	    
 
+	    
+	    
 	    
 	    response.getWriter().write(status);
-	    
 	}
-
 }

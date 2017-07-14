@@ -1,18 +1,21 @@
 $(document).ready(function() {
-  if(userLogin=='boss'){
+  if(userLogin=="boss@gmail.com"){
 	$(document).on('change','#status',function(){
-	    	var statusForm = randerDataTable();
-	    });
-	var table = $('#tableApprove').dataTable({
-    	//boss
-    	"ajax": "resources/js/pages/approveOnLeave/arrays.txt", 
-    	"columnDefs": 
-    	[{
-            targets: -1,
-            data: null,
-            defaultContent: "<button id='btnStatus' type='button'>คลิ๊ก</button>"
-        }],
+		var table = $('#tableApprove').DataTable();
+		var wantToSearch=$('#status').val();
+		table.search(wantToSearch).draw();
 	});
+		var table = $('#tableApprove').dataTable({
+			//boss
+			"ajax": "resources/js/pages/approveOnLeave/arrays.txt", 
+			"columnDefs": 
+				[{
+					targets: -1,
+					data: null,
+					defaultContent: "<button id='btnStatus' type='button'>คลิ๊ก</button>"
+				}]
+		});
+	
 	$('#tableApprove').on('click','button',function(){
 	     var data = table.row( $(this).parents('tr') ).data();
 	     alert(data[1] +"'s salary is: "+ data[6]);
@@ -20,7 +23,6 @@ $(document).ready(function() {
 	$('#tableApprove').on('click','tr',function(){
 		if ($(this).hasClass('selected')) {
 		    $(this).removeClass('selected');
-		    //ajax ส่ง name lastname ไปให้หน้า request แสดงข้อมูลในส่วนของ user ทั่วไป
 		    location.href='/testweb/LoadRequestOnLeaveSrvl';
 		}
 		else {
@@ -38,16 +40,12 @@ $(document).ready(function() {
   }
 });
 
-function randerDataTable(){
-	var table = $('#tableApprove').DataTable();
-	var wantToSearch=$('#status').val();
-	table.search(wantToSearch).draw();
-	
+function randerDataTable(){	
 /*	var statusData = $('#status').val();
-	if(statusData == "รอดำเนินการ"){
+	if(statusData == "???????????"){
 		statusData = "pending";
 	}
-	else if(statusData == "อนุมัติ"){
+	else if(statusData == "???????"){
 		statusData = "approve";
 	}
 		$('#tableApprove').dataTable({
