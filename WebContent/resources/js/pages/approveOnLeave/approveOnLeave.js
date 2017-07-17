@@ -12,7 +12,7 @@ $(document).ready(function() {
 				[{
 					targets: -1,
 					data: null,
-					defaultContent: "<button id='btnStatus' type='button'>คลิ๊ก</button>"
+					defaultContent: "<button id='"+vacode+"' type='button'>คลิ๊ก</button>"
 				}]
 		});
 	
@@ -23,7 +23,7 @@ $(document).ready(function() {
 	$('#tableApprove').on('click','tr',function(){
 		if ($(this).hasClass('selected')) {
 		    $(this).removeClass('selected');
-		    location.href='/testweb/LoadRequestOnLeaveSrvl';
+	  //    location.href='/testweb/LoadRequestOnLeaveSrvl';
 		}
 		else {
 		    table.$('tr.selected').removeClass('selected');

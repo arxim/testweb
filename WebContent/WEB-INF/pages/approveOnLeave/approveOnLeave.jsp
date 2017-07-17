@@ -55,19 +55,6 @@
                 <th class="text-center" width="6%">เลือก</th>
             </tr> 
       </thead>
-      <tfoot> 
-            <tr> 
-                <th class="text-center" width="8%">วันที่</th> 
-                <th class="text-center" width="14%">ชื่อ</th>
-                <th class="text-center" width="14%">นามสกุล</th>
-                <th class="text-center" width="13%">แผนก</th> 
-                <th class="text-center" width="13%">ตำแหน่ง</th> 
-                <th class="text-center" width="13%">ประเภทการลา</th> 
-                <th class="text-center" width="9%">สถานะ</th> 
-                <th class="text-center" width="10%">วันที่อนุมัติ</th> 
-                <th class="text-center" width="6%">เลือก</th>
-            </tr> 
-        </tfoot>
     </table>
 			
 		<div class="button-heading">
