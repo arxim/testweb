@@ -9,6 +9,8 @@
 
 <script type="text/javascript">
 	var userLogin = '${sessionScope.userLogin}';
+	
+	var mailBoss = '${mailBoss}';
 	var code = '${leaveCode}';
 	var status = '${status}';
 	var firstName = '${fName}';
@@ -36,9 +38,9 @@
 					</h2>
 				</div>
 				<div class="panel-body">
-					<div class="form-group" align="right">
-						<label class="col-sm-offset-9 col-sm-2 control-label">สถานะ :</label>
-						<label class="col-sm-1 control-label" id="txtstatus">รออนุมัติ</label>
+					<div class="form-group" align="left">
+						<label class="col-sm-offset-10 col-sm-1">สถานะ :</label>
+						<label class="col-sm-1" id="txtstatus">รออนุมัติ</label>
 					</div>
 					<br> <br>
 					<div class="form-group">
@@ -54,20 +56,10 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">แผนก :</label>
 						<div class="col-sm-3">
-							<!-- <select class="form-control" id="comboDepartment">
-								<option value="แผนกA">แผนก A</option>
-								<option value="แผนกB">แผนก B</option>
-								<option value="แผนกC">แผนก C</option>
-							</select> -->
 							<input type="text" class="form-control" id="comboDepartment" disabled>
 						</div>
 						<label class="col-sm-2 control-label">ตำแหน่ง :</label>
 						<div class="col-sm-3">
-							<!-- <select class="form-control" id="comboPosition">
-								<option value="ตำแหน่งA">ตำแหน่ง A</option>
-								<option value="ตำแหน่งB">ตำแหน่ง B</option>
-								<option value="ตำแหน่งC">ตำแหน่ง C</option>
-							</select> -->
 							<input type="text" class="form-control" id="comboPosition" disabled>
 						</div>
 					</div>
@@ -80,11 +72,6 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">ชื่อหัวหน้า :</label>
 						<div class="col-sm-3">
-							<!-- <select class="form-control" id="comboBoss">
-								<option value="นายA">นาย A</option>
-								<option value="นายB">นาย B</option>
-								<option value="นายC">นาย C</option>
-							</select> -->
 							<input type="text" class="form-control" id="comboBoss" disabled>
 						</div>
 					</div>

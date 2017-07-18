@@ -31,20 +31,20 @@ public class RequestDao {
 	public ArrayList<HashMap<String, String>> getDataUser(String email){
 		String sql = "SELECT * FROM LEAVE_MST_USER WHERE EMAIL='" + email + "'";
 		DbConnector dbconn = new DbConnector();
-		ArrayList<HashMap<String,String>> resultID = null;
+		ArrayList<HashMap<String,String>> result = null;
 		try{
 			dbconn.doConnect();
-			resultID = dbconn.getData(sql);
+			result = dbconn.getData(sql);
 		}
 		catch (Exception e) { 
 			e.printStackTrace();
 			System.out.println(e);
 			}
-		return resultID;
+		return result;
 	}
 	
 
-	public ArrayList<HashMap<String, String>> getIDBossUser(String position){
+	public ArrayList<HashMap<String, String>> getBossPosition(String position){
 		String sql = "SELECT * FROM LEAVE_MST_USER WHERE POSITION='" + position + "'";
 		DbConnector dbconn = new DbConnector();
 		ArrayList<HashMap<String,String>> result = null;
@@ -59,7 +59,7 @@ public class RequestDao {
 		return result;
 	}
 	
-	public ArrayList<HashMap<String, String>> getNameBossUser(long id){
+	public ArrayList<HashMap<String, String>> getBossID(long id){
 		String sql = "SELECT * FROM LEAVE_MST_USER WHERE ID='" + id + "'";
 		DbConnector dbconn = new DbConnector();
 		ArrayList<HashMap<String,String>> resultID = null;
@@ -74,20 +74,4 @@ public class RequestDao {
 		return resultID;
 	}
 
-	public ArrayList<HashMap<String, String>> gstDataBoss(String department) {
-		String sql = "SELECT * FROM LEAVE_MST_USER WHERE DEPARTMENT ='" + department + "' AND POSITION = 'หัวหน้าพนักงาน'";
-		DbConnector dbconn = new DbConnector();
-		ArrayList<HashMap<String,String>> result = null;
-		try{
-			dbconn.doConnect();
-			result = dbconn.getData(sql);
-		}
-		catch (Exception e) { 
-			e.printStackTrace();
-			System.out.println(e);
-			}
-		return result;
-	}
-	
-	
 }

@@ -53,7 +53,7 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 		String comboDepartment = requestService.findDepartment(userLogin);
 		String comboPosition = requestService.findPosition(userLogin);
 		String comboBoss = requestService.findNameBoss();
-		
+		String mailBoss = requestService.findEmailBoss();
 		
 		request.setAttribute("fName", fName);
 		request.setAttribute("lName", lName);
@@ -61,6 +61,8 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 		request.setAttribute("comboPosition", comboPosition);
 		request.setAttribute("txtemail", userLogin);
 		request.setAttribute("comboBoss", comboBoss);
+		request.setAttribute("mailBoss", mailBoss);
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/requestOnLeave/requestOnLeave.jsp"); 
 		rd.forward(request, response);

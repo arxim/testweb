@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
-	if(userLogin == "boss@gmail.com"){
+	if(userLogin == mailBoss){
+		$("#txtstatus").text(status);
 		$("#fName").val(firstName);
 		$("#lName").val(lastName);
 		$("#comboDepartment").val(dpm);
@@ -40,7 +41,15 @@ $(document).ready(function () {
 		$('#btnApprove').hide();
 		$('#btnNotAllowed').hide();
 		$('#btnBackMainMenuBoss').hide();
+		
 	}
+	
+	if($('#txtstatus').text() == 'อนุมัติ')
+		$('#txtstatus').css('color', 'green');
+	else if($('#txtstatus').text() == 'ไม่อนุมัติ')
+		$('#txtstatus').css('color', 'red');
+	else
+		$('#txtstatus').css('color', 'black');
 	
 	$('#datepickerStart').datepicker({
 		format:"dd MM yyyy",
@@ -52,6 +61,8 @@ $(document).ready(function () {
 		autoclose: true,
 		todayHighlight : true
 	});
+	
+	
 	
 });
 
@@ -86,7 +97,7 @@ function sendRequest() {
     	    	  txtAreaNote : note
     	      },
     	      success: function(data) {
-    				$("#msgModalRequest").text("สำเร็จ!!");
+    				$("#msgModalRequest").text("สำเร็จ");
     		    	$("#myModalRequest").modal("show");
     	      }
 		});
@@ -104,7 +115,7 @@ function sendRequest() {
 	    	    	  txtAreaNote : note
 	    	      },
 	    	      success: function(data) {
-	    				$("#msgModalRequest").text("แก้ไขแบบคำร้องสำเร็จ!!");
+	    				$("#msgModalRequest").text("แก้ไขแบบคำร้องสำเร็จ");
 	    		    	$("#myModalRequest").modal("show");
 	    	      }
 		});
@@ -161,9 +172,9 @@ function sendNotAllowed(){
 }
 
 function btnClose(){
-	if($("#msgModalRequest").text()=="สำเร็จ!!")
+	if($("#msgModalRequest").text()=="สำเร็จ")
 		location.href="/testweb/ApproveSrvl";
-	else if($("#msgModalRequest").text()=="แก้ไขแบบคำร้องสำเร็จ!!")
+	else if($("#msgModalRequest").text()=="แก้ไขแบบคำร้องสำเร็จ")
 		location.href="/testweb/ApproveSrvl";
 	else if($("#msgModalRequest").text()=="อนุมัติคำร้องขอสำเร็จ")
 		location.href="/testweb/ApproveSrvl";
@@ -187,10 +198,6 @@ function dateDiff(){
 	var first_date = Date.parse(strStart);
 	var last_date = Date.parse(strStop);
 	var diff_date =  last_date - first_date;
-	
-//	var num_years = diff_date/(365.25 * 24 * 60 * 60 * 1000);
-//	var num_months = (diff_date % (365.25 * 24 * 60 * 60 * 1000))/(365.25 / 12 * 24 * 60 * 60 * 1000);
-//	var num_days = ((diff_date % (365.25 * 24 * 60 * 60 * 1000)) % (365.25 / 12 * 24 * 60 * 60 * 1000))/86400000+1;
 	
 	var num_days = diff_date/86400000+1;
 	

@@ -48,19 +48,22 @@ public class LoadEditRequestOnLeaveSrvl extends HttpServlet {
 		
 		String leaveCode = "7517107799";
 		
-		EditRequestService requestService = new EditRequestService();
-		String status = requestService.findStatus(leaveCode);
-		String fName = requestService.findFristNameUser(leaveCode);
-		String lName = requestService.findLastNameUser(leaveCode);
-		String comboDepartment = requestService.findDepartmentUser(leaveCode);
-		String comboPosition = requestService.findPositionUser(leaveCode);
-		String txtemail = requestService.findEmailUser(leaveCode);
-		String comboBoss = requestService.findNameBossUser(leaveCode);
-		String comboTypeLeave = requestService.findLeaveType(leaveCode);
-		String startDate = requestService.findStartDate(leaveCode);
-		String endDate = requestService.findEndDate(leaveCode);
-		String txtDateDiff = requestService.findDateDiff(leaveCode);
-		String txtAreaNote = requestService.findNote(leaveCode);
+		EditRequestService editRequestService = new EditRequestService();
+		RequestService requestService = new RequestService();
+		
+		String status = editRequestService.findStatus(leaveCode);
+		String fName = editRequestService.findFristNameUser(leaveCode);
+		String lName = editRequestService.findLastNameUser(leaveCode);
+		String comboDepartment = editRequestService.findDepartmentUser(leaveCode);
+		String comboPosition = editRequestService.findPositionUser(leaveCode);
+		String txtemail = editRequestService.findEmailUser(leaveCode);
+		String comboBoss = editRequestService.findNameBossUser(leaveCode);
+		String comboTypeLeave = editRequestService.findLeaveType(leaveCode);
+		String startDate = editRequestService.findStartDate(leaveCode);
+		String endDate = editRequestService.findEndDate(leaveCode);
+		String txtDateDiff = editRequestService.findDateDiff(leaveCode);
+		String txtAreaNote = editRequestService.findNote(leaveCode);
+		String mailBoss = requestService.findEmailBoss();
 		
 		request.setAttribute("leaveCode", leaveCode);
 		request.setAttribute("status", status);
@@ -75,6 +78,7 @@ public class LoadEditRequestOnLeaveSrvl extends HttpServlet {
 		request.setAttribute("endDate", endDate);
 		request.setAttribute("txtDateDiff", txtDateDiff);
 		request.setAttribute("txtAreaNote", txtAreaNote);
+		request.setAttribute("mailBoss", mailBoss);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/requestOnLeave/requestOnLeave.jsp"); 
 		rd.forward(request, response);

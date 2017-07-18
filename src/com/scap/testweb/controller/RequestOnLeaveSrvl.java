@@ -1,6 +1,7 @@
 package com.scap.testweb.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.scap.testweb.dao.RequestDao;
 import com.scap.testweb.service.RequestService;
+import com.scap.testweb.service.SendEmailService;
 
 /**
  * Servlet implementation class RequestOnLeaveSrvl
@@ -67,6 +69,21 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		
 		String employee_id = requestService.findID(userLogin);
 		String boss_id = requestService.findBossID();
+		
+//		SendEmailService seService = new SendEmailService();
+//		PrintWriter print = response.getWriter();
+//		try{
+//		String sendEmail=seService.sendEmail("boss@gmail.com","ยื่นแบบฟอร์มขออนุมัติวันลา"); // send new password to Email
+//		if(sendEmail=="PASS"){
+//			 print.write("Send Email : Success !!"); // send new password complete
+//		 }
+//		 else{
+//			 print.write("Send Email Fail !!");// send new password fail (Problem in internet)
+//		 } 
+//		}catch (Exception e) {
+//			e.printStackTrace();
+//			print.write("Send Email fail !!");// send new password fail (Problem in internet)
+//		}
 		
 		requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,dateDiff,note);
 		System.out.println("ID : "+employee_id+ "\nชื่อ: "+fNmae+"\nนามสกุล: "+lNmae+"\nแผนก: "+ epyDepartment+"\nตำแหน่ง: "+epyPosition+"\nอีเมลล์: "+email+"\nชื่อหัวหน้า: "+nameBoss+"\nประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
