@@ -1,8 +1,6 @@
 package com.scap.testweb.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,23 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-import com.scap.testweb.model.User;
 import com.scap.testweb.service.ApproveService;
 
 /**
- * Servlet implementation class ApproveSrvl
+ * Servlet implementation class ApproveButtonSrvl
  */
-@WebServlet("/ApproveSrvl")
-public class ApproveSrvl extends HttpServlet {
+@WebServlet("/ApproveButtonSrvl")
+public class ApproveButtonSrvl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApproveSrvl() {
+    public ApproveButtonSrvl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,9 +39,9 @@ public class ApproveSrvl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request,response);
 	}
-	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String statusSrvl = request.getParameter("status");
+		String codeSrvl = request.getParameter("code");
 		String process = request.getParameter("process");
 		
 		if (process != null && !process.isEmpty()) {
@@ -54,15 +49,18 @@ public class ApproveSrvl extends HttpServlet {
 		    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 		    
 		    ApproveService dt = new ApproveService();
-		    List<User> users = dt.showData(statusSrvl);
-		    
-		    
-		    
-		    Gson gson = new Gson();
-		    PrintWriter out = response.getWriter();
-		    String json = gson.toJson(users);
-			out.print("{ \"data\":" + json + "}");
-			
+		    String update = dt.approveData(statusSrvl, codeSrvl);
+		    if(update == "อนุมัติ"){
+		    	String result = "อนุมัติ";
+			    response.getWriter().write(result);
+		    }
+		    else if(update == "รออนุมัติ"){
+		    	String result =  "รออนุมัติ";
+		    	response.getWriter().write(result);
+		    }
+		    else{
+		    	response.getWriter().write("null");
+		    }
 		}else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
 			rd.forward(request, response);	

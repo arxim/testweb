@@ -10,23 +10,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.scap.testweb.model.User;
 import com.scap.testweb.service.ApproveService;
 
 /**
- * Servlet implementation class ApproveSrvl
+ * Servlet implementation class ApproveUserSrvl
  */
-@WebServlet("/ApproveSrvl")
-public class ApproveSrvl extends HttpServlet {
+@WebServlet("/ApproveUserSrvl")
+public class ApproveUserSrvl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApproveSrvl() {
+    public ApproveUserSrvl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,9 +43,8 @@ public class ApproveSrvl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request,response);
 	}
-	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String statusSrvl = request.getParameter("status");
+		String userLoginSrvl = request.getParameter("userLogin");
 		String process = request.getParameter("process");
 		
 		if (process != null && !process.isEmpty()) {
@@ -54,13 +52,14 @@ public class ApproveSrvl extends HttpServlet {
 		    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 		    
 		    ApproveService dt = new ApproveService();
-		    List<User> users = dt.showData(statusSrvl);
+		    String userID = dt.personal(userLoginSrvl);
+		    List<User> userLeave = dt.leave(userID);
 		    
 		    
 		    
 		    Gson gson = new Gson();
 		    PrintWriter out = response.getWriter();
-		    String json = gson.toJson(users);
+		    String json = gson.toJson(userLeave);
 			out.print("{ \"data\":" + json + "}");
 			
 		}else {

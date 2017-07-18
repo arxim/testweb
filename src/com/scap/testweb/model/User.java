@@ -3,6 +3,7 @@ package com.scap.testweb.model;
 public class User {
 	private String userNo;
 	private String userId;
+	private String code;
 	private String firstname;
 	private String lastname;
 	private String firstandlastname;
@@ -29,6 +30,12 @@ public class User {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
 	}
 	public String getFirstname() {
 		return firstname;
