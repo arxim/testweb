@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-	if(pst == "หัวหน้าพนักงาน"){
+	if(userLogin == "boss@gmail.com"){
 		$("#fName").val(firstName);
 		$("#lName").val(lastName);
 		$("#comboDepartment").val(dpm);
@@ -10,7 +10,7 @@ $(document).ready(function () {
 		$("#comboTypeLeave").val(typeLeave);
 		$("#startDate").val(start);
 		$("#endDate").val(end);
-		$("#txtDateDiff").val(diff);
+		$("#txtDateDiff").text(diff);
 		$("#txtAreaNote").val(note);
 		
 		$("#comboTypeLeave").prop('disabled', true);
@@ -23,6 +23,7 @@ $(document).ready(function () {
 		$('#btnBackMainMenuUser').hide();
 	}
 	else{
+		$("#txtstatus").text(status);
 		$("#fName").val(firstName);
 		$("#lName").val(lastName);
 		$("#comboDepartment").val(dpm);
@@ -30,18 +31,24 @@ $(document).ready(function () {
 		$("#txtemail").val(mail);
 		$("#comboBoss").val(nameBoss);
 		
+		$("#comboTypeLeave").val(typeLeave);
+		$("#startDate").val(start);
+		$("#endDate").val(end);
+		$("#txtDateDiff").text(diff);
+		$("#txtAreaNote").val(note);
+		
 		$('#btnApprove').hide();
 		$('#btnNotAllowed').hide();
 		$('#btnBackMainMenuBoss').hide();
 	}
 	
 	$('#datepickerStart').datepicker({
-		format:"yyyy/mm/dd",
+		format:"dd MM yyyy",
 		autoclose: true,
 		todayHighlight : true
 	});
 	$('#datepickerEnd').datepicker({
-		format:"yyyy/mm/dd",
+		format:"dd MM yyyy",
 		autoclose: true,
 		todayHighlight : true
 	});
@@ -49,7 +56,7 @@ $(document).ready(function () {
 });
 
 function sendRequest() {
-	if((!$("#txtemail").val() == "")&& (!$("#comboBoss").val() == "")&& (!$("#comboTypeLeave").val() == "")&& (!$("#startDate").val() == "")&& (!$("#endDate").val() == "")&& (!$("#txtDateDiff").val() == "")){
+	if((!$("#txtemail").val() == "")&& (!$("#comboBoss").val() == "")&& (!$("#comboTypeLeave").val() == "")&& (!$("#startDate").val() == "")&& (!$("#endDate").val() == "")&& (!$("#txtDateDiff").text() == "")){
 		var fName = $("#fName").val();
 		var lName = $("#lName").val();
 		var epyDepartment = $("#comboDepartment").val();
@@ -59,8 +66,9 @@ function sendRequest() {
 		var typeLeave = $("#comboTypeLeave").val(); 
 		var startDate = $("#startDate").val(); 
 		var endDate = $("#endDate").val(); 
-		var dateDiff = $("#txtDateDiff").val(); 
+		var dateDiff = $("#txtDateDiff").text(); 
 		var note = $("#txtAreaNote").val(); 
+		if(code == ""){
 		$.ajax({
     	      type: 'POST',
     	      url: ctx + '/RequestOnLeaveSrvl',
@@ -80,25 +88,41 @@ function sendRequest() {
     	      success: function(data) {
     				$("#msgModalRequest").text("สำเร็จ!!");
     		    	$("#myModalRequest").modal("show");
-    				$("#comboTypeLeave").val(""); 
-    				$("#startDate").val(""); 
-    				$("#endDate").val(""); 
-    				$("#txtDateDiff").val(""); 
-    				$("#txtAreaNote").val("");
     	      }
 		});
+		}
+		else{
+			$.ajax({
+	    	      type: 'POST',
+	    	      url: ctx + '/EditRequestOnLeaveSrvl',
+	    	      data: {
+	    	    	  sendCode : code,
+	    	    	  comboTypeLeave : typeLeave,
+	    	    	  startDate : startDate,
+	    	    	  endDate : endDate,
+	    	    	  txtDateDiff : dateDiff,
+	    	    	  txtAreaNote : note
+	    	      },
+	    	      success: function(data) {
+	    				$("#msgModalRequest").text("แก้ไขแบบคำร้องสำเร็จ!!");
+	    		    	$("#myModalRequest").modal("show");
+	    	      }
+		});
+		}
 	}else {
 			$("#msgModalRequest").text("กรุณากรอกแบบฟอร์มให้ครบถ้วน");
 	    	$("#myModalRequest").modal("show");
 		}
+	
 }
 
 function sendApprove(){
 	var approve = "อนุมัติ";
 	$.ajax({
 	      type: 'POST',
-	      url: ctx + '/RequestOnLeaveSrvl',
+	      url: ctx + '/EditRequestOnLeaveSrvl',
 	      data: {
+	    	  sendCode : code,
 	    	  sendApprove : approve
 	      },
 	      success: function(data) {
@@ -118,8 +142,9 @@ function sendNotAllowed(){
 	var notAllowed = "ไม่อนุมัติ";
 	$.ajax({
 	      type: 'POST',
-	      url: ctx + '/RequestOnLeaveSrvl',
+	      url: ctx + '/EditRequestOnLeaveSrvl',
 	      data: {
+	    	  sendCode : code,
 	    	  sendNotAllowed : notAllowed
 	      },
 	      success: function(data) {
@@ -133,6 +158,17 @@ function sendNotAllowed(){
 	    	  }
 	      }
 	});
+}
+
+function btnClose(){
+	if($("#msgModalRequest").text()=="สำเร็จ!!")
+		location.href="/testweb/ApproveSrvl";
+	else if($("#msgModalRequest").text()=="แก้ไขแบบคำร้องสำเร็จ!!")
+		location.href="/testweb/ApproveSrvl";
+	else if($("#msgModalRequest").text()=="อนุมัติคำร้องขอสำเร็จ")
+		location.href="/testweb/ApproveSrvl";
+	else if($("#msgModalRequest").text()=="คำร้องขอไม่ถูกอนุมัติ")
+		location.href="/testweb/ApproveSrvl";
 }
 
 function cancelRequest(){
@@ -159,12 +195,8 @@ function dateDiff(){
 	var num_days = diff_date/86400000+1;
 	
 	var result ="";
-//	if (Math.floor(num_years) > 0)
-//		result += (" " + Math.floor(num_years) + " ปี\n");
-//	if (Math.floor(num_months) > 0)
-//		result += (" " + Math.floor(num_months) + " เดือน\n");
 	if (Math.floor(num_days) > 0)
 		result += Math.floor(num_days);
-	$("#txtDateDiff").val(result);
+	$("#txtDateDiff").text(result);
 
 }

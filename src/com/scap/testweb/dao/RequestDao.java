@@ -6,11 +6,13 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import com.scap.testweb.utils.DbConnector;
+import com.scap.testweb.utils.Utils;
 
 public class RequestDao {
 	public boolean setRequestOnLeave(String employee_id,String boss_id,String typeLeave,String startDate,String endDate,String dateDiff,String note,String status){
 		String request_date = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-		String sql = "INSERT INTO LEAVE_MST_LEAVE(EMPLOYEE_ID,BOSS_ID,LEAVE_TYPE,START_DATE,END_DATE,NUM_LEAVE,REQUEST_DATE,NOTE,STATUS) VALUES('"+employee_id+"','"+boss_id+"','"+typeLeave+"','"+startDate+"','"+endDate+"','"+dateDiff+"','"+request_date+"','"+note+"','"+ status +"')";
+		long leaveCode = Utils.generateSignUpCode();
+		String sql = "INSERT INTO LEAVE_MST_LEAVE(CODE,EMPLOYEE_ID,BOSS_ID,LEAVE_TYPE,START_DATE,END_DATE,NUM_LEAVE,REQUEST_DATE,NOTE,STATUS) VALUES('"+leaveCode+"','"+employee_id+"','"+boss_id+"','"+typeLeave+"','"+startDate+"','"+endDate+"','"+dateDiff+"','"+request_date+"','"+note+"','"+ status +"')";
 		DbConnector dbconn = new DbConnector();
 		boolean resultRqt = false;
 		try{
@@ -40,7 +42,7 @@ public class RequestDao {
 			}
 		return resultID;
 	}
-	
+
 	public ArrayList<HashMap<String, String>> gstDataBoss(String department) {
 		String sql = "SELECT * FROM LEAVE_MST_USER WHERE DEPARTMENT ='" + department + "' AND POSITION = 'หัวหน้าพนักงาน'";
 		DbConnector dbconn = new DbConnector();
@@ -56,37 +58,5 @@ public class RequestDao {
 		return result;
 	}
 	
-	public ArrayList<HashMap<String, String>> getDataLeave(String id){
-		String sql = "SELECT * FROM LEAVE_MST_LEAVE WHERE EMAIL='" + id + "'";
-		DbConnector dbconn = new DbConnector();
-		ArrayList<HashMap<String,String>> resultFirstName = null;
-		try{
-			dbconn.doConnect();
-			resultFirstName = dbconn.getData(sql);
-		}
-		catch (Exception e) { 
-			e.printStackTrace();
-			System.out.println(e);
-			}
-		return resultFirstName;
-	}
-	
-	public boolean setApprove(String status){
-		String approve_date = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-		String sql = "INSERT INTO LEAVE_MST_LEAVE(APPROVE_DATE,STATUS) VALUES('"+ approve_date +"','"+ status+ "')";
-		DbConnector dbconn = new DbConnector();
-		boolean result = false;
-		try{
-			dbconn.doConnect();
-			dbconn.doSave(sql);
-			dbconn.doCommit();
-			result = true;
-		}
-		catch (Exception e) { 
-			e.printStackTrace();
-			System.out.println(e);
-			}
-		return result;
-	}
 	
 }

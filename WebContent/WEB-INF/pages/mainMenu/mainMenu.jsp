@@ -12,6 +12,7 @@
 	<script type="text/javascript">
 		var ctx = '${pageContext.request.contextPath}';
 		var msgTimeout = '${sessionScope.msgTimeout}';
+		var userLogin = '${sessionScope.userLogin}';
 	</script>
 	<script type="text/javascript" src="resources/js/pages/mainMenu/mainMenu.js"></script>
 	<title>Main menu</title>
@@ -21,28 +22,32 @@
 		<c:if test="${empty sessionScope.userLogin}">
 			<c:redirect url="/" />
 		</c:if>
-		<div class="container" style="margin-top: 10%; margin-bottom: 12%;">
+		<div class="container" style="margin-top: 10%; margin-bottom: 12%; background-color:#ffffff;box-shadow:0 0 18px rgba(6, 0, 255, 0.3);">
+		
 			<div class="col-xs-12 col-sm-12 text-center">
 				<h2>Welcome : ${sessionScope.userLogin}</h2>
 				<br>
 				<br>
-				<div class="col-xs-12 col-sm-offset-5 col-sm-2 text-center">
-					<button type="submit" class="btn btn-primary btn-block btn-lg"
+				<div class="col-xs-12 col-sm-offset-5 col-sm-1 text-center">
+					<button type="submit" class="btn btn-primary btn-block"
 						id="btnLogout" formaction="/testweb/LogoutSrvl">Logout</button>
 				</div>
 			</div>
-			<br>
-			<div class="col-xs-12 col-sm-4  text-center">
-				<button type="submit" class="btn btn-primary btn-block btn-lg"
+			<div class="col-xs-12 col-sm-2  text-center">
+				<button type="submit" class="btn btn-primary btn-block"
 					id="btnRequest" formaction="/testweb/LoadRequestOnLeaveSrvl">request</button>
 			</div>
-			<div class="col-xs-12 col-sm-4  text-center">
-				<button type="submit" class="btn btn-primary btn-block btn-lg"
+			<div class="col-xs-12 col-sm-2  text-center">
+				<button type="submit" class="btn btn-primary btn-block"
+					id="btnRequest" formaction="/testweb/LoadEditRequestOnLeaveSrvl">Edit request</button>
+			</div>
+			<div class="col-xs-12 col-sm-2  text-center">
+				<button type="submit" class="btn btn-primary btn-block"
 					id="btnApprove" formaction="/testweb/ApproveSrvl">approve</button>
 			</div>
-			<div class="col-xs-12 col-sm-4  text-center">
-				<button type="button" class="btn btn-primary btn-block btn-lg"
-					id="btnLogout" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">report</button>
+			<div class="col-xs-12 col-sm-2  text-center">
+				<button type="button" class="btn btn-primary btn-block"
+					id="btnReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">report</button>
 			</div>
 					
 		</div>

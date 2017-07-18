@@ -2,7 +2,6 @@ package com.scap.testweb.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.scap.testweb.dao.RequestDao;
+import com.scap.testweb.service.EditRequestService;
 import com.scap.testweb.service.RequestService;
 
 /**
- * Servlet implementation class RequestOnLeaveSrvl
+ * Servlet implementation class EditRequestOnLeaveSrvl
  */
-@WebServlet("/RequestOnLeaveSrvl")
-public class RequestOnLeaveSrvl extends HttpServlet {
+@WebServlet("/EditRequestOnLeaveSrvl")
+public class EditRequestOnLeaveSrvl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RequestOnLeaveSrvl() {
+    public EditRequestOnLeaveSrvl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,7 +42,7 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		// TODO Auto-generated method stub
 		processRequest(request,response);
 	}
-	
+
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
 	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
@@ -52,24 +51,40 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		String userLogin = session.getAttribute("userLogin").toString();
 		
 		RequestService requestService = new RequestService();
+		EditRequestService editRequestService = new EditRequestService();
 	    
-	    String fNmae = request.getParameter("fristName");
-		String lNmae = request.getParameter("lastName");
-		String epyDepartment = request.getParameter("comboDepartment");
-		String epyPosition = request.getParameter("comboPosition");
-		String email = request.getParameter("txtemail");
-		String nameBoss = request.getParameter("comboBoss");
+	    String approve = request.getParameter("sendApprove");
+	    String notAllowed = request.getParameter("sendNotAllowed");
+	    
+	    String code = request.getParameter("sendCode");
 		String typeLeave = request.getParameter("comboTypeLeave");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		String dateDiff = request.getParameter("txtDateDiff");
 		String note = request.getParameter("txtAreaNote");
 		
-		String employee_id = requestService.findID(userLogin);
-		String boss_id = requestService.findBossID(userLogin);
+//		String userPosition = requestService.findPosition(userLogin);
+		String boss = "boss@gmail.com";
 		
-		requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,dateDiff,note);
-		System.out.println("ID : "+employee_id+ "\nชื่อ: "+fNmae+"\nนามสกุล: "+lNmae+"\nแผนก: "+ epyDepartment+"\nตำแหน่ง: "+epyPosition+"\nอีเมลล์: "+email+"\nชื่อหัวหน้า: "+nameBoss+"\nประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
-		
+		if(userLogin.equals(boss)){
+			if(approve != null){
+				boolean resultApprove = editRequestService.setDataApprove(code, approve);
+				if(resultApprove)
+					response.getWriter().write("true");
+				else
+					response.getWriter().write("false");
+			}
+			else{
+				boolean resultnotAllowed = editRequestService.setDataApprove(code, notAllowed);
+				if(resultnotAllowed)
+					response.getWriter().write("true");
+				else
+					response.getWriter().write("false");
+			}
+		}
+		else{
+			requestService.setEditDataRequest(code, typeLeave, startDate, endDate,dateDiff,note);
+			System.out.println("ประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
+		}
 	}
 }

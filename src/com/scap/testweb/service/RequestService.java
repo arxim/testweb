@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+import com.scap.testweb.dao.EditRequestDao;
 import com.scap.testweb.dao.RequestDao;
 
 public class RequestService {
@@ -64,45 +65,10 @@ public class RequestService {
 		return bossID;
 	}
 	
-	public String findLeaveType(String emailUser){
-		RequestDao requestDao = new RequestDao();
-		ArrayList<HashMap<String, String>> result = requestDao.getDataUser(emailUser);
-		String resultLeaveType = result.get(0).get("LEAVE_TYPE");
-		return resultLeaveType;
-	}
-	
-	public String findStartDate(String emailUser){
-		RequestDao requestDao = new RequestDao();
-		ArrayList<HashMap<String, String>> result = requestDao.getDataUser(emailUser);
-		String resultStartDate = result.get(0).get("START_DATE");
-		return resultStartDate;
-	}
-	
-	public String findEndDate(String emailUser){
-		RequestDao requestDao = new RequestDao();
-		ArrayList<HashMap<String, String>> result = requestDao.getDataUser(emailUser);
-		String resultEndDate = result.get(0).get("END_DATE");
-		return resultEndDate;
-	}
-	
-	public String findDateDiff(String emailUser){
-		RequestDao requestDao = new RequestDao();
-		ArrayList<HashMap<String, String>> result = requestDao.getDataUser(emailUser);
-		String resultDateDiff = result.get(0).get("NUM_LEAVE");
-		return resultDateDiff;
-	}
-	
-	public String findNote(String emailUser){
-		RequestDao requestDao = new RequestDao();
-		ArrayList<HashMap<String, String>> result = requestDao.getDataUser(emailUser);
-		String resultNote = result.get(0).get("NOTE");
-		return resultNote;
-	}
-	
 	public void setDataRequest(String employee_id,String boss_id,String typeLeave,String startDate,String endDate,String dateDiff,String note){
 		String date_s = "";
 		String date_e = "";
-		SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat dt = new SimpleDateFormat("dd MMM yyyy");
 		try{
 			Date sd = dt.parse(startDate);
 			Date ed = dt.parse(endDate);
@@ -118,11 +84,21 @@ public class RequestService {
 		requestDao.setRequestOnLeave(employee_id, boss_id, typeLeave, date_s, date_e,dateDiff,note,status);
 	}
 	
-	public boolean setDataApprove(String status){
-		RequestDao requestDao = new RequestDao();
-		boolean result = requestDao.setApprove(status);
-		return result;
+	public void setEditDataRequest(String leave_code,String typeLeave,String startDate,String endDate,String dateDiff,String note){
+		String date_s = "";
+		String date_e = "";
+		SimpleDateFormat dt = new SimpleDateFormat("dd MMM yyyy");
+		try{
+			Date sd = dt.parse(startDate);
+			Date ed = dt.parse(endDate);
+			SimpleDateFormat dt1 = new SimpleDateFormat("yyyyMMdd");
+			date_s = dt1.format(sd);
+			date_e = dt1.format(ed);
+		}
+		catch (Exception exp) {
+		    exp.printStackTrace();
+		}
+		EditRequestDao requestDao = new EditRequestDao();
+		requestDao.setEditRequestOnLeave(leave_code, typeLeave, date_s, date_e,dateDiff,note);
 	}
-	
-
 }

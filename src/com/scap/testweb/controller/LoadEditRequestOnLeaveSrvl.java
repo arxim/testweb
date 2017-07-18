@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.scap.testweb.service.EditRequestService;
 import com.scap.testweb.service.RequestService;
 
 /**
- * Servlet implementation class RequestSrvl
+ * Servlet implementation class EditRequestSrvl
  */
-@WebServlet("/LoadRequestOnLeaveSrvl")
-public class LoadRequestOnLeaveSrvl extends HttpServlet {
+@WebServlet("/LoadEditRequestOnLeaveSrvl")
+public class LoadEditRequestOnLeaveSrvl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoadRequestOnLeaveSrvl() {
+    public LoadEditRequestOnLeaveSrvl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,22 +45,36 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String userLogin = session.getAttribute("userLogin").toString();
 		
-		RequestService requestService = new RequestService();
-		String fName = requestService.findFirstName(userLogin);
-		String lName = requestService.findLastName(userLogin);
-		String comboDepartment = requestService.findDepartment(userLogin);
-		String comboPosition = requestService.findPosition(userLogin);
-		String comboBoss = requestService.findNameBoss(userLogin);
+		String leaveCode = "7517107799";
 		
-		request.setAttribute("fName", fName);
+		EditRequestService requestService = new EditRequestService();
+		String status = requestService.findStatus(leaveCode);
+		String fName = requestService.findFristNameUser(leaveCode);
+		String lName = requestService.findLastNameUser(leaveCode);
+		String comboDepartment = requestService.findDepartmentUser(leaveCode);
+		String comboPosition = requestService.findPositionUser(leaveCode);
+		String txtemail = requestService.findEmailUser(leaveCode);
+		String comboBoss = requestService.findNameBossUser(leaveCode);
+		String comboTypeLeave = requestService.findLeaveType(leaveCode);
+		String startDate = requestService.findStartDate(leaveCode);
+		String endDate = requestService.findEndDate(leaveCode);
+		String txtDateDiff = requestService.findDateDiff(leaveCode);
+		String txtAreaNote = requestService.findNote(leaveCode);
+		
+		request.setAttribute("leaveCode", leaveCode);
+		request.setAttribute("status", status);
+		request.setAttribute("fName",fName);
 		request.setAttribute("lName", lName);
 		request.setAttribute("comboDepartment", comboDepartment);
 		request.setAttribute("comboPosition", comboPosition);
-		request.setAttribute("txtemail", userLogin);
+		request.setAttribute("txtemail", txtemail);
 		request.setAttribute("comboBoss", comboBoss);
+		request.setAttribute("comboTypeLeave", comboTypeLeave);
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
+		request.setAttribute("txtDateDiff", txtDateDiff);
+		request.setAttribute("txtAreaNote", txtAreaNote);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/requestOnLeave/requestOnLeave.jsp"); 
 		rd.forward(request, response);
