@@ -1,10 +1,11 @@
 package com.scap.testweb.model;
 
 public class User {
-
+	private String userNo;
 	private String userId;
 	private String firstname;
 	private String lastname;
+	private String firstandlastname;
 	private String department;
 	private String position;
 	private String email;
@@ -14,6 +15,15 @@ public class User {
 	private String requestDate;
 	private String approveDate;
 	
+	private String startDate;
+	private String endDate;
+	
+	public String getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(String userNo) {
+		this.userNo = userNo;
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -31,6 +41,12 @@ public class User {
 	}
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+	public String getFirstAndLastname() {
+		return firstandlastname;
+	}
+	public void setFirstAndLastname(String firstname,String lastname) {
+		this.firstandlastname = firstname+"  "+lastname;
 	}
 	public String getDepartment() {
 		return department;
@@ -74,5 +90,16 @@ public class User {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndtDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 }

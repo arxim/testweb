@@ -2,13 +2,18 @@ package com.scap.testweb.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.scap.testweb.model.User;
+import com.scap.testweb.service.ApproveService;
 import com.scap.testweb.service.ShowListReportService;
 
 /**
@@ -49,22 +54,21 @@ public class ShowListReportDBSrvl extends HttpServlet {
 		String minday = request.getParameter("minDay");
 		String maxday = request.getParameter("maxDay");
 		String leavetype = request.getParameter("leaveType");
-		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
-	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-		ShowListReportService slrService=new ShowListReportService();
-		PrintWriter print = response.getWriter();
-		try{
-			slrService.getListOnLeave(name,surname,department,position,minday,maxday,leavetype);
-//			if(){	
-//				print.write("true");
-//			}
-//			else{
-//				print.write("false");
-//			}
-		}catch (Exception e) {
-			e.printStackTrace();
+		String process = request.getParameter("process");
+		
+		if (process != null && !process.isEmpty()) {
+			ShowListReportService slrService=new ShowListReportService();
+			response.setContentType("application/json");  // Set content type of the response so that jQuery knows what it can expect.
+			response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+			List<User> users = slrService.getListOnLeave(name,surname,department,position,minday,maxday,leavetype);
+			Gson gson = new Gson();
+		    PrintWriter out = response.getWriter();
+		    String json = gson.toJson(users);
+			out.print("{ \"data\":" + json + "}");
 		}
-		print.close();
+		else{
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/reportOnLeave/reportOnLeave.jsp"); 
+			rd.forward(request, response);	
+		}
 	}
-
 }
