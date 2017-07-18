@@ -20,34 +20,35 @@
 			<div class="col-xs-12 col-sm-12">			
 				<div class="panel panel-primary text-center">
 				    <div class="panel-heading">
-				    	<h4 class="panel-title"><b>ประวัติการลาของพนักงาน</b></h4>
+				    	<h5 class="panel-title"><b>ประวัติการลาของพนักงาน</b></h5>
 				 	</div>
 				    <div class="panel-body">
-				    	<div class="dataSearch-heading text-center">
-				   		 	 <div class="form-group container">
-					   		 	 <div class="col-xs-4 col-sm-2">
-					   		 	 	 <p class="text-center">
-					   		 	 	 	 <b>ชื่อ</b>
+				    	<div class="dataSearch-heading form-horizontal">
+							<div class="row container">
+								<div class="col-xs-4 col-sm-2 control-label">
+									 <p class="text-right">
+					   		 	 	 	 <b>ชื่อพนักงาน</b>
 					   		 	 	 </p>
-						      	 </div>
-						      	 <div class="col-xs-8 col-sm-3">
-						      	 	 <input id="txtNameEmployee" class="form-control" type="text" name="txtNameEmployee" placeholder="ชื่อ" maxlength="50">
-						      	 	 <div class="visible-xs">
-						      	 		<br>
-						      	 	 </div>
-						      	 </div>
-						      	 <div class="col-xs-4 col-sm-2">
-						      	     <p class="text-center">
+								</div>
+								<div class="col-xs-8 col-sm-3">
+									<input id="txtNameEmployee" class="form-control" type="text" name="txtNameEmployee" placeholder="ชื่อ" maxlength="50">
+									<div class="visible-xs">
+										<br>
+									</div>
+								</div>
+								<div class="col-xs-4 col-sm-2 control-label">
+						      	     <p class="text-right">
 					   		 	 	 	 <b>นามสกุล</b>
 					   		 	 	 </p>
 						      	 </div>
 							     <div class="col-xs-8 col-sm-3">
 									 <input id="txtSurnameEmployee" class="form-control" type="text" name="txtSurnameEmployee" placeholder="นามสกุล" maxlength="50">
 						      	 </div>
-						     </div>
-						     <div class="form-group container">
-					   		 	 <div class="col-xs-4 col-sm-2">
-					   		 	 	 <p class="text-center">
+							</div>
+							<br>
+							<div class="row container">
+								<div class="col-xs-4 col-sm-2 control-label">
+					   		 	 	 <p class="text-right">
 					   		 	 	 	 <b>แผนก</b>
 					   		 	 	 </p>
 						      	 </div>
@@ -62,11 +63,12 @@
 										<option value="การตลาด">การตลาด</option>
 									 </select>
 									 <div class="visible-xs">
-						      	 		<br>
-						      	 	 </div>
+										 <br>
+									 </div>
 						      	 </div>
-						      	 <div class="col-xs-4 col-sm-2">
-						      	     <p class="text-center">
+						      	 
+						      	 <div class="col-xs-4 col-sm-2 control-label">
+						      	     <p class="text-right">
 					   		 	 	 	 <b>ตำแหน่ง</b>
 					   		 	 	 </p>
 						      	 </div>
@@ -78,11 +80,12 @@
 										<option value="หัวหน้าพนักงาน">หัวหน้าพนักงาน</option>
 									 </select>
 						      	 </div>
-						     </div>
-						     <div class="form-group container">
-					   		 	 <div class="col-xs-4 col-sm-2">
-						      	     <p class="text-center">
-					   		 	 	 	 <b>วันที่</b>
+							</div>
+							<br>
+							<div class="row container">
+								<div class="col-xs-4 col-sm-2 control-label">
+						      	     <p class="text-right">
+					   		 	 	 	 <b>วันเริ่มต้น</b>
 					   		 	 	 </p>
 						      	</div>
 						     	<div class="col-xs-8 col-sm-3">
@@ -92,13 +95,13 @@
 					                        <span class="glyphicon glyphicon-calendar"></span>
 					                    </span>
 					                </div>
-					                <div class="visible-xs">
-					                	<br>
-					                </div>
-						      	 </div>
-						      	 <div class="col-xs-4 col-sm-2">
-						      	     <p class="text-center">
-					   		 	 	 	 <b>ถึง</b>
+					              	<div class="visible-xs">
+										<br>
+									</div>
+						      	</div>
+						      	<div class="col-xs-4 col-sm-2 control-label">
+						      	     <p class="text-right">
+					   		 	 	 	 <b>วันสิ้นสุด</b>
 					   		 	 	 </p>
 						      	</div>
 						     	<div class="col-xs-8 col-sm-3">
@@ -108,12 +111,13 @@
 					                        <span class="glyphicon glyphicon-calendar"></span>
 					                    </span>
 					                </div>
-						      	 </div>
-						     </div>
-						     <div class="form-group container">
-						        <div class="col-xs-4 col-sm-2">
-					   		 	 	 <p class="text-center">
-					   		 	 	 	 <b>ประเภทลา</b>
+						      	</div>
+							</div>
+							<br>
+							<div class="row container">
+								<div class="col-xs-4 col-sm-2 control-label">
+					   		 	 	 <p class="text-right">
+					   		 	 	 	 <b>ประเภทการลา</b>
 					   		 	 	 </p>
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-3">
@@ -124,18 +128,19 @@
 										<option value="ลาพักร้อน">ลาพักร้อน</option>
 									 </select>									 
 						      	</div>
-						     </div>
-						     <div class="form-group">
-						     	<div class="col-xs-12 col-sm-12 text-center">					     		 
+							</div>
+							
+							<div class="row container">
+								<div class="col-xs-12 col-sm-12 text-center">					     		 
 							     	 <button type="button" class="btn btn-primary text-white" id="btnSearchReport" onclick="searchEngine()" >ค้นหา</button>&nbsp;
 							     	 <button type="button" class="btn btn-primary text-white" id="btnCancelSearchReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'" >ยกเลิก</button>&nbsp
-						     		 <div class="visible-xs">
-						      	 		<br>
-						      	 	 </div>
 						     	</div>
-						     </div>
-						     <div class="form-group">						     	
-						     	<div class="col-xs-12 col-sm-12 text-center">
+							</div>
+							<div class="visible-xs">
+								<br>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 text-center">
 						     		<table id="reportTable" class="table table-responsive table-bordered dt-responsive nowrap table-hover" style="width: 100%">
 							     		<thead>
 							     			 <tr>
@@ -150,19 +155,17 @@
 								             </tr>
 								         </thead>
 						     		</table>
-						     		<div class="visible-xs">
-						      	 	    <br>
-						      	    </div>
 						        </div>
-						     </div>
-						     <div class="form-group">
-							     <button type="button" class="btn btn-primary text-white" id="btnGoToMain" onclick="location.href='/testweb/LoadMainMenuSrvl'" >กลับสู่หน้าหลัก</button>&nbsp
-							     <div class="visible-xs">
-						      	 	  <br>
-						      	 </div>
-							     <button type="button" class="btn btn-primary text-white" id="btnGoToApprove" onclick="location.href='/testweb/ApproveSrvl'" >กลับหน้าอนุมัติคำร้อง</button>
-						     </div>
-					    </div>
+							</div>
+				
+							<div class="row container">
+								<button type="button" class="btn btn-primary text-white" id="btnGoToMain" onclick="location.href='/testweb/LoadMainMenuSrvl'" >กลับสู่หน้าหลัก</button>&nbsp
+							    <div class="visible-xs">
+						      	 	 <br>
+						      	</div>
+							    <button type="button" class="btn btn-primary text-white" id="btnGoToApprove" onclick="location.href='/testweb/ApproveSrvl'" >กลับหน้าอนุมัติคำร้อง</button>
+							</div>
+						</div>
 				    </div>
 				</div>
 			</div>	

@@ -1,18 +1,16 @@
 $(document).ready(function(){
 	$('#datepicker1').datepicker({
 		format : "dd/mm/yyyy",
-		language: 'th-th',
 		autoclose : true,
 		todayHighlight : true
 	});
-	$('#datepicker1').datepicker('setDate', 'now');
+	$('#datepicker1').datepicker('setDate','now');
 	$('#datepicker2').datepicker({
 		format : "dd/mm/yyyy",
-		language:'th-th',
 		autoclose : true,
 		todayHighlight : true
 	});
-	$('#datepicker2').datepicker('setDate', 'now');
+	$('#datepicker2').datepicker('setDate','now');
 	$('#reportTable').dataTable({
 		 "autoWidth": false,
 		 "searching": false,
@@ -49,10 +47,10 @@ function searchEngine(){
 		    	  process: 'ajax'
 		      }
 		},
-		"columnDefs": [
-		               {"className": "dt-left", "targets": [1]},
+		"columnDefs": [    
+		               {"className": "dt-body-left", "targets": [1]},
 		               {"className": "dt-center", "targets": [0,2,3,4,5,6,7]},
-		               {"className": "dt-right", "targets": []}
+		               {"className": "dt-right", "targets": []},
 		             ],
 		"columns": [
 		            { "data": "userNo" },

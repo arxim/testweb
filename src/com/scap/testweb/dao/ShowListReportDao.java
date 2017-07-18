@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import com.scap.testweb.model.User;
 import com.scap.testweb.utils.DbConnector;

@@ -19,8 +19,8 @@
 
 
 <!-- date  Import -->
-<link href="${pageContext.request.contextPath}/resources/libraries/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" rel="stylesheet"   />
-<%-- <link href="${pageContext.request.contextPath}/resources/libraries/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.standalone.min.css"  rel="stylesheet"  />
- --%>
+<link href="${pageContext.request.contextPath}/resources/libraries/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css" rel="stylesheet"/>
+
 <script src="${pageContext.request.contextPath}/resources/libraries/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
-<%-- <script src="${pageContext.request.contextPath}/resources/libraries/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js" type="text/javascript"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/libraries/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.th.min.js" type="text/javascript"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/libraries/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.th.js" type="text/javascript"></script> --%>
