@@ -42,6 +42,37 @@ public class RequestDao {
 			}
 		return resultID;
 	}
+	
+
+	public ArrayList<HashMap<String, String>> getIDBossUser(String position){
+		String sql = "SELECT * FROM LEAVE_MST_USER WHERE POSITION='" + position + "'";
+		DbConnector dbconn = new DbConnector();
+		ArrayList<HashMap<String,String>> result = null;
+		try{
+			dbconn.doConnect();
+			result = dbconn.getData(sql);
+		}
+		catch (Exception e) { 
+			e.printStackTrace();
+			System.out.println(e);
+			}
+		return result;
+	}
+	
+	public ArrayList<HashMap<String, String>> getNameBossUser(long id){
+		String sql = "SELECT * FROM LEAVE_MST_USER WHERE ID='" + id + "'";
+		DbConnector dbconn = new DbConnector();
+		ArrayList<HashMap<String,String>> resultID = null;
+		try{
+			dbconn.doConnect();
+			resultID = dbconn.getData(sql);
+		}
+		catch (Exception e) { 
+			e.printStackTrace();
+			System.out.println(e);
+			}
+		return resultID;
+	}
 
 	public ArrayList<HashMap<String, String>> gstDataBoss(String department) {
 		String sql = "SELECT * FROM LEAVE_MST_USER WHERE DEPARTMENT ='" + department + "' AND POSITION = 'หัวหน้าพนักงาน'";

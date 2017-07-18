@@ -52,7 +52,8 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 		String lName = requestService.findLastName(userLogin);
 		String comboDepartment = requestService.findDepartment(userLogin);
 		String comboPosition = requestService.findPosition(userLogin);
-		String comboBoss = requestService.findNameBoss(userLogin);
+		String comboBoss = requestService.findNameBoss();
+		
 		
 		request.setAttribute("fName", fName);
 		request.setAttribute("lName", lName);

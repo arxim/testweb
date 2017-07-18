@@ -66,7 +66,7 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		String note = request.getParameter("txtAreaNote");
 		
 		String employee_id = requestService.findID(userLogin);
-		String boss_id = requestService.findBossID(userLogin);
+		String boss_id = requestService.findBossID();
 		
 		requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,dateDiff,note);
 		System.out.println("ID : "+employee_id+ "\nชื่อ: "+fNmae+"\nนามสกุล: "+lNmae+"\nแผนก: "+ epyDepartment+"\nตำแหน่ง: "+epyPosition+"\nอีเมลล์: "+email+"\nชื่อหัวหน้า: "+nameBoss+"\nประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);

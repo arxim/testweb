@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 	
@@ -22,34 +22,51 @@
 		<c:if test="${empty sessionScope.userLogin}">
 			<c:redirect url="/" />
 		</c:if>
-		<div class="container" style="margin-top: 10%; margin-bottom: 12%; background-color:#ffffff;box-shadow:0 0 18px rgba(6, 0, 255, 0.3);">
-		
-			<div class="col-xs-12 col-sm-12 text-center">
-				<h2>Welcome : ${sessionScope.userLogin}</h2>
-				<br>
-				<br>
-				<div class="col-xs-12 col-sm-offset-5 col-sm-1 text-center">
-					<button type="submit" class="btn btn-primary btn-block"
-						id="btnLogout" formaction="/testweb/LogoutSrvl">Logout</button>
+		<div class="container" style="margin-top: 10%; margin-bottom: 12%;">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+			<div class="panel panel-primary form-horizontal">
+				<div class="panel-heading">
+					<h2 class="panel-title" align="center">
+						<b>Welcome : ${sessionScope.userLogin}</b>
+					</h2>
+				</div>
+				<div class="panel-body">
+					<br>
+					<div class="form-group">
+					<div class="col-xs-12 col-sm-4 col-sm-offset-4  text-center">
+						<button type="submit" class="btn btn-primary btn-block"
+							id="btnRequest" formaction="/testweb/LoadRequestOnLeaveSrvl">request</button>
+					</div>
+					</div>
+					<div class="form-group">
+					<div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
+						<button type="submit" class="btn btn-primary btn-block"
+							id="btnRequest" formaction="/testweb/LoadEditRequestOnLeaveSrvl">Edit
+							request</button>
+					</div>
+					</div>
+					<div class="form-group">
+					<div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
+						<button type="submit" class="btn btn-primary btn-block"
+							id="btnApprove" formaction="/testweb/ApproveSrvl">approve</button>
+					</div>
+					</div>
+					<div class="form-group">
+					<div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
+						<button type="button" class="btn btn-primary btn-block"
+							id="btnReport"
+							onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">report</button>
+					</div>
+					</div>
+					<div class="form-group">
+					<div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
+							<button type="submit" class="btn btn-primary btn-block btn-danger"
+							id="btnLogout" formaction="/testweb/LogoutSrvl">Logout</button>
+					</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-2  text-center">
-				<button type="submit" class="btn btn-primary btn-block"
-					id="btnRequest" formaction="/testweb/LoadRequestOnLeaveSrvl">request</button>
-			</div>
-			<div class="col-xs-12 col-sm-2  text-center">
-				<button type="submit" class="btn btn-primary btn-block"
-					id="btnRequest" formaction="/testweb/LoadEditRequestOnLeaveSrvl">Edit request</button>
-			</div>
-			<div class="col-xs-12 col-sm-2  text-center">
-				<button type="submit" class="btn btn-primary btn-block"
-					id="btnApprove" formaction="/testweb/ApproveSrvl">approve</button>
-			</div>
-			<div class="col-xs-12 col-sm-2  text-center">
-				<button type="button" class="btn btn-primary btn-block"
-					id="btnReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">report</button>
-			</div>
-					
+		</div>
 		</div>
 	</form>
 	<c:if test="${not empty sessionScope.msgTimeout}">

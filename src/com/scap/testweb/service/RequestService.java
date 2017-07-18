@@ -44,24 +44,32 @@ public class RequestService {
 		return resultPosition;
 	}
 	
-	public String findNameBoss(String nameUser){
+	public String findNameBoss(){
 		// compare Department between employee and boss
+		String bossID = findBossID();
+		long id = Long.parseLong(bossID);
 		RequestDao requestDao = new RequestDao();
-		ArrayList<HashMap<String, String>> resultEmployee = requestDao.getDataUser(nameUser);
-		String department = resultEmployee.get(0).get("DEPARTMENT");
-		ArrayList<HashMap<String, String>> resultBoss = requestDao.gstDataBoss(department);
-		String fNameBoss = resultBoss.get(0).get("FIRST_NAME");
-		String lNameBoss = resultBoss.get(0).get("LAST_NAME");
+		ArrayList<HashMap<String, String>> result = requestDao.getNameBossUser(id);
+		String fNameBoss = result.get(0).get("FIRST_NAME");
+		String lNameBoss = result.get(0).get("LAST_NAME");
 		String nameBoss = fNameBoss +" "+ lNameBoss;
 		return nameBoss;
 	}
 	
-	public String findBossID(String emailUser){
+	/*public String findBossID(String emailUser){
 		RequestDao requestDao = new RequestDao();
 		ArrayList<HashMap<String, String>> result = requestDao.getDataUser(emailUser);
 		String department = result.get(0).get("DEPARTMENT");
 		ArrayList<HashMap<String, String>> resultBoss = requestDao.gstDataBoss(department);
 		String bossID = resultBoss.get(0).get("ID");
+		return bossID;
+	}*/
+	
+	public String findBossID(){
+		String position = "หัวหน้าพนักงาน";
+		RequestDao requestDao = new RequestDao();
+		ArrayList<HashMap<String, String>> result = requestDao.getIDBossUser(position);
+		String bossID = result.get(0).get("ID");
 		return bossID;
 	}
 	
