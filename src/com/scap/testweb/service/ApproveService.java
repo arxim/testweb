@@ -1,6 +1,9 @@
 package com.scap.testweb.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,10 +16,10 @@ public class ApproveService {
 		ApproveDao data = new ApproveDao();
 		return data.selectData(status);
 	}
-	
-	public String approveData(String status, String code){
+	//boss click approve
+	public String approveData(String status, String rowID){
 		ApproveDao approve = new ApproveDao();
-		return approve.approveData(status,code);
+		return approve.approveData(status,rowID);
 	}
 	
 	public String personal(String userLogin){

@@ -4,10 +4,10 @@ $(document).ready(function() {
 		$('#btnGoToRequest').hide();
 	var table = $('#tableApprove').DataTable();
 	renderDataTable();
-	
 	function renderDataTable() {
 		var status = $('#status').val();
-		$('#tableApprove').DataTable( {			
+		$('#tableApprove').DataTable( {	
+			"searching": false,
 			"bProcessing": true,
 		    "iDisplayLength": 10,
 	        "serverSide": false,
@@ -21,23 +21,26 @@ $(document).ready(function() {
 	            }
 	        },
 	        "columns": [
-	            { "data": "requestDate" },
-	            { "data": "firstname" },
-	            { "data": "lastname" },
+	            { "data": "firstandlastname" },
 	            { "data": "department" },
 	            { "data": "position" },
 	            { "data": "leaveType" },
 	            { "data": "status" },
+	            { "data": "requestDate" },
 	            { "data": "approveDate" },
 	            { "data": "code", render: function ( data, type, row ) {
-	            	if(status == "อนุมัติ"){
-	            		return '<button type="button" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
+	            	if(row.status == "อนุมัติ"){
+	            		return '<button type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
 	            	}
-	            	else if(status == "รออนุมัติ"){
-	            		return '<button type="button" value="อนุมัติ">อนุมัติ</button>';
+	            	else if(row.status == "รออนุมัติ"){
+	            		return '<button type="button" id="'+row.code+'" onclick="approveClick(this)" value="อนุมัติ">อนุมัติ</button>';
 	            	}
 	            } }
-	        ]
+	        ],
+	        "columnDefs": [{
+	            "defaultContent": "-",
+	            "targets": "_all"
+	          }]
 	       
 	    } );
 	}
@@ -45,11 +48,42 @@ $(document).ready(function() {
 	$(document).on('change','#status',function(){
 		renderDataTable();
 	});
-	
-	$('#tableApprove').on('click','tr > td',function(){
-	
-	});	
-	$('#tableApprove').on('click', 'button', function () {
+	//click button
+	function unapproveClick(obj){
+		  var rowID = $(obj).attr('id');
+		  var status = "อนุมัติ";
+		  $('#tableApprove').DataTable( {	
+		        "ajax": {
+		        	type: 'POST',
+		    	    url: ctx + "/ApproveButtonSrvl",
+		    	    data: {
+		    	    	status: status,
+		            	rowID: rowID
+		            }
+		  
+		      }
+		    } );
+		  $('#tableApprove').DataTable();
+	}
+
+	function approveClick(obj){
+		var rowID = $(obj).attr('id');
+
+		  $('#tableApprove').DataTable( {	
+		        "ajax": {
+		        	type: 'POST',
+		    	    url: ctx + "/ApproveButtonSrvl",
+		    	    data: {
+		    	    	status: status,
+		            	rowID: rowID
+		            }
+		  
+		      }
+		    } );
+		  $('#tableApprove').DataTable();
+		  
+	}
+/*	$('#tableApprove').on('click', 'button', function () {
 	    var dataRow = table.row($(this).closest('tr')).data();
 	    
 	    $('#tableApprove').DataTable( {	
@@ -66,12 +100,12 @@ $(document).ready(function() {
 	      success: function(data) {
 	    	 
 	      }
-	    } );
+	    } );	
 	    
 	    
 	    
 	//	location.href = '/testweb/LoadRequestOnLeaveSrvl?userId=' + dataRow.userId;
-	});	
+	});		*/
   }
   else{
 	$('#textApprove').hide();
@@ -79,7 +113,8 @@ $(document).ready(function() {
 	$('#status').hide();
 	var table = $('#tableApprove').DataTable();
 
-		$('#tableApprove').DataTable( {			
+		$('#tableApprove').DataTable( {	
+			"searching": false,
 			"bProcessing": true,
 		    "iDisplayLength": 10,
 	        "serverSide": false,
@@ -93,41 +128,33 @@ $(document).ready(function() {
 	            }
 	        },
 	        "columns": [
-	            { "data": "requestDate" },
-	            { "data": "firstname" },
-	            { "data": "lastname" },
+	            { "data": "firstandlastname" },
 	            { "data": "department" },
 	            { "data": "position" },
 	            { "data": "leaveType" },
 	            { "data": "status" },
+	            { "data": "requestDate" },
 	            { "data": "approveDate" },
-	            { "data": "code", render: function ( data, type, row ) {	
-	               $('#tableApprove').on( 'click', 'button', function () {
-	                    var dataRow = table.row( $(this).closest('button') ).data();
-	                    location.href ='/testweb/LoadEditRequestOnLeaveSrvl?code='+data;
-	                } );
-	            	return '<button type="button" id="'+data+'" value="แก้ไข">แก้ไข</button>';
-	            		
+	            { "data": "code", render: function ( data, type, row ) {
+	               return '<button type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
 	            } } 
-	        ]
+	        ],
+	        "columnDefs": [{
+	            "defaultContent": "-",
+	            "targets": "_all"
+	          }]
 	    } );
-	/*	$('#tableApprove').on('click', 'button', function () {
-		    var dataRow = table.row($(this).closest('code')).data();
-			location.href = '/testweb/LoadEditRequestOnLeaveSrvl?code=' + dataRow;
-		});	*/
-	/*	$('#tableApprove').on('dblclick','tr > td',function(){
-			console.log('click');
-			location.href = "LoadEditRequestOnLeaveSrvl?code=' + code'";		
-			if ($(this).hasClass('selected')) {
-			    $(this).removeClass('selected');
-			    location.href="LoadEditRequestOnLeaveSrvl?code=' + code'";
-			}
-			else {
-			    table.$('tr.selected').removeClass('selected');
-			    $(this).addClass('selected');
-			}	
-		});*/
-
+		
+		
+	/*      $('#tableApprove').on( 'click', 'button', function () {
+	            //       var dataRow = table.row( $(this).closest('button') ).data();
+	                   location.href ='/testweb/LoadEditRequestOnLeaveSrvl?code='+data;
+	               } );	*/
 	}
 });
+
+function editClick(obj){
+	  var rowID = $(obj).attr('id');
+	  location.href ='/testweb/LoadEditRequestOnLeaveSrvl?code='+rowID;
+}
 

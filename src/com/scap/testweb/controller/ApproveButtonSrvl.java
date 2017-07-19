@@ -41,7 +41,7 @@ public class ApproveButtonSrvl extends HttpServlet {
 	}
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String statusSrvl = request.getParameter("status");
-		String codeSrvl = request.getParameter("code");
+		String rowIDSrvl = request.getParameter("rowID");
 		String process = request.getParameter("process");
 		
 		if (process != null && !process.isEmpty()) {
@@ -49,7 +49,7 @@ public class ApproveButtonSrvl extends HttpServlet {
 		    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 		    
 		    ApproveService dt = new ApproveService();
-		    String update = dt.approveData(statusSrvl, codeSrvl);
+		    String update = dt.approveData(statusSrvl, rowIDSrvl);
 		    if(update == "อนุมัติ"){
 		    	String result = "อนุมัติ";
 			    response.getWriter().write(result);

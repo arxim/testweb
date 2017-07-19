@@ -13,6 +13,7 @@ import com.scap.testweb.model.User;
 import com.scap.testweb.utils.DbConnector;
 
 public class ApproveDao {
+	//Boss
 	public List<User> selectData (String status){		
 		String sql = " SELECT LEAVE_MST_LEAVE.[CODE], LEAVE_MST_LEAVE.[REQUEST_DATE], LEAVE_MST_USER.[FIRST_NAME], LEAVE_MST_USER.[LAST_NAME], " 
 				+ " LEAVE_MST_USER.[DEPARTMENT], LEAVE_MST_USER.[POSITION], LEAVE_MST_LEAVE.[LEAVE_TYPE], "
@@ -41,8 +42,7 @@ public class ApproveDao {
 				User user = new User();
 				user.setCode(rs.getString("CODE"));
 				user.setRequestDate(rs.getString("REQUEST_DATE"));
-				user.setFirstname(rs.getString("FIRST_NAME"));
-				user.setLastname(rs.getString("LAST_NAME"));
+				user.setFirstAndLastname(rs.getString("FIRST_NAME"),rs.getString("LAST_NAME"));
 				user.setDepartment(rs.getString("DEPARTMENT"));
 				user.setPosition(rs.getString("POSITION"));
 				user.setApproveDate(rs.getString("APPROVE_DATE"));
@@ -58,12 +58,12 @@ public class ApproveDao {
 	}
 	
 	
-	public String approveData (String status, String code){
+	public String approveData (String status, String rowID){
 		//click button change status
 		DbConnector dbconn = new DbConnector();
 		if(status == "อนุมัติ"){
 			String approveDate = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + code + "'";
+			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
 			dbconn.doConnect();
 			dbconn.doSave(sql);
 			dbconn.doCommit();
@@ -71,7 +71,7 @@ public class ApproveDao {
 		}
 		else if(status == "ไม่อนุมัติ"){
 			String approveDate = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'ไม่อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + code + "'";
+			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'ไม่อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
 			dbconn.doConnect();
 			dbconn.doSave(sql);
 			dbconn.doCommit();
@@ -96,6 +96,7 @@ public class ApproveDao {
 		return resultID;
 	}
 	
+	//User
 	public List<User> selectLeave (String userID){		
 		String sql = "SELECT LEAVE_MST_LEAVE.[CODE], LEAVE_MST_LEAVE.[REQUEST_DATE], "
 				+ "LEAVE_MST_USER.[FIRST_NAME],	LEAVE_MST_USER.[LAST_NAME],	LEAVE_MST_USER.[DEPARTMENT], "
@@ -103,7 +104,7 @@ public class ApproveDao {
 				+ "LEAVE_MST_LEAVE.[APPROVE_DATE] "
 				+ "FROM	LEAVE_MST_LEAVE "
 				+ "JOIN LEAVE_MST_USER ON LEAVE_MST_LEAVE.EMPLOYEE_ID = LEAVE_MST_USER.ID "
-				+ "WHERE LEAVE_MST_LEAVE.EMPLOYEE_ID = '" + userID + "'";
+				+ "WHERE LEAVE_MST_LEAVE.EMPLOYEE_ID = '" + userID + "' ORDER BY REQUEST_DATE DESC;";
 
 		DbConnector dbconn = new DbConnector();
 		List<User> users = new ArrayList<User>();
@@ -115,8 +116,7 @@ public class ApproveDao {
 				User user = new User();
 				user.setCode(rs.getString("CODE"));
 				user.setRequestDate(rs.getString("REQUEST_DATE"));
-				user.setFirstname(rs.getString("FIRST_NAME"));
-				user.setLastname(rs.getString("LAST_NAME"));
+				user.setFirstAndLastname(rs.getString("FIRST_NAME"),rs.getString("LAST_NAME"));
 				user.setDepartment(rs.getString("DEPARTMENT"));
 				user.setPosition(rs.getString("POSITION"));
 				user.setApproveDate(rs.getString("APPROVE_DATE"));

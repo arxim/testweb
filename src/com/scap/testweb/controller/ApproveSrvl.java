@@ -55,9 +55,7 @@ public class ApproveSrvl extends HttpServlet {
 		    
 		    ApproveService dt = new ApproveService();
 		    List<User> users = dt.showData(statusSrvl);
-		    
-		    
-		    
+
 		    Gson gson = new Gson();
 		    PrintWriter out = response.getWriter();
 		    String json = gson.toJson(users);

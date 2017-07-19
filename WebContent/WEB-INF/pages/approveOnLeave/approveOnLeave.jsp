@@ -29,7 +29,7 @@
 			<div class="col-sm-12">
 				<h5>Welcome : ${sessionScope.userLogin}</h5>
 				<div align="right">
-					<button type="button" class="btn btn-primary text-white" id="btnGoToRequest" onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">บันทึกคำร้องขอลา</button> &nbsp;
+					<button type="button" class="btn btn-primary text-white" id="btnGoToRequest" onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">+ เพิ่มคำร้องขอลา</button> &nbsp;
 				</div>
 			</div>
 		<div class="panel-body">
@@ -48,15 +48,14 @@
 	
     <table id="tableApprove" class="display" cellspacing="0" border="1" bordercolor="#CCCCCC" width="100%">
 	 <thead> 
-            <tr> 
-                <th class="text-center" width="8%">วันที่</th> 
-                <th class="text-center" width="13%">ชื่อ</th>
-                <th class="text-center" width="13%">นามสกุล</th>
+            <tr>
+                <th class="text-center" width="20%">ชื่อ-นามสกุล</th>
                 <th class="text-center" width="12%">แผนก</th> 
                 <th class="text-center" width="12%">ตำแหน่ง</th> 
                 <th class="text-center" width="13%">ประเภทการลา</th> 
-                <th class="text-center" width="9%">สถานะ</th> 
-                <th class="text-center" width="10%">วันที่อนุมัติ</th> 
+                <th class="text-center" width="9%">สถานะ</th>
+                <th class="text-center" width="12%">วันที่ขออนุมัติ</th> 
+                <th class="text-center" width="12%">วันที่อนุมัติ</th> 
                 <th class="text-center" width="10%">เลือก</th>
             </tr> 
       </thead>
