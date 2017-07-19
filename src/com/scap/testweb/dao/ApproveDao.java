@@ -18,10 +18,17 @@ public class ApproveDao {
 				+ " LEAVE_MST_USER.[DEPARTMENT], LEAVE_MST_USER.[POSITION], LEAVE_MST_LEAVE.[LEAVE_TYPE], "
 				+ " LEAVE_MST_LEAVE.[STATUS], LEAVE_MST_LEAVE.[APPROVE_DATE] "
 				+ " FROM LEAVE_MST_LEAVE "
-				+ " JOIN LEAVE_MST_USER ON LEAVE_MST_LEAVE.EMPLOYEE_ID = LEAVE_MST_USER.ID ";
+				+ " JOIN LEAVE_MST_USER ON LEAVE_MST_LEAVE.EMPLOYEE_ID = LEAVE_MST_USER.ID "
+				+ " WHERE LEAVE_MST_LEAVE.STATUS = 'รออนุมัติ'";
+		
 				
 		if (status != null && !status.isEmpty()) {
-			sql += " WHERE LEAVE_MST_LEAVE.STATUS = '" + status + "'";
+			sql =  " SELECT LEAVE_MST_LEAVE.[CODE], LEAVE_MST_LEAVE.[REQUEST_DATE], LEAVE_MST_USER.[FIRST_NAME], LEAVE_MST_USER.[LAST_NAME], " 
+						+ " LEAVE_MST_USER.[DEPARTMENT], LEAVE_MST_USER.[POSITION], LEAVE_MST_LEAVE.[LEAVE_TYPE], "
+						+ " LEAVE_MST_LEAVE.[STATUS], LEAVE_MST_LEAVE.[APPROVE_DATE] "
+						+ " FROM LEAVE_MST_LEAVE "
+						+ " JOIN LEAVE_MST_USER ON LEAVE_MST_LEAVE.EMPLOYEE_ID = LEAVE_MST_USER.ID "
+						+ " WHERE LEAVE_MST_LEAVE.STATUS = '" + status + "'";
 		}
 					
 		DbConnector dbconn = new DbConnector();
@@ -54,7 +61,7 @@ public class ApproveDao {
 	public String approveData (String status, String code){
 		//click button change status
 		DbConnector dbconn = new DbConnector();
-		if(status == "รออนุมัติ"){
+		if(status == "อนุมัติ"){
 			String approveDate = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
 			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + code + "'";
 			dbconn.doConnect();
@@ -62,13 +69,13 @@ public class ApproveDao {
 			dbconn.doCommit();
 			return "อนุมัติ";
 		}
-		else if(status == "อนุมัติ"){
+		else if(status == "ไม่อนุมัติ"){
 			String approveDate = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'รออนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + code + "'";
+			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'ไม่อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + code + "'";
 			dbconn.doConnect();
 			dbconn.doSave(sql);
 			dbconn.doCommit();
-			return "รออนุมัติ";
+			return "ไม่อนุมัติ";
 		}
 		return "false";
 	}

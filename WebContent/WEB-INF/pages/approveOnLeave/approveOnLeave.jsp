@@ -19,27 +19,32 @@
 		  <div class="col-xs-12 col-sm-12">
 			<div class="panel panel-primary form-horizontal">
 				<div class="panel-heading">
-					<h2 class="panel-title">
+					<h2 class="panel-title text-center" id="textApprove">
 						<b>อนุมัติคำร้องขอลา</b>
+					</h2>
+					<h2 class="panel-title text-center" id="textApproveUser">
+						<b>ประวัติการลา</b>
 					</h2>
 				</div>
 			<div class="col-sm-12">
 				<h5>Welcome : ${sessionScope.userLogin}</h5>
+				<div align="right">
+					<button type="button" class="btn btn-primary text-white" id="btnGoToRequest" onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">บันทึกคำร้องขอลา</button> &nbsp;
+				</div>
 			</div>
 		<div class="panel-body">
 				<div class="form-group">
 						<label id="statusname" class="col-sm-offset-4 col-sm-1 control-label">สถานะ : </label>
 					<div class="col-sm-3">
 						<select id="status" class="form-control">
-							<option value="" disabled="disabled" selected="selected">-----------</option>
-							<option value="รออนุมัติ">รออนุมัติ</option>
+							<option value="รออนุมัติ" selected="selected">รออนุมัติ</option>
 							<option value="อนุมัติ">อนุมัติ</option>
 						</select>
 					</div>
 					<br>
 					<br>
 				</div>
-		
+			
 	
     <table id="tableApprove" class="display" cellspacing="0" border="1" bordercolor="#CCCCCC" width="100%">
 	 <thead> 
@@ -61,7 +66,6 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 text-center">
 				<br>
-					<button type="button" class="btn btn-primary text-white" id="btnGoToRequest" onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">บันทึกคำร้องขอลา</button> &nbsp;
 					<button type="button" class="btn btn-primary text-white" id="btnBackToMainMenu" onclick="location.href='/testweb/LoadMainMenuSrvl'">กลับหน้าหลัก</button> &nbsp;
 					<button type="button" class="btn btn-primary text-white" id="btnGoToReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">รายงานการลา</button>
 				</div>

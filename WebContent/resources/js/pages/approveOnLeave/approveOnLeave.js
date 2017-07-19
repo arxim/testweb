@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	if(userLogin=="boss@gmail.com"){
+		$('#textApproveUser').hide();
+		$('#btnGoToRequest').hide();
 	var table = $('#tableApprove').DataTable();
 	renderDataTable();
 	
@@ -30,7 +32,6 @@ $(document).ready(function() {
 	            { "data": "code", render: function ( data, type, row ) {
 	            	if(status == "อนุมัติ"){
 	            		return '<button type="button" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
-	            		
 	            	}
 	            	else if(status == "รออนุมัติ"){
 	            		return '<button type="button" value="อนุมัติ">อนุมัติ</button>';
@@ -63,13 +64,7 @@ $(document).ready(function() {
 	        },
   	      dataType: "text",
 	      success: function(data) {
-	    	  var msg;
-	    	  if (data == "อนุมัติ" || data == "รออนุมัติ") {
-	    		 msg;
-	    	  }
-	    	  else{
-		    	 msg;
-	    	  }
+	    	 
 	      }
 	    } );
 	    
@@ -79,6 +74,7 @@ $(document).ready(function() {
 	});	
   }
   else{
+	$('#textApprove').hide();
 	$('#statusname').hide();
 	$('#status').hide();
 	var table = $('#tableApprove').DataTable();
@@ -106,15 +102,32 @@ $(document).ready(function() {
 	            { "data": "status" },
 	            { "data": "approveDate" },
 	            { "data": "code", render: function ( data, type, row ) {	
-	            		return '<button type="button" value="แก้ไข">แก้ไข</button>';		
+	               $('#tableApprove').on( 'click', 'button', function () {
+	                    var dataRow = table.row( $(this).closest('button') ).data();
+	                    location.href ='/testweb/LoadEditRequestOnLeaveSrvl?code='+data;
+	                } );
+	            	return '<button type="button" id="'+data+'" value="แก้ไข">แก้ไข</button>';
+	            		
 	            } } 
 	        ]
 	    } );
-		$('#tableApprove').on('dblclick', 'tbody tr', function () {
-		    var dataRow = table.row($(this).closest('tr')).data();
-			location.href = '/testweb/LoadRequestOnLeaveSrvl?code=' + dataRow.code;
-		});
+	/*	$('#tableApprove').on('click', 'button', function () {
+		    var dataRow = table.row($(this).closest('code')).data();
+			location.href = '/testweb/LoadEditRequestOnLeaveSrvl?code=' + dataRow;
+		});	*/
+	/*	$('#tableApprove').on('dblclick','tr > td',function(){
+			console.log('click');
+			location.href = "LoadEditRequestOnLeaveSrvl?code=' + code'";		
+			if ($(this).hasClass('selected')) {
+			    $(this).removeClass('selected');
+			    location.href="LoadEditRequestOnLeaveSrvl?code=' + code'";
+			}
+			else {
+			    table.$('tr.selected').removeClass('selected');
+			    $(this).addClass('selected');
+			}	
+		});*/
+
 	}
 });
-
 

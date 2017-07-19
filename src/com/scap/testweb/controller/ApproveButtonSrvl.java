@@ -54,8 +54,8 @@ public class ApproveButtonSrvl extends HttpServlet {
 		    	String result = "อนุมัติ";
 			    response.getWriter().write(result);
 		    }
-		    else if(update == "รออนุมัติ"){
-		    	String result =  "รออนุมัติ";
+		    else if(update == "ไม่อนุมัติ"){
+		    	String result =  "ไม่อนุมัติ";
 		    	response.getWriter().write(result);
 		    }
 		    else{
