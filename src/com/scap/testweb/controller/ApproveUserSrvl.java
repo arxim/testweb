@@ -54,15 +54,14 @@ public class ApproveUserSrvl extends HttpServlet {
 		    ApproveService dt = new ApproveService();
 		    String userID = dt.personal(userLoginSrvl);
 		    List<User> userLeave = dt.leave(userID);
-		    
-		    
-		    
+	
 		    Gson gson = new Gson();
 		    PrintWriter out = response.getWriter();
 		    String json = gson.toJson(userLeave);
 			out.print("{ \"data\":" + json + "}");
 			
-		}else {
+		}
+		else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
 			rd.forward(request, response);	
 		}

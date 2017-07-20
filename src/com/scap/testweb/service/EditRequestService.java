@@ -90,7 +90,7 @@ public class EditRequestService {
 		SimpleDateFormat dt = new SimpleDateFormat("yyyyMMdd");
 		try{
 			Date sd = dt.parse(resultStartDate);
-			SimpleDateFormat dt1 = new SimpleDateFormat("dd MMM yyyy");
+			SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy");
 			date_s = dt1.format(sd);
 		}
 		catch (Exception exp) {
@@ -109,7 +109,7 @@ public class EditRequestService {
 		SimpleDateFormat dt = new SimpleDateFormat("yyyyMMdd");
 		try{
 			Date sd = dt.parse(resultEndDate);
-			SimpleDateFormat dt1 = new SimpleDateFormat("dd MMM yyyy");
+			SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy");
 			date_e = dt1.format(sd);
 		}
 		catch (Exception exp) {

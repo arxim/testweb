@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.scap.testweb.model.User;
@@ -55,15 +54,13 @@ public class ApproveSrvl extends HttpServlet {
 		    
 		    ApproveService dt = new ApproveService();
 		    List<User> users = dt.showData(statusSrvl);
-		    
-		    
-		    
+
 		    Gson gson = new Gson();
 		    PrintWriter out = response.getWriter();
 		    String json = gson.toJson(users);
 			out.print("{ \"data\":" + json + "}");
-			
-		}else {
+		}
+		else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
 			rd.forward(request, response);	
 		}

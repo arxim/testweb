@@ -2,132 +2,148 @@ $(document).ready(function() {
 	if(userLogin=="boss@gmail.com"){
 		$('#textApproveUser').hide();
 		$('#btnGoToRequest').hide();
-	var table = $('#tableApprove').DataTable();
-	renderDataTable();
-	
-	function renderDataTable() {
-		var status = $('#status').val();
-		$('#tableApprove').DataTable( {			
-			"bProcessing": true,
-		    "iDisplayLength": 10,
-	        "serverSide": false,
-	        "bDestroy": true,
-	        "ajax": {
-	            "url": ctx + "/ApproveSrvl",
-	            "type": "POST",
-	            "data": {
-	            	status: status,
-	            	process: 'ajax'
-	            }
-	        },
-	        "columns": [
-	            { "data": "requestDate" },
-	            { "data": "firstname" },
-	            { "data": "lastname" },
-	            { "data": "department" },
-	            { "data": "position" },
-	            { "data": "leaveType" },
-	            { "data": "status" },
-	            { "data": "approveDate" },
-	            { "data": "code", render: function ( data, type, row ) {
-	            	if(status == "อนุมัติ"){
-	            		return '<button type="button" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
-	            	}
-	            	else if(status == "รออนุมัติ"){
-	            		return '<button type="button" value="อนุมัติ">อนุมัติ</button>';
-	            	}
-	            } }
-	        ]
-	       
-	    } );
-	}
-	
-	$(document).on('change','#status',function(){
+		
 		renderDataTable();
-	});
 	
-	$('#tableApprove').on('click','tr > td',function(){
-	
-	});	
-	$('#tableApprove').on('click', 'button', function () {
-	    var dataRow = table.row($(this).closest('tr')).data();
-	    
-	    $('#tableApprove').DataTable( {	
-	        "ajax": {
-	            "url": ctx + "/ApproveButtonSrvl",
-	            "type": "POST",
-	            "data": {
-	            	status: status,
-	            	code: code,
-	            	process: 'ajax'
-	            }
-	        },
-  	      dataType: "text",
-	      success: function(data) {
-	    	 
-	      }
-	    } );
-	    
-	    
-	    
-	//	location.href = '/testweb/LoadRequestOnLeaveSrvl?userId=' + dataRow.userId;
-	});	
-  }
-  else{
-	$('#textApprove').hide();
-	$('#statusname').hide();
-	$('#status').hide();
-	var table = $('#tableApprove').DataTable();
-
-		$('#tableApprove').DataTable( {			
-			"bProcessing": true,
-		    "iDisplayLength": 10,
-	        "serverSide": false,
-	        "bDestroy": true,
-	        "ajax": {
-	            "url": ctx + "/ApproveUserSrvl",
-	            "type": "POST",
-	            "data": {
-	            	userLogin: userLogin,
-	            	process: 'ajax'
-	            }
-	        },
-	        "columns": [
-	            { "data": "requestDate" },
-	            { "data": "firstname" },
-	            { "data": "lastname" },
-	            { "data": "department" },
-	            { "data": "position" },
-	            { "data": "leaveType" },
-	            { "data": "status" },
-	            { "data": "approveDate" },
-	            { "data": "code", render: function ( data, type, row ) {	
-	               $('#tableApprove').on( 'click', 'button', function () {
-	                    var dataRow = table.row( $(this).closest('button') ).data();
-	                    location.href ='/testweb/LoadEditRequestOnLeaveSrvl?code='+data;
-	                } );
-	            	return '<button type="button" id="'+data+'" value="แก้ไข">แก้ไข</button>';
-	            		
-	            } } 
-	        ]
-	    } );
-	/*	$('#tableApprove').on('click', 'button', function () {
-		    var dataRow = table.row($(this).closest('code')).data();
-			location.href = '/testweb/LoadEditRequestOnLeaveSrvl?code=' + dataRow;
-		});	*/
-	/*	$('#tableApprove').on('dblclick','tr > td',function(){
-			console.log('click');
-			location.href = "LoadEditRequestOnLeaveSrvl?code=' + code'";		
-			if ($(this).hasClass('selected')) {
-			    $(this).removeClass('selected');
-			    location.href="LoadEditRequestOnLeaveSrvl?code=' + code'";
-			}
-			else {
-			    table.$('tr.selected').removeClass('selected');
-			    $(this).addClass('selected');
-			}	
-		});*/
-
-	}
+		$(document).on('change','#status',function(){
+			renderDataTable();
+		});
+		
+		$(document).on('click','.btn-approve',function(){
+			var rowID = $(this).attr('id');
+			var status = "อนุมัติ";
+			console.log(rowID, status);
+			$.ajax({
+				url: ctx + '/ApproveButtonSrvl',
+				data: {
+					status: status,
+					rowID: rowID
+				},
+				success: function(data) {
+					renderDataTable();
+				}
+			});
+		});
+		
+		$(document).on('click','.btn-unapprove',function(){
+			var rowID = $(this).attr('id');
+			var status = "ไม่อนุมัติ";
+			console.log(rowID, status);
+			$.ajax({
+				url: ctx + '/ApproveButtonSrvl',
+				data: {
+					status: status,
+					rowID: rowID
+				},
+				success: function(data) {
+					renderDataTable();
+				}
+			});
+		});
+		
+		function renderDataTable() {
+			var status = $('#status').val();
+			var table = $('#tableApprove').DataTable();
+			$('#tableApprove').DataTable( {	
+				"order": [[5,'asc']],
+				"searching": false,
+				"bProcessing": true,
+			    "iDisplayLength": 10,
+		        "serverSide": false,
+		        "bDestroy": true,
+		        "ajax": {
+		            "url": ctx + "/ApproveSrvl",
+		            "type": "POST",
+		            "data": {
+		            	status: status,
+		            	process: 'ajax'
+		            }
+		        },
+		        "columns": [
+		            { "data": "firstandlastname" },
+		            { "data": "department" },
+		            { "data": "position" },
+		            { "data": "leaveType","className": "text-center" },
+		            { "data": "status","className": "text-center" },
+		            { "data": "requestDate","className": "text-center" },
+		            { "data": "approveDate","className": "text-center" },
+		            { "data": "code","className": "text-center", render: function ( data, type, row ) {
+		            	if(row.status == "อนุมัติ"){
+		            		return '<button class="btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
+		            	}
+		            	else if(row.status == "รออนุมัติ"){
+		            		return '<button class="btn-success btn-approve" type="button" id="'+row.code+'" value="อนุมัติ">อนุมัติ</button>&nbsp;&nbsp;<button class="btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
+		            	}
+		            	else if(row.status == "ไม่อนุมัติ"){
+		            		return '<button class="btn-success btn-approve" type="button" id="'+row.code+'" onclick="approveClick(this)" value="อนุมัติ">อนุมัติ</button>';
+		            	}
+		            } }
+		        ],
+		        "columnDefs": [{
+		            "defaultContent": "-",
+		            "targets": "_all"
+		          }]
+		       
+		    } );
+		}
+		
+	} else{
+		$('#textApprove').hide();
+		$('#statusname').hide();
+		$('#status').hide();
+		var table = $('#tableApprove').DataTable();
+			$('#tableApprove').DataTable( {
+				"order": [[5,'desc']],
+				"searching": false,
+				"bProcessing": true,
+				"iDisplayLength": 10,
+				"serverSide": false,
+				"bDestroy": true,
+				"ajax": {
+					"url": ctx + "/ApproveUserSrvl",
+		            "type": "POST",
+		            "data": {
+		            	userLogin: userLogin,
+		            	process: 'ajax'
+		            }
+				},
+				"columns": [
+				    { "data": "firstandlastname","className": "text-center" },
+				    { "data": "department","className": "text-center" },
+				    { "data": "position","className": "text-center" },
+				    { "data": "leaveType","className": "text-center" },
+				    { "data": "status","className": "text-center" },
+				    { "data": "requestDate","className": "text-center" },
+				    { "data": "approveDate","className": "text-center" },
+				    { "data": "code","className": "text-center", render: function ( data, type, row ) {
+				    	if(row.status == "รออนุมัติ"){
+				    		return '<button  class="btn-primary" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
+				    	}
+				    	else{
+				    		return '<button  class="btn-primary" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข" disabled>แก้ไข</button>';
+				    	}
+				    } } 
+				  ],
+				  "columnDefs": [{
+					  "defaultContent": "-",
+					  "targets": "_all"
+				  }]
+			} );
+		}
 });
 
+function editClick(obj){
+	  var rowID = $(obj).attr('id');
+	  location.href ='/testweb/LoadEditRequestOnLeaveSrvl?code='+rowID;
+}
+
+function unApproveClick(obj){
+	  var rowID = $(obj).attr('id');
+	  var status = "ไม่อนุมัติ"; 
+	  renderDataTable();
+}
+function approveClick(obj){
+	  var rowID = $(obj).attr('id');
+	  var status = "อนุมัติ"; 
+	  renderDataTable();
+}

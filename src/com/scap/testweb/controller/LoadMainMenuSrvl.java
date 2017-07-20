@@ -43,5 +43,4 @@ public class LoadMainMenuSrvl extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/mainMenu/mainMenu.jsp"); 
 		rd.forward(request, response);
 	}
-	
 }

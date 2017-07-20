@@ -33,14 +33,15 @@
 		<div class="container" style="margin-top: 5%; margin-bottom: 12%;">
 			<div class="panel panel-primary form-horizontal">
 				<div class="panel-heading">
-					<h2 class="panel-title" align="center">
+					<h2 class="panel-title" id="txtHead" align="center">
 						<b>คำร้องขอลา</b>
 					</h2>
 				</div>
 				<div class="panel-body">
-					<div class="form-group" align="left">
-						<label class="col-sm-offset-10 col-sm-1">สถานะ :</label>
-						<label class="col-sm-1" id="txtstatus">รออนุมัติ</label>
+				<br> <br>
+					<div class="form-group">
+						<h4 class="col-sm-offset-5 col-sm-1">สถานะ :</h4>
+						<h4 class="col-sm-2" id="txtstatus">รออนุมัติ</h4>
 					</div>
 					<br> <br>
 					<div class="form-group">
@@ -118,7 +119,7 @@
 					</div>
 					<br>
 					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-2">
+						<div class="col-sm-offset-4 col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
 								id="btnSubmit" onclick="sendRequest();">ส่ง</button>
 						</div>
@@ -126,9 +127,12 @@
 							<button type="button" class="btn btn-primary btn-block"
 								id="btnCancel" onclick="cancelRequest();">ยกเลิก</button>
 						</div>
-						<div class="col-sm-2">
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-5  col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
-								id="btnBackMainMenuUser" onclick="location.href='/testweb/LoadMainMenuSrvl'">กลับสู่หน้าหลัก</button>
+								id="btnBack" onclick="location.href='/testweb/ApproveSrvl'">กลับสู่หน้าหลัก
+							</button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -142,7 +146,8 @@
 						</div>
 						<div class="col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
-								id="btnBackMainMenuBoss" onclick="location.href='/testweb/LoadMainMenuSrvl'">กลับสู่หน้าหลัก</button>
+								id="btnBackMainMenuBoss" onclick="location.href='/testweb/ApproveSrvl'">กลับสู่หน้าอนุมัติคำร้องขอ
+							</button>
 						</div>
 					</div>
 					

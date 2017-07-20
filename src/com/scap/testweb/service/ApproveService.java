@@ -13,10 +13,11 @@ public class ApproveService {
 		ApproveDao data = new ApproveDao();
 		return data.selectData(status);
 	}
-	
-	public String approveData(String status, String code){
+	//boss click approve
+	public String approveData(String status, String rowID){
 		ApproveDao approve = new ApproveDao();
-		return approve.approveData(status,code);
+		String click = approve.approveData(status,rowID);
+		return click;
 	}
 	
 	public String personal(String userLogin){

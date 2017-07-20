@@ -46,10 +46,10 @@ public class LoadEditRequestOnLeaveSrvl extends HttpServlet {
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String leaveCode = "7517107799";
-		
 		EditRequestService editRequestService = new EditRequestService();
 		RequestService requestService = new RequestService();
+		
+		String leaveCode = request.getParameter("code");
 		
 		String status = editRequestService.findStatus(leaveCode);
 		String fName = editRequestService.findFristNameUser(leaveCode);

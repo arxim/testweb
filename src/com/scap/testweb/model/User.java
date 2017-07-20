@@ -1,5 +1,9 @@
 package com.scap.testweb.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class User {
 	private String userNo;
 	private String userId;
@@ -77,13 +81,40 @@ public class User {
 		return requestDate;
 	}
 	public void setRequestDate(String requestDate) {
-		this.requestDate = requestDate;
+		String dbDate = "";
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat dfDate =new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date date = df.parse(requestDate);
+			dbDate = dfDate.format(date);
+			this.requestDate = dbDate;
+		}
+		catch(ParseException e){
+			e.printStackTrace();
+			this.requestDate = requestDate;
+		}
 	}
 	public String getApproveDate() {
 		return approveDate;
 	}
 	public void setApproveDate(String approveDate) {
-		this.approveDate = approveDate;
+		if(approveDate != null){
+			String dbDate = "";
+			SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+			SimpleDateFormat dfDate =new SimpleDateFormat("dd/MM/yyyy");
+			try{
+				Date date = df.parse(approveDate);
+				dbDate = dfDate.format(date);
+				this.approveDate = dbDate;
+			}
+			catch(ParseException e){
+				e.printStackTrace();
+				this.approveDate = approveDate;
+			}
+		}
+		else{
+			this.approveDate = approveDate;
+		}
 	}
 	public String getLeaveType() {
 		return leaveType;

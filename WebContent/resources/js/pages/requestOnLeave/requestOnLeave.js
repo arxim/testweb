@@ -19,9 +19,9 @@ $(document).ready(function () {
 		$("#endDate").prop('disabled', true);
 		$("#txtAreaNote").prop('disabled', true);
 		
+		$('#btnBack').hide();
 		$('#btnSubmit').hide();
 		$('#btnCancel').hide();
-		$('#btnBackMainMenuUser').hide();
 	}
 	else{
 		$("#txtstatus").text(status);
@@ -38,26 +38,51 @@ $(document).ready(function () {
 		$("#txtDateDiff").text(diff);
 		$("#txtAreaNote").val(note);
 		
+		$('#btnBack').hide();
 		$('#btnApprove').hide();
 		$('#btnNotAllowed').hide();
 		$('#btnBackMainMenuBoss').hide();
 		
+		if(!$("#comboTypeLeave").val()==""){
+			$("#txtHead").text("แก้ไขคำร้องรอลา");
+			$('#btnSubmit').text("แก้ไขข้อมูล");
+		}
+		else
+			$("#txtstatus").text("ระหว่างดำเนินการ");
+		
+		if( $('#txtstatus').text() == 'อนุมัติ'){
+			$('#txtstatus').css('color', 'green');
+			$("#comboTypeLeave").prop('disabled', true);
+			$("#startDate").prop('disabled', true);
+			$("#endDate").prop('disabled', true);
+			$("#txtAreaNote").prop('disabled', true);
+			$('#btnSubmit').hide();
+			$('#btnCancel').hide();
+			$('#btnBack').show();
+		}
+		else if($('#txtstatus').text() == 'ไม่อนุมัติ'){
+			$('#txtstatus').css('color', 'red');
+			$("#comboTypeLeave").prop('disabled', true);
+			$("#startDate").prop('disabled', true);
+			$("#endDate").prop('disabled', true);
+			$("#txtAreaNote").prop('disabled', true);
+			$('#btnSubmit').hide();
+			$('#btnCancel').hide();
+			$('#btnBack').show();
+		}
+		else
+			$('#txtstatus').css('color', 'blue');
 	}
 	
-	if($('#txtstatus').text() == 'อนุมัติ')
-		$('#txtstatus').css('color', 'green');
-	else if($('#txtstatus').text() == 'ไม่อนุมัติ')
-		$('#txtstatus').css('color', 'red');
-	else
-		$('#txtstatus').css('color', 'black');
+	
 	
 	$('#datepickerStart').datepicker({
-		format:"dd MM yyyy",
+		format:"dd/mm/yyyy",
 		autoclose: true,
 		todayHighlight : true
 	});
 	$('#datepickerEnd').datepicker({
-		format:"dd MM yyyy",
+		format:"dd/mm/yyyy",
 		autoclose: true,
 		todayHighlight : true
 	});
@@ -129,12 +154,14 @@ function sendRequest() {
 
 function sendApprove(){
 	var approve = "อนุมัติ";
+	var email = $("#txtemail").val(); 
 	$.ajax({
 	      type: 'POST',
 	      url: ctx + '/EditRequestOnLeaveSrvl',
 	      data: {
 	    	  sendCode : code,
-	    	  sendApprove : approve
+	    	  sendApprove : approve,
+	    	  email : email
 	      },
 	      success: function(data) {
 	    	  if(data === "true"){
@@ -151,16 +178,18 @@ function sendApprove(){
 
 function sendNotAllowed(){
 	var notAllowed = "ไม่อนุมัติ";
+	var email = $("#txtemail").val();
 	$.ajax({
 	      type: 'POST',
 	      url: ctx + '/EditRequestOnLeaveSrvl',
 	      data: {
 	    	  sendCode : code,
-	    	  sendNotAllowed : notAllowed
+	    	  sendNotAllowed : notAllowed,
+	    	  email : email
 	      },
 	      success: function(data) {
 	    	  if(data === "true"){
-				$("#msgModalRequest").text("คำร้องขอไม่ถูกอนุมัติ");
+				$("#msgModalRequest").text("ไม่อนุมัติคำร้องขอ");
 		    	$("#myModalRequest").modal("show");
 	    	  }
 	    	  else{
@@ -178,7 +207,7 @@ function btnClose(){
 		location.href="/testweb/ApproveSrvl";
 	else if($("#msgModalRequest").text()=="อนุมัติคำร้องขอสำเร็จ")
 		location.href="/testweb/ApproveSrvl";
-	else if($("#msgModalRequest").text()=="คำร้องขอไม่ถูกอนุมัติ")
+	else if($("#msgModalRequest").text()=="ไม่อนุมัติคำร้องขอ")
 		location.href="/testweb/ApproveSrvl";
 }
 
@@ -188,13 +217,16 @@ function cancelRequest(){
 }
 
 function comfirm(){
-	location.reload();
+	location.href="/testweb/ApproveSrvl";
 }
 
 function dateDiff(){
 	var strStart = $("#startDate").val();
 	var strStop = $("#endDate").val();
-	
+
+	strStart = strStart.substr(3,2)+"/"+strStart.substr(0,2)+"/"+strStart.substr(6,9);
+	strStop = strStop.substr(3,2)+"/"+strStop.substr(0,2)+"/"+strStop.substr(6,9);
+
 	var first_date = Date.parse(strStart);
 	var last_date = Date.parse(strStop);
 	var diff_date =  last_date - first_date;
@@ -205,5 +237,4 @@ function dateDiff(){
 	if (Math.floor(num_days) > 0)
 		result += Math.floor(num_days);
 	$("#txtDateDiff").text(result);
-
 }
