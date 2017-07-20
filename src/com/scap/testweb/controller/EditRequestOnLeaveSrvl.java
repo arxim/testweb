@@ -1,6 +1,7 @@
 package com.scap.testweb.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.scap.testweb.service.EditRequestService;
 import com.scap.testweb.service.RequestService;
+import com.scap.testweb.service.SendEmailService;
 
 /**
  * Servlet implementation class EditRequestOnLeaveSrvl
@@ -55,36 +57,77 @@ public class EditRequestOnLeaveSrvl extends HttpServlet {
 	    
 	    String approve = request.getParameter("sendApprove");
 	    String notAllowed = request.getParameter("sendNotAllowed");
+	    String emailUser = request.getParameter("email");
 	    
 	    String code = request.getParameter("sendCode");
+	    String fNmae = request.getParameter("fristName");
+		String lNmae = request.getParameter("lastName");
 		String typeLeave = request.getParameter("comboTypeLeave");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		String dateDiff = request.getParameter("txtDateDiff");
 		String note = request.getParameter("txtAreaNote");
 		
-//		String userPosition = requestService.findPosition(userLogin);
-		String boss = "boss@gmail.com";
+		String fullName = fNmae+" "+lNmae;
 		
-		if(userLogin.equals(boss)){
+//		String userPosition = requestService.findPosition(userLogin);
+
+		String mailBoss = requestService.findEmailBoss();
+		
+		SendEmailService seService = new SendEmailService();
+		
+		if(userLogin.equals(mailBoss)){
 			if(approve != null){
-				boolean resultApprove = editRequestService.setDataApprove(code, approve);
-				if(resultApprove)
-					response.getWriter().write("true");
-				else
+				try{
+				String sendEmail=seService.sendApprove(emailUser,"คำร้องขอถูกอนุมัติ"); // send new password to Email
+				if(sendEmail=="PASS"){
+					boolean resultApprove = editRequestService.setDataApprove(code, approve);
+					if(resultApprove)
+						response.getWriter().write("true");
+					else
+						response.getWriter().write("false");
+				 }
+				 else{
+					 response.getWriter().write("false");
+				 } 
+				}catch (Exception e) {
+					e.printStackTrace();
 					response.getWriter().write("false");
+				}
 			}
 			else{
-				boolean resultnotAllowed = editRequestService.setDataApprove(code, notAllowed);
-				if(resultnotAllowed)
-					response.getWriter().write("true");
-				else
-					response.getWriter().write("false");
+				try{
+					String sendEmail=seService.sendApprove(emailUser,"คำร้องขอไม่ถูกอนุมัติ"); // send new password to Email
+					if(sendEmail=="PASS"){
+						boolean resultnotAllowed = editRequestService.setDataApprove(code, notAllowed);
+						if(resultnotAllowed)
+							response.getWriter().write("true");
+						else
+							response.getWriter().write("false");
+					 }
+					 else{
+						 response.getWriter().write("false");
+					 } 
+					}catch (Exception e) {
+						e.printStackTrace();
+						response.getWriter().write("false");
+					}
 			}
 		}
 		else{
-			requestService.setEditDataRequest(code, typeLeave, startDate, endDate,dateDiff,note);
-			System.out.println("ประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
+			try{
+				String sendEmail=seService.sendRequest("purasri_p2p@hotmail.com",typeLeave,fullName); // send new password to Email
+				if(sendEmail=="PASS"){
+					requestService.setEditDataRequest(code, typeLeave, startDate, endDate,dateDiff,note);
+					System.out.println("ประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
+				 }
+				 else{
+					 System.out.println("error");
+				 } 
+				}catch (Exception e) {
+					e.printStackTrace();
+					System.out.println("error");
+				}
 		}
 	}
 }

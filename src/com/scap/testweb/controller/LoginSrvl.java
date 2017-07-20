@@ -48,7 +48,7 @@ public class LoginSrvl extends HttpServlet {
 	    
 		String emailSrvl = request.getParameter("txtEmailLogin");
 		String pwdSrvl = request.getParameter("txtPwdLogin");
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/mainMenu/mainMenu.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp");
 		try {
 			LoginService loginServ = new LoginService();
 			HttpSession session = request.getSession();
