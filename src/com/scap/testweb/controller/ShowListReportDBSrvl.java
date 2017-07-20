@@ -54,13 +54,14 @@ public class ShowListReportDBSrvl extends HttpServlet {
 		String minday = request.getParameter("minDay");
 		String maxday = request.getParameter("maxDay");
 		String leavetype = request.getParameter("leaveType");
+		String statustype = request.getParameter("statusType");
 		String process = request.getParameter("process");
 		
 		if (process != null && !process.isEmpty()) {
 			ShowListReportService slrService=new ShowListReportService();
 			response.setContentType("application/json");  // Set content type of the response so that jQuery knows what it can expect.
 			response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-			List<User> users = slrService.getListOnLeave(name,surname,department,position,minday,maxday,leavetype);
+			List<User> users = slrService.getListOnLeave(name,surname,department,position,minday,maxday,leavetype,statustype);
 			Gson gson = new Gson();
 		    PrintWriter out = response.getWriter();
 		    String json = gson.toJson(users);

@@ -26,6 +26,7 @@ function searchEngine(){
 	var minDay=$("#txtMinDay").val();
 	var maxDay=$("#txtMaxDay").val();
 	var leaveType=$("#txtLeaveType").val();
+	var statusType=$("#txtStatusType").val();
 	$('#reportTable').DataTable( {
 		"autoWidth": false,
 		"searching": false,
@@ -44,12 +45,13 @@ function searchEngine(){
 		    	  minDay: minDay,
 		    	  maxDay: maxDay,
 		    	  leaveType: leaveType,
+		    	  statusType: statusType,
 		    	  process: 'ajax'
 		      }
 		},
 		"columnDefs": [    
 		               {"className": "dt-body-left", "targets": [1]},
-		               {"className": "dt-center", "targets": [0,2,3,4,5,6,7]},
+		               {"className": "dt-center", "targets": [0,2,3,4,5,6,7,8]},
 		               {"className": "dt-right", "targets": []},
 		             ],
 		"columns": [
@@ -60,8 +62,9 @@ function searchEngine(){
 		            { "data": "leaveType" },
 		            { "data": "startDate" },
 		            { "data": "endDate" },
+		            { "data": "status" },
 		            { "data": "clickhere", render: function ( data, type, row ) {
-		                return '<a href="#">คลิกที่นี่</a>';
+		                return '<button class="btn btn-info btn-xs " type="button" value="">รายงาน</button>';
 		            } }
 		        ]
 	});

@@ -28,12 +28,12 @@ public class ShowListReportDao {
 		}
 		return s;
 	}
-	public List<User> getListDataDB(String name,String surname,String department,String position,String fDBMinday,String fDBMaxday,String leavetype){ // query select email for check in DB
-		String sql=" select ROW_NUMBER() OVER(ORDER BY LEAVE_MST_USER.[FIRST_NAME] ASC) AS NO,LEAVE_MST_USER.[FIRST_NAME],"
+	public List<User> getListDataDB(String name,String surname,String department,String position,String fDBMinday,String fDBMaxday,String leavetype,String statustype){ // query select email for check in DB
+		String sql=" select ROW_NUMBER() OVER(ORDER BY LEAVE_MST_LEAVE.[REQUEST_DATE] ASC) AS NO,LEAVE_MST_USER.[FIRST_NAME],"
 				+"LEAVE_MST_USER.[LAST_NAME],LEAVE_MST_USER.[DEPARTMENT],LEAVE_MST_USER.[POSITION],LEAVE_MST_LEAVE.[LEAVE_TYPE],"
-				+"LEAVE_MST_LEAVE.[START_DATE],LEAVE_MST_LEAVE.[END_DATE] FROM LEAVE_MST_USER" 
-				+" JOIN LEAVE_MST_LEAVE ON LEAVE_MST_LEAVE.[EMPLOYEE_ID]=LEAVE_MST_USER.[ID] WHERE (LEAVE_MST_LEAVE.[STATUS]='อนุมัติ')"
-				+" AND (LEAVE_MST_LEAVE.[START_DATE] BETWEEN '"+fDBMinday+"' AND '"+fDBMaxday+"')"
+				+"LEAVE_MST_LEAVE.[START_DATE],LEAVE_MST_LEAVE.[END_DATE],LEAVE_MST_LEAVE.[STATUS] FROM LEAVE_MST_USER" 
+				+" JOIN LEAVE_MST_LEAVE ON LEAVE_MST_LEAVE.[EMPLOYEE_ID]=LEAVE_MST_USER.[ID] WHERE"
+				+" (LEAVE_MST_LEAVE.[START_DATE] BETWEEN '"+fDBMinday+"' AND '"+fDBMaxday+"')"
 				+" AND (LEAVE_MST_LEAVE.[END_DATE] BETWEEN '"+fDBMinday+"' AND '"+fDBMaxday+"')";
 		if(!name.isEmpty() && name!=null){
 			sql+="AND (LEAVE_MST_USER.[FIRST_NAME]='"+name+"')";
@@ -50,6 +50,9 @@ public class ShowListReportDao {
 		if(!leavetype.isEmpty() && leavetype!=null){
 			sql+="AND (LEAVE_MST_LEAVE.[LEAVE_TYPE]='"+leavetype+"')";
 		}
+		if(!statustype.isEmpty() && statustype!=null){
+			sql+="AND (LEAVE_MST_LEAVE.[STATUS]='"+statustype+"')";
+		}
 		DbConnector dbconn = new DbConnector();
 		List<User> users = new ArrayList<User>();
 		try{
@@ -65,6 +68,7 @@ public class ShowListReportDao {
 				user.setLeaveType(rs.getString("LEAVE_TYPE"));
 				user.setStartDate(changeformatDateToShow(rs.getString("START_DATE")));
 				user.setEndDate(changeformatDateToShow(rs.getString("END_DATE")));
+				user.setStatus(rs.getString("STATUS"));
 				users.add(user);
 			}
 		}

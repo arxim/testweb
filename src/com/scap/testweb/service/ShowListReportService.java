@@ -25,10 +25,10 @@ public class ShowListReportService {
 		}
 		return s;
 	}
-	public List<User> getListOnLeave(String name,String surname,String department,String position,String minday,String maxday,String leavetype){
+	public List<User> getListOnLeave(String name,String surname,String department,String position,String minday,String maxday,String leavetype,String statustype){
 		String fDBMinday=changeformatDateToDB(minday);
 		String fDBMaxday=changeformatDateToDB(maxday);
 		ShowListReportDao slrdao = new ShowListReportDao();
-		return slrdao.getListDataDB(name,surname,department,position,fDBMinday,fDBMaxday,leavetype);
+		return slrdao.getListDataDB(name,surname,department,position,fDBMinday,fDBMaxday,leavetype,statustype);
 	}
 }
