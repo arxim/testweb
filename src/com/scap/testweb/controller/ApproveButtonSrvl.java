@@ -42,25 +42,13 @@ public class ApproveButtonSrvl extends HttpServlet {
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String statusSrvl = request.getParameter("status");
 		String rowIDSrvl = request.getParameter("rowID");
-		String process = request.getParameter("process");
 		
-		if (process != null && !process.isEmpty()) {
+		if (rowIDSrvl != null && !rowIDSrvl.isEmpty()) {
 			response.setContentType("application/json");  // Set content type of the response so that jQuery knows what it can expect.
 		    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 		    
 		    ApproveService dt = new ApproveService();
-		    String update = dt.approveData(statusSrvl, rowIDSrvl);
-		    if(update == "อนุมัติ"){
-		    	String result = "อนุมัติ";
-			    response.getWriter().write(result);
-		    }
-		    else if(update == "ไม่อนุมัติ"){
-		    	String result =  "ไม่อนุมัติ";
-		    	response.getWriter().write(result);
-		    }
-		    else{
-		    	response.getWriter().write("null");
-		    }
+		    dt.approveData(statusSrvl, rowIDSrvl);
 		}else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
 			rd.forward(request, response);	

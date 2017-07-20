@@ -39,6 +39,7 @@
 						<select id="status" class="form-control">
 							<option value="รออนุมัติ" selected="selected">รออนุมัติ</option>
 							<option value="อนุมัติ">อนุมัติ</option>
+							<option value="ไม่อนุมัติ">ไม่อนุมัติ</option>
 						</select>
 					</div>
 					<br>
@@ -54,9 +55,9 @@
                 <th class="text-center" width="12%">ตำแหน่ง</th> 
                 <th class="text-center" width="13%">ประเภทการลา</th> 
                 <th class="text-center" width="9%">สถานะ</th>
-                <th class="text-center" width="12%">วันที่ขออนุมัติ</th> 
-                <th class="text-center" width="12%">วันที่อนุมัติ</th> 
-                <th class="text-center" width="10%">เลือก</th>
+                <th class="text-center" width="8%">วันที่ขออนุมัติ</th> 
+                <th class="text-center" width="8%">วันที่อนุมัติ</th> 
+                <th class="text-center" width="14%">เลือก</th>
             </tr> 
       </thead>
     </table>
