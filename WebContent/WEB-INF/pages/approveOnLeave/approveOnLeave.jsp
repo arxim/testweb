@@ -67,7 +67,8 @@
 								</select>
 							</div>
 						</div>
-						<table id="tableApprove" class="display table table-responsive table-bordered dt-responsive nowrap table-hover" style="width: 100%" cellspacing="0"
+						<table id="tableApprove" class="display table table-responsive table-bordered dt-responsive nowrap table-hover" 
+						style="width: 100%" cellspacing="0"
 							border="1" bordercolor="#CCCCCC" width="100%">
 							<thead>
 								<tr>

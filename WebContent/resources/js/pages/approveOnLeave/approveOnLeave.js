@@ -70,11 +70,9 @@ $(document).ready(function() {
 		            { "data": "code","className": "text-center", render: function ( data, type, row ) {
 		            	if(row.status == "อนุมัติ"){
 		            		return '<button class="btn btn-xs btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
-		            	}
-		            	else if(row.status == "รออนุมัติ"){
+		            	}else if(row.status == "รออนุมัติ"){
 		            		return '<button class="btn btn-xs btn-success btn-approve" type="button" id="'+row.code+'" value="อนุมัติ">อนุมัติ</button>&nbsp;&nbsp;<button class="btn btn-xs btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
-		            	}
-		            	else if(row.status == "ไม่อนุมัติ"){
+		            	}else if(row.status == "ไม่อนุมัติ"){
 		            		return '<button class="btn btn-xs btn-success btn-approve" type="button" id="'+row.code+'" onclick="approveClick(this)" value="อนุมัติ">อนุมัติ</button>';
 		            	}
 		            } }
@@ -119,9 +117,8 @@ $(document).ready(function() {
 				    { "data": "code","className": "text-center", render: function ( data, type, row ) {
 				    	if(row.status == "รออนุมัติ"){
 				    		return '<button class="btn btn-xs btn-warning" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
-				    	}
-				    	else{
-				    		return '<button class="btn btn-xs btn-warning" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข" disabled>แก้ไข</button>';
+				    	}else{
+				    		return '<button class="btn btn-xs btn-warning disabled" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข" disabled="disabled">แก้ไข</button>';
 				    	}
 				    } } 
 				  ],
