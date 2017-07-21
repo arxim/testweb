@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 	if(userLogin == mailBoss){
 		$("#txtstatus").text(status);
@@ -22,6 +21,13 @@ $(document).ready(function () {
 		$('#btnBack').hide();
 		$('#btnSubmit').hide();
 		$('#btnCancel').hide();
+		
+		if( $('#txtstatus').text() == 'อนุมัติ')
+			$('#txtstatus').css('color', 'green');
+		else if($('#txtstatus').text() == 'ไม่อนุมัติ')
+			$('#txtstatus').css('color', 'red');
+		else
+			$('#txtstatus').css('color', 'blue');
 	}
 	else{
 		$("#txtstatus").text(status);
@@ -74,8 +80,6 @@ $(document).ready(function () {
 			$('#txtstatus').css('color', 'blue');
 	}
 	
-	
-	
 	$('#datepickerStart').datepicker({
 		format:"dd/mm/yyyy",
 		autoclose: true,
@@ -86,13 +90,12 @@ $(document).ready(function () {
 		autoclose: true,
 		todayHighlight : true
 	});
-	
-	
-	
 });
 
 function sendRequest() {
 	if((!$("#txtemail").val() == "")&& (!$("#comboBoss").val() == "")&& (!$("#comboTypeLeave").val() == "")&& (!$("#startDate").val() == "")&& (!$("#endDate").val() == "")&& (!$("#txtDateDiff").text() == "")){
+		$('#btnSubmit').prop('disabled', true);
+		$('#btnCancel').prop('disabled', true);
 		var fName = $("#fName").val();
 		var lName = $("#lName").val();
 		var epyDepartment = $("#comboDepartment").val();
@@ -109,7 +112,7 @@ function sendRequest() {
     	      type: 'POST',
     	      url: ctx + '/RequestOnLeaveSrvl',
     	      data: {
-    	    	  fristName : fName,
+    	    	  firstName : fName,
     	    	  lastName : lName,
     	    	  comboDepartment : epyDepartment,
     	    	  comboPosition : epyPosition,
@@ -133,6 +136,8 @@ function sendRequest() {
 	    	      url: ctx + '/EditRequestOnLeaveSrvl',
 	    	      data: {
 	    	    	  sendCode : code,
+	    	    	  firstName : fName,
+	    	    	  lastName : lName,
 	    	    	  comboTypeLeave : typeLeave,
 	    	    	  startDate : startDate,
 	    	    	  endDate : endDate,
@@ -149,10 +154,12 @@ function sendRequest() {
 			$("#msgModalRequest").text("กรุณากรอกแบบฟอร์มให้ครบถ้วน");
 	    	$("#myModalRequest").modal("show");
 		}
-	
 }
 
 function sendApprove(){
+	$('#btnApprove').prop('disabled', true);
+	$('#btnNotAllowed').prop('disabled', true);
+	$('#btnBackMainMenuBoss').prop('disabled', true);
 	var approve = "อนุมัติ";
 	var email = $("#txtemail").val(); 
 	$.ajax({
@@ -170,13 +177,19 @@ function sendApprove(){
 		    	  }
 		    	  else{
 		    		$("#msgModalRequest").text("ERROR!!");
-				    $("#myModalRequest").modal("show");  
+				    $("#myModalRequest").modal("show"); 
+				    $('#btnApprove').prop('disabled', false);
+					$('#btnNotAllowed').prop('disabled', false);
+					$('#btnBackMainMenuBoss').prop('disabled', false);
 		    	  }
 	      }
 	});
 }
 
 function sendNotAllowed(){
+	$('#btnApprove').prop('disabled', true);
+	$('#btnNotAllowed').prop('disabled', true);
+	$('#btnBackMainMenuBoss').prop('disabled', true);
 	var notAllowed = "ไม่อนุมัติ";
 	var email = $("#txtemail").val();
 	$.ajax({
@@ -194,7 +207,10 @@ function sendNotAllowed(){
 	    	  }
 	    	  else{
 	    		$("#msgModalRequest").text("ERROR!!");
-			    $("#myModalRequest").modal("show");  
+			    $("#myModalRequest").modal("show"); 
+			    $('#btnApprove').prop('disabled', false);
+				$('#btnNotAllowed').prop('disabled', false);
+				$('#btnBackMainMenuBoss').prop('disabled', false);
 	    	  }
 	      }
 	});

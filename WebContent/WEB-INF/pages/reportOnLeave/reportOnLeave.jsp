@@ -54,7 +54,7 @@
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-3">
 						      	 	 <select id="txtDepartmentEmployee" name="txtDepartmentEmployee" class="form-control">
-						      	 	    <option value="">รวมทุกแผนก</option>
+						      	 	    <option value="">ทั้งหมด</option>
 										<option value="บริหารจัดการ">บริหารจัดการ</option>
 										<option value="พัฒนาผลงาน">พัฒนาผลงาน</option>
 										<option value="บัญชีและการเงิน">บัญชีและการเงิน</option>
@@ -74,7 +74,7 @@
 						      	 </div>
 							     <div class="col-xs-8 col-sm-3">
 						      	 	 <select id="txtPositionEmployee" name="txtPositionEmployee" class="form-control">
-						      	 	    <option value="">รวมทุกตำแหน่ง</option>
+						      	 	    <option value="">ทั้งหมด</option>
 										<option value="ลูกจ้างชั่วคราว">ลูกจ้างชั่วคราว</option>
 										<option value="พนักงานทั่วไป">พนักงานทั่วไป</option>
 										<option value="หัวหน้าพนักงาน">หัวหน้าพนักงาน</option>
@@ -122,14 +122,30 @@
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-3">
 						      	 	 <select id="txtLeaveType" name="txtLeaveType" class="form-control">
-						      	 	    <option value="">รวมทุกประเภทการลา</option>
+						      	 	    <option value="">ทั้งหมด</option>
 										<option value="ลาป่วย">ลาป่วย</option>
 										<option value="ลากิจ">ลากิจ</option>
 										<option value="ลาพักร้อน">ลาพักร้อน</option>
+									 </select>	
+									 <div class="visible-xs">
+										 <br>
+									 </div>								 
+						      	</div>
+								<div class="col-xs-4 col-sm-2 control-label">
+					   		 	 	 <p class="text-right">
+					   		 	 	 	 <b>สถานะ</b>
+					   		 	 	 </p>
+						      	 </div>
+						      	 <div class="col-xs-8 col-sm-3">
+						      	 	 <select id="txtStatusType" name="txtStatusType" class="form-control">
+						      	 	    <option value="">ทั้งหมด</option>
+										<option value="รออนุมัติ">รออนุมัติ</option>
+										<option value="อนุมัติ">อนุมัติ</option>
+										<option value="ไม่อนุมัติ">ไม่อนุมัติ</option>
 									 </select>									 
 						      	</div>
 							</div>
-							
+							<br>
 							<div class="row container">
 								<div class="col-xs-12 col-sm-12 text-center">					     		 
 							     	 <button type="button" class="btn btn-primary text-white" id="btnSearchReport" onclick="searchEngine()" >ค้นหา</button>&nbsp;
@@ -151,7 +167,8 @@
 								                <th class="text-center">ประเภทการลา</th>
 								                <th class="text-center">วันเริ่มต้นลา</th>
 								                <th class="text-center">วันสิ้นสุดลา</th>
-								                <th class="text-center">ใบลา</th>
+								                <th class="text-center">สถานะ</th>
+								                <th class="text-center">รายละเอียด</th>
 								             </tr>
 								         </thead>
 						     		</table>
@@ -159,10 +176,6 @@
 							</div>
 				
 							<div class="row container">
-								<button type="button" class="btn btn-primary text-white" id="btnGoToMain" onclick="location.href='/testweb/LoadMainMenuSrvl'" >กลับสู่หน้าหลัก</button>&nbsp
-							    <div class="visible-xs">
-						      	 	 <br>
-						      	</div>
 							    <button type="button" class="btn btn-primary text-white" id="btnGoToApprove" onclick="location.href='/testweb/ApproveSrvl'" >กลับหน้าอนุมัติคำร้อง</button>
 							</div>
 						</div>

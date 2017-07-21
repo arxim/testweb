@@ -50,6 +50,7 @@ public class LoadEditRequestOnLeaveSrvl extends HttpServlet {
 		RequestService requestService = new RequestService();
 		
 		String leaveCode = request.getParameter("code");
+//		String leaveCode = "2989763799";
 		
 		String status = editRequestService.findStatus(leaveCode);
 		String fName = editRequestService.findFristNameUser(leaveCode);
