@@ -69,13 +69,13 @@ $(document).ready(function() {
 		            { "data": "approveDate","className": "text-center" },
 		            { "data": "code","className": "text-center", render: function ( data, type, row ) {
 		            	if(row.status == "อนุมัติ"){
-		            		return '<button class="btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
+		            		return '<button class="btn btn-xs btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
 		            	}
 		            	else if(row.status == "รออนุมัติ"){
-		            		return '<button class="btn-success btn-approve" type="button" id="'+row.code+'" value="อนุมัติ">อนุมัติ</button>&nbsp;&nbsp;<button class="btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
+		            		return '<button class="btn btn-xs btn-success btn-approve" type="button" id="'+row.code+'" value="อนุมัติ">อนุมัติ</button>&nbsp;&nbsp;<button class="btn btn-xs btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
 		            	}
 		            	else if(row.status == "ไม่อนุมัติ"){
-		            		return '<button class="btn-success btn-approve" type="button" id="'+row.code+'" onclick="approveClick(this)" value="อนุมัติ">อนุมัติ</button>';
+		            		return '<button class="btn btn-xs btn-success btn-approve" type="button" id="'+row.code+'" onclick="approveClick(this)" value="อนุมัติ">อนุมัติ</button>';
 		            	}
 		            } }
 		        ],
@@ -88,6 +88,7 @@ $(document).ready(function() {
 		}
 		
 	} else{
+		$('#btnGoToReport').hide();
 		$('#textApprove').hide();
 		$('#statusname').hide();
 		$('#status').hide();
@@ -117,10 +118,10 @@ $(document).ready(function() {
 				    { "data": "approveDate","className": "text-center" },
 				    { "data": "code","className": "text-center", render: function ( data, type, row ) {
 				    	if(row.status == "รออนุมัติ"){
-				    		return '<button  class="btn-primary" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
+				    		return '<button class="btn btn-xs btn-warning" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
 				    	}
 				    	else{
-				    		return '<button  class="btn-primary" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข" disabled>แก้ไข</button>';
+				    		return '<button class="btn btn-xs btn-warning" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข" disabled>แก้ไข</button>';
 				    	}
 				    } } 
 				  ],
@@ -130,7 +131,11 @@ $(document).ready(function() {
 				  }]
 			} );
 		}
+	if (msgTimeout) {
+		$('#msg-modal').modal();
+	}
 });
+
 
 function editClick(obj){
 	  var rowID = $(obj).attr('id');

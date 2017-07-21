@@ -1,80 +1,113 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 	script-header import -->
-	<jsp:include page="/resources/template/script-header.jsp"></jsp:include>
-	<script type="text/javascript" src="resources/libraries/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript" src="resources/libraries/datatables-1.10.13/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="resources/js/pages/approveOnLeave/approveOnLeave.js"></script>
-	<script type="text/javascript">
-		var userLogin = '${sessionScope.userLogin}';
-	</script>
+<jsp:include page="/resources/template/script-header.jsp"></jsp:include>
+<script type="text/javascript"
+	src="resources/libraries/datatables-1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+	src="resources/js/pages/approveOnLeave/approveOnLeave.js"></script>
+<script type="text/javascript">
+	var userLogin = '${sessionScope.userLogin}';
+	var ctx = '${pageContext.request.contextPath}';
+	var msgTimeout = '${sessionScope.msgTimeout}';
+</script>
 <title>อนุมัติคำร้องขอลา</title>
 </head>
 <body class="bg-info">
 	<form id="approve" method="post" action="">
+		<c:if test="${empty sessionScope.userLogin}">
+			<c:redirect url="/" />
+		</c:if>
 		<div class="container" style="margin-top: 5%; margin-bottom: 12%;">
-		  <div class="col-xs-12 col-sm-12">
-			<div class="panel panel-primary form-horizontal">
-				<div class="panel-heading">
-					<h2 class="panel-title text-center" id="textApprove">
-						<b>อนุมัติคำร้องขอลา</b>
-					</h2>
-					<h2 class="panel-title text-center" id="textApproveUser">
-						<b>ประวัติการลา</b>
-					</h2>
-				</div>
-			<div class="col-sm-12">
-				<h5>Welcome : ${sessionScope.userLogin}</h5>
-				<div align="right">
-					<button type="button" class="btn btn-primary text-white" id="btnGoToRequest" onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">+ เพิ่มคำร้องขอลา</button> &nbsp;
-				</div>
-			</div>
-		<div class="panel-body">
-				<div class="form-group">
-						<label id="statusname" class="col-sm-offset-4 col-sm-1 control-label">สถานะ : </label>
-					<div class="col-sm-3">
-						<select id="status" class="form-control">
-							<option value="รออนุมัติ" selected="selected">รออนุมัติ</option>
-							<option value="อนุมัติ">อนุมัติ</option>
-							<option value="ไม่อนุมัติ">ไม่อนุมัติ</option>
-						</select>
+			<div class="col-xs-12 col-sm-12">
+				<div class="panel panel-primary form-horizontal">
+					<div class="panel-heading">
+						<h2 class="panel-title text-center" id="textApprove">
+							<b>อนุมัติคำร้องขอลา</b>
+						</h2>
+						<h2 class="panel-title text-center" id="textApproveUser">
+							<b>ประวัติการลา</b>
+						</h2>
 					</div>
-					<br>
-					<br>
-				</div>
-			
-	
-    <table id="tableApprove" class="display" cellspacing="0" border="1" bordercolor="#CCCCCC" width="100%">
-	 <thead> 
-            <tr>
-                <th class="text-center" width="20%">ชื่อ-นามสกุล</th>
-                <th class="text-center" width="12%">แผนก</th> 
-                <th class="text-center" width="12%">ตำแหน่ง</th> 
-                <th class="text-center" width="13%">ประเภทการลา</th> 
-                <th class="text-center" width="9%">สถานะ</th>
-                <th class="text-center" width="8%">วันที่ขออนุมัติ</th> 
-                <th class="text-center" width="8%">วันที่อนุมัติ</th> 
-                <th class="text-center" width="14%">เลือก</th>
-            </tr> 
-      </thead>
-    </table>
-			
-		<div class="button-heading">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 text-center">
-				<br>
-					<button type="button" class="btn btn-primary text-white" id="btnBackToMainMenu" onclick="location.href='/testweb/LoadMainMenuSrvl'">กลับหน้าหลัก</button> &nbsp;
-					<button type="button" class="btn btn-primary text-white" id="btnGoToReport" onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">รายงานการลา</button>
+					<div class="panel-body">
+						<div class="form-group">
+							<div class="col-sm-5">
+								<h5>Welcome : ${sessionScope.userLogin}</h5>
+							</div>
+							<div class="col-sm-2 col-sm-offset-5">
+								<button type="submit" class="btn btn-block btn-danger"
+									id="btnLogout" formaction="/testweb/LogoutSrvl">Logout</button>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-2 col-sm-offset-10">
+								<button type="button"
+									class="btn btn-block btn-primary text-white"
+									id="btnGoToRequest"
+									onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">+
+									เพิ่มคำร้องขอลา</button>
+								<button type="button"
+									class="btn btn-block btn-primary text-white" id="btnGoToReport"
+									onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">รายงานการลา</button>
+							</div>
+						</div>
+						<div class="form-group">
+							<label id="statusname"
+								class="col-sm-offset-4 col-sm-1 control-label">สถานะ : </label>
+							<div class="col-sm-3">
+								<select id="status" class="form-control">
+									<option value="รออนุมัติ" selected="selected">รออนุมัติ</option>
+									<option value="อนุมัติ">อนุมัติ</option>
+									<option value="ไม่อนุมัติ">ไม่อนุมัติ</option>
+								</select>
+							</div>
+						</div>
+						<table id="tableApprove" class="display table table-responsive table-bordered dt-responsive nowrap table-hover" style="width: 100%" cellspacing="0"
+							border="1" bordercolor="#CCCCCC" width="100%">
+							<thead>
+								<tr>
+									<th class="text-center">ชื่อ-นามสกุล</th>
+									<th class="text-center">แผนก</th>
+									<th class="text-center">ตำแหน่ง</th>
+									<th class="text-center">ประเภทการลา</th>
+									<th class="text-center">สถานะ</th>
+									<th class="text-center">วันที่ขออนุมัติ</th>
+									<th class="text-center">วันที่อนุมัติ</th>
+									<th class="text-center">เลือก</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	  </div>	
-	</div>
-  </div>
-</div>
-</form>
+	</form>
+	<c:if test="${not empty sessionScope.msgTimeout}">
+		<div class="modal fade" id="msg-modal" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h3 class="modal-title text-center">
+							<b>Password !!!</b>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<p>${sessionScope.msgTimeout}</p>
+					</div>
+					<div class="modal-footer bg-info">
+						<button type="button" class="btn btn-default" id="close-msg-modal"
+							data-dismiss="modal">ปิด</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:if>
 </body>
 </html>
