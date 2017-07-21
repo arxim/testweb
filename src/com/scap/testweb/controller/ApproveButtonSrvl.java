@@ -48,7 +48,8 @@ public class ApproveButtonSrvl extends HttpServlet {
 		    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 		    
 		    ApproveService dt = new ApproveService();
-		    dt.approveData(statusSrvl, rowIDSrvl);
+		    String result = dt.approveData(statusSrvl, rowIDSrvl);
+		    response.getWriter().write(result);
 		}else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
 			rd.forward(request, response);	

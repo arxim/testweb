@@ -18,11 +18,9 @@ $(document).ready(function() {
 				data: {
 					status: status,
 					rowID: rowID
-				},
-				success: function(data) {
-					renderDataTable();
 				}
 			});
+			renderDataTable();
 		});
 		
 		$(document).on('click','.btn-unapprove',function(){
@@ -34,11 +32,9 @@ $(document).ready(function() {
 				data: {
 					status: status,
 					rowID: rowID
-				},
-				success: function(data) {
-					renderDataTable();
 				}
 			});
+			renderDataTable();
 		});
 		
 		function renderDataTable() {
@@ -69,11 +65,11 @@ $(document).ready(function() {
 		            { "data": "approveDate","className": "text-center" },
 		            { "data": "code","className": "text-center", render: function ( data, type, row ) {
 		            	if(row.status == "อนุมัติ"){
-		            		return '<button class="btn btn-xs btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
+		            		return '<button class="btn btn-xs btn-danger btn-unapprove" type="button" id="'+row.code+'" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
 		            	}else if(row.status == "รออนุมัติ"){
-		            		return '<button class="btn btn-xs btn-success btn-approve" type="button" id="'+row.code+'" value="อนุมัติ">อนุมัติ</button>&nbsp;&nbsp;<button class="btn btn-xs btn-danger btn-unapprove" type="button" id="'+row.code+'" onclick="unApproveClick(this)" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
+		            		return '<button class="btn btn-xs btn-success btn-approve" type="button" id="'+row.code+'" value="อนุมัติ">อนุมัติ</button>&nbsp;&nbsp;<button class="btn btn-xs btn-danger btn-unapprove" type="button" id="'+row.code+'" value="ไม่อนุมัติ">ไม่อนุมัติ</button>';
 		            	}else if(row.status == "ไม่อนุมัติ"){
-		            		return '<button class="btn btn-xs btn-success btn-approve" type="button" id="'+row.code+'" onclick="approveClick(this)" value="อนุมัติ">อนุมัติ</button>';
+		            		return '<button class="btn btn-xs btn-success btn-approve" type="button" id="'+row.code+'" value="อนุมัติ">อนุมัติ</button>';
 		            	}
 		            } }
 		        ],
@@ -137,15 +133,4 @@ $(document).ready(function() {
 function editClick(obj){
 	  var rowID = $(obj).attr('id');
 	  location.href ='/testweb/LoadEditRequestOnLeaveSrvl?code='+rowID;
-}
-
-function unApproveClick(obj){
-	  var rowID = $(obj).attr('id');
-	  var status = "ไม่อนุมัติ"; 
-	  renderDataTable();
-}
-function approveClick(obj){
-	  var rowID = $(obj).attr('id');
-	  var status = "อนุมัติ"; 
-	  renderDataTable();
 }
