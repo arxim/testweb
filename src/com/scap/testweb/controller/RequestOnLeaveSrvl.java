@@ -55,15 +55,15 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		
 		RequestService requestService = new RequestService();
 	    
-	    String fNmae = request.getParameter("fristName");
-		String lNmae = request.getParameter("lastName");
+	    String fName = request.getParameter("firstName");
+		String lName = request.getParameter("lastName");
 		String typeLeave = request.getParameter("comboTypeLeave");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		String dateDiff = request.getParameter("txtDateDiff");
 		String note = request.getParameter("txtAreaNote");
 		
-		String fullName = fNmae+" "+lNmae;
+		String fullName = fName+" "+lName;
 		String mailBoss = requestService.findEmailBoss();
 		
 		String employee_id = requestService.findID(userLogin);

@@ -176,10 +176,6 @@
 							</div>
 				
 							<div class="row container">
-								<button type="button" class="btn btn-primary text-white" id="btnGoToMain" onclick="location.href='/testweb/LoadMainMenuSrvl'" >กลับสู่หน้าหลัก</button>&nbsp
-							    <div class="visible-xs">
-						      	 	 <br>
-						      	</div>
 							    <button type="button" class="btn btn-primary text-white" id="btnGoToApprove" onclick="location.href='/testweb/ApproveSrvl'" >กลับหน้าอนุมัติคำร้อง</button>
 							</div>
 						</div>

@@ -87,7 +87,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">เวลาเริ่ม :</label>
+						<label class="col-sm-2 control-label">วันที่เริ่ม :</label>
 						<div class="col-sm-3">
 							<div class="input-group date" data-provide="datepicker" id="datepickerStart">
 								<input type="text" class="form-control" placeholder="วัน/เดือน/ปี" id="startDate" onchange="dateDiff();">
@@ -96,7 +96,7 @@
 								</div>
 							</div>
 						</div>
-						<label class="col-sm-2 control-label">เวลาสิ้นสุด :</label>
+						<label class="col-sm-2 control-label">วันที่สิ้นสุด :</label>
 						<div class="col-sm-3">
 							<div class="input-group date" data-provide="datepicker" id="datepickerEnd">
 								<input type="text" class="form-control" placeholder="วัน/เดือน/ปี" id="endDate" onchange="dateDiff();">
@@ -146,7 +146,7 @@
 						</div>
 						<div class="col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
-								id="btnBackMainMenuBoss" onclick="location.href='/testweb/ApproveSrvl'">กลับสู่หน้าอนุมัติคำร้องขอ
+								id="btnBackMainMenuBoss" onclick="location.href='/testweb/ApproveSrvl'">กลับหน้าอนุมัติคำร้องขอ
 							</button>
 						</div>
 					</div>
@@ -170,7 +170,7 @@
 						<h5 id="msgModalRequest" class="text-center text-primary"><b></b></h5>
 					</div>
 					<div class="modal-footer bg-info">
-						<button type="button" class="btn btn-default" id="close-msg-modal" data-dismiss="modal" onclick="btnClose();">Close</button>
+						<button type="button" class="btn btn-default" id="close-msg-modal" data-dismiss="modal" onclick="btnClose();">ปิด</button>
 					</div>
 				</div>
 			</div>
