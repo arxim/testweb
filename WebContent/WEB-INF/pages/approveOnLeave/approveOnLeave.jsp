@@ -39,13 +39,13 @@
 							<div class="col-sm-5">
 								<h5>Welcome : ${sessionScope.userLogin}</h5>
 							</div>
-							<div class="col-sm-2 col-sm-offset-5">
+							<div class="col-xs-5 col-xs-offset-7 col-sm-2 col-sm-offset-5">
 								<button type="submit" class="btn btn-block btn-danger"
 									id="btnLogout" formaction="/testweb/LogoutSrvl">Logout</button>
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-sm-2 col-sm-offset-10">
+							<div class="col-xs-5 col-xs-offset-7 col-sm-2 col-sm-offset-10">
 								<button type="button"
 									class="btn btn-block btn-primary text-white"
 									id="btnGoToRequest"
@@ -58,7 +58,7 @@
 						</div>
 						<div class="form-group">
 							<label id="statusname"
-								class="col-sm-offset-4 col-sm-1 control-label">สถานะ : </label>
+								class="col-xs-3 col-sm-offset-3 col-sm-2 control-label">สถานะ : </label>
 							<div class="col-sm-3">
 								<select id="status" class="form-control">
 									<option value="รออนุมัติ" selected="selected">รออนุมัติ</option>

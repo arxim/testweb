@@ -2,13 +2,14 @@ $(document).ready(function() {
 	if(userLogin=="boss@gmail.com"){
 		$('#textApproveUser').hide();
 		$('#btnGoToRequest').hide();
-		
+		 var table = $('#tableApprove').DataTable();
+		 
 		renderDataTable();
 	
 		$(document).on('change','#status',function(){
 			renderDataTable();
 		});
-		
+				
 		$(document).on('click','.btn-approve',function(){
 			var rowID = $(this).attr('id');
 			var status = "อนุมัติ";
@@ -80,7 +81,6 @@ $(document).ready(function() {
 		       
 		    } );
 		}
-		
 	} else{
 		$('#btnGoToReport').hide();
 		$('#textApprove').hide();
