@@ -70,7 +70,7 @@ $(document).ready(function() {
 					    "data":		"code",
 					    "className": "text-center",
 					    render: function ( data, type, row ) { 
-					    	return '<button class="btn-link" id="'+row.code+'" type="button" value="ดูเพิ่มเติม" onclick="dataFull(this);">คลิ๊ก</button>'
+					    	return '<button class="btn-link" id="'+row.code+'" type="button" value="ดูเพิ่มเติม" onclick="dataFull(this);">คลิก</button>'
 					    },
 					},
 		            {  "orderable": false,
