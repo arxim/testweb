@@ -10,9 +10,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/libraries/datatables-1.10.13/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/pages/approveOnLeave/approveOnLeave.js"></script>
 <script type="text/javascript">
-var ctx = '${pageContext.request.contextPath}';
-var msgTimeout = '${sessionScope.msgTimeout}';
-var userLogin = '${sessionScope.userLogin}';
+	var ctx = '${pageContext.request.contextPath}';
+	var msgTimeout = '${sessionScope.msgTimeout}';
+	var userLogin = '${sessionScope.userLogin}';
 </script>
 <title>หน้าหลัก</title>
 </head>
@@ -37,13 +37,13 @@ var userLogin = '${sessionScope.userLogin}';
 							<div class="col-sm-5">
 								<h5>Welcome : ${sessionScope.userLogin}</h5>
 							</div>
-							<div class="col-sm-2 col-sm-offset-5">
+							<div class="col-xs-5 col-xs-offset-7 col-sm-2 col-sm-offset-5">
 								<button type="submit" class="btn btn-block btn-danger"
 									id="btnLogout" formaction="/testweb/LogoutSrvl">Logout</button>
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-sm-2 col-sm-offset-10">
+							<div class="col-xs-5 col-xs-offset-7 col-sm-2 col-sm-offset-10">
 								<button type="button"
 									class="btn btn-block btn-primary text-white"
 									id="btnGoToRequest"
@@ -51,12 +51,11 @@ var userLogin = '${sessionScope.userLogin}';
 									เพิ่มคำร้องขอลา</button>
 								<button type="button"
 									class="btn btn-block btn-primary text-white" id="btnGoToReport"
-									onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">ไปหน้ารายงานการลา</button>
-							</div>
+									onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">ไปหน้ารายงานการลา</button>							</div>
 						</div>
 						<div class="form-group">
 							<label id="statusname"
-								class="col-sm-offset-4 col-sm-1 control-label">สถานะ : </label>
+								class="col-xs-3 col-sm-offset-3 col-sm-2 control-label">สถานะ : </label>
 							<div class="col-sm-3">
 								<select id="status" class="form-control">
 									<option value="รออนุมัติ" selected="selected">รออนุมัติ</option>
@@ -66,6 +65,23 @@ var userLogin = '${sessionScope.userLogin}';
 							</div>
 						</div>
 						<table id="tableApprove" class="display table table-responsive table-bordered dt-responsive nowrap table-hover" 
+						style="width: 100%" cellspacing="0"
+							border="1" bordercolor="#CCCCCC" width="100%">
+							<thead>
+								<tr>
+									<th class="text-center">ชื่อ-นามสกุล</th>
+									<th class="text-center">แผนก</th>
+									<th class="text-center">ตำแหน่ง</th>
+									<th class="text-center">ประเภทการลา</th>
+									<th class="text-center">สถานะ</th>
+									<th class="text-center">วันที่ขออนุมัติ</th>
+									<th class="text-center">วันที่อนุมัติ</th>
+									<th class="text-center">เพิ่มเติม</th>
+									<th class="text-center">เลือก</th>
+								</tr>
+							</thead>
+						</table>
+						<table id="tableEdit" class="display table table-responsive table-bordered dt-responsive nowrap table-hover" 
 						style="width: 100%" cellspacing="0"
 							border="1" bordercolor="#CCCCCC" width="100%">
 							<thead>

@@ -65,7 +65,7 @@ public class RequestService {
 	}
 	
 	public String findBossID(){
-		String position = "���˹�Ҿ�ѡ�ҹ";
+		String position = "หัวหน้าพนักงาน";
 		RequestDao requestDao = new RequestDao();
 		ArrayList<HashMap<String, String>> result = requestDao.getBossPosition(position);
 		String bossID = result.get(0).get("ID");
@@ -86,7 +86,7 @@ public class RequestService {
 		catch (Exception exp) {
 		    exp.printStackTrace();
 		}
-		String status = "��͹��ѵ�";
+		String status = "รออนุมัติ";
 		RequestDao requestDao = new RequestDao();
 		boolean result = requestDao.setRequestOnLeave(employee_id, boss_id, typeLeave, date_s, date_e,dateDiff,note,status);
 		return result;
