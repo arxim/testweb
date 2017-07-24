@@ -86,9 +86,9 @@ public class SendEmailService {
 		props.put("mail.smtp.port", auth_port);
 		
 		// Subject
-		String subject = "����ͧ��͹��ѵ� \""+typeLeave+"\" �ͧ \""+name+"\"";
+		String subject = "คำร้องขออนุมัติ \""+typeLeave+"\" ของ \""+name+"\"";
 		// Content
-		String body = name+" ���觤���ͧ���͢�͹��ѵ� \""+typeLeave+"\" ��ԡ   http://localhost:8080/testweb/index.jsp  ���ʹ���������´�������";
+		String body = name+" ได้ส่งคำร้องเพื่อขออนุมัติ  \""+typeLeave+"\" คลิก http://localhost:8080/testweb/index.jsp เพื่อดูลายละเอียดเพิ่มเติม";
 		
 		try {
 			
@@ -137,7 +137,7 @@ public class SendEmailService {
 		  props.put("mail.smtp.port", auth_port);
 		  
 		  // Subject
-		  String subject = "�բ�ͤ�������ҡ���˹�Ҿ�ѡ�ҹ";
+		  String subject = "มีข้อความใหม่จากหัวหน้าพนักงาน";
 		  // Content
 		  String body = rqt;
 
