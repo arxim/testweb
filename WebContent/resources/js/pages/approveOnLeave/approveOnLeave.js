@@ -122,14 +122,14 @@ $(document).ready(function() {
 				    { "data": "position","className": "text-center" },
 				    { "data": "leaveType","className": "text-center" },
 				    { "data": "status","className": "text-center" },
-				    { "data": "requestDate","className": "text-center" },
+				    { "data": "requestDate","className": "text-center", "id": "+row.code+" },
 				    { "data": "approveDate","className": "text-center" },
 				    { "data": "code","className": "text-center", render: function ( data, type, row ) {
 				    	if(row.status == "รออนุมัติ"){
-				    		return '<button class="btn btn-xs btn-warning" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
+				    		return '<button class="btn btn-xs btn-warning btn-block" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
 				    	}else{
-				    		return '<button class="btn btn-xs btn-warning" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
-				    	}
+				    		return '<button class="btn btn-xs btn-warning btn-block" type="button" id="'+row.code+'" onclick="editClick(this)" value="รายละเอียด">รายละเอียด</button>';
+				   	}
 				    } } 
 				  ],
 				  "columnDefs": [{
@@ -149,4 +149,9 @@ function editClick(obj){
 function dataFull(obj){
 	var rowID = $(obj).attr('id');
 	location.href ='/testweb/LoadEditRequestOnLeaveSrvl?code='+rowID;
+}
+
+function addRequest(){
+	code = "";
+	location.href='/testweb/LoadRequestOnLeaveSrvl';
 }

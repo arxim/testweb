@@ -47,8 +47,7 @@
 								<button type="button"
 									class="btn btn-block btn-primary text-white"
 									id="btnGoToRequest"
-									onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">+
-									เพิ่มคำร้องขอลา</button>
+									onclick="addRequest();">+เพิ่มคำร้องขอลา</button>
 								<button type="button"
 									class="btn btn-block btn-primary text-white" id="btnGoToReport"
 									onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">ไปหน้ารายงานการลา</button>							</div>
