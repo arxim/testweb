@@ -128,7 +128,7 @@ $(document).ready(function() {
 				    	if(row.status == "รออนุมัติ"){
 				    		return '<button class="btn btn-xs btn-warning" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
 				    	}else{
-				    		return '<button class="btn btn-xs btn-warning disabled" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข" disabled="disabled">แก้ไข</button>';
+				    		return '<button class="btn btn-xs btn-warning" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
 				    	}
 				    } } 
 				  ],

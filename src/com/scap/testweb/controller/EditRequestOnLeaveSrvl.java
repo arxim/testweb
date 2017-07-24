@@ -81,7 +81,7 @@ public class EditRequestOnLeaveSrvl extends HttpServlet {
 				boolean rerult = editRequestService.setDataApprove(code, approve);
 				if(rerult){
 				try{
-				seService.sendApprove(emailUser,"����ͧ�ͧ͢�س  \"���Ѻ���͹��ѵ� \""); // send new password to Email
+				seService.sendApprove(emailUser,"คำร้องขอของคุณ  \"ได้รับการอนุมัติ \""); // send new password to Email
 				response.getWriter().write("true");
 				}catch (Exception e) {
 					e.printStackTrace();
@@ -95,7 +95,7 @@ public class EditRequestOnLeaveSrvl extends HttpServlet {
 				boolean rerult = editRequestService.setDataApprove(code, notAllowed);
 				if(rerult){
 				try{
-					seService.sendApprove(emailUser,"����ͧ�ͧ͢�س \"������Ѻ���͹��ѵ�\""); // send new password to Email
+					seService.sendApprove(emailUser,"คำร้องขอของคุณ \"ไม่ได้รับการอนุมัติ\""); // send new password to Email
 					response.getWriter().write("true");
 					}catch (Exception e) {
 						e.printStackTrace();

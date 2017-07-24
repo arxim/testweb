@@ -53,10 +53,10 @@ public class ApproveButtonSrvl extends HttpServlet {
 		    
 		    SendEmailService seService = new SendEmailService();
 		    
-		    if(result.equals("͹��ѵ�")){
+		    if(result.equals("อนุมัติ")){
 				try{
 				String emailUser = dt.findEmployeeID(rowIDSrvl);
-				seService.sendApprove(emailUser,"����ͧ�ͧ͢�س  \"���Ѻ���͹��ѵ� \""); // send new password to Email
+				seService.sendApprove(emailUser,"คำร้องขอของคุณ  \"ได้รับการอนุมัติ \""); // send new password to Email
 				}catch (Exception e) {
 					e.printStackTrace();
 					response.getWriter().write("Send Email fail.");
@@ -65,7 +65,7 @@ public class ApproveButtonSrvl extends HttpServlet {
 		    else{
 		    	try{
 		    	String emailUser = dt.findEmployeeID(rowIDSrvl);
-				seService.sendApprove(emailUser,"����ͧ�ͧ͢�س \"������Ѻ���͹��ѵ�\""); // send new password to Email
+				seService.sendApprove(emailUser,"คำร้องขอของคุณ \"ไม่ได้รับการอนุมัติ\""); // send new password to Email
 				}catch (Exception e) {
 					e.printStackTrace();
 					response.getWriter().write("Send Email fail.");
