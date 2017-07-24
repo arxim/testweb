@@ -71,15 +71,9 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		
 		SendEmailService seService = new SendEmailService();
 		PrintWriter print = response.getWriter();
+		requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,dateDiff,note);
 		try{
-		String sendEmail=seService.sendRequest("purasri_p2p@hotmail.com",typeLeave,fullName); // send new password to Email
-		if(sendEmail=="PASS"){
-			requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,dateDiff,note);
-			//System.out.println("ID : "+employee_id+ "\nชื่อ: "+fNmae+"\nนามสกุล: "+lNmae+"\nแผนก: "+ epyDepartment+"\nตำแหน่ง: "+epyPosition+"\nอีเมลล์: "+email+"\nชื่อหัวหน้า: "+nameBoss+"\nประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
-		 }
-		 else{
-			 print.write("Send Email Fail !!");// send new password fail (Problem in internet)
-		 } 
+		seService.sendRequest("purasri_p2p@hotmail.com",typeLeave,fullName); // send new password to Email
 		}catch (Exception e) {
 			e.printStackTrace();
 			print.write("Send Email fail !!");// send new password fail (Problem in internet)

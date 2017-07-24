@@ -20,7 +20,7 @@ public class ApproveDao {
 				+ " LEAVE_MST_LEAVE.[STATUS], LEAVE_MST_LEAVE.[APPROVE_DATE] "
 				+ " FROM LEAVE_MST_LEAVE "
 				+ " JOIN LEAVE_MST_USER ON LEAVE_MST_LEAVE.EMPLOYEE_ID = LEAVE_MST_USER.ID "
-				+ " WHERE LEAVE_MST_LEAVE.STATUS = 'รออนุมัติ' ORDER BY REQUEST_DATE ASC";
+				+ " WHERE LEAVE_MST_LEAVE.STATUS = '��͹��ѵ�' ORDER BY REQUEST_DATE ASC";
 		
 				
 		if (status != null && !status.isEmpty()) {
@@ -60,23 +60,23 @@ public class ApproveDao {
 	
 	public String approveData (String status, String rowID){
 		//click button change status
-		if(status.equals("อนุมัติ")){
+		if(status.equals("͹��ѵ�")){
 			DbConnector dbconn = new DbConnector();
 			String approveDate = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
+			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = '͹��ѵ�', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
 			dbconn.doConnect();
 			dbconn.doSave(sql);
 			dbconn.doCommit();
-			return "อนุมัติ";
+			return "͹��ѵ�";
 		}
-		else if(status.equals("ไม่อนุมัติ")){
+		else if(status.equals("���͹��ѵ�")){
 			DbConnector dbconn = new DbConnector();
 			String approveDate = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'ไม่อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
+			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = '���͹��ѵ�', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
 			dbconn.doConnect();
 			dbconn.doSave(sql);
 			dbconn.doCommit();
-			return "ไม่อนุมัติ";
+			return "���͹��ѵ�";
 		}
 		return "false";
 	}
@@ -130,6 +130,36 @@ public class ApproveDao {
 		}
 		
 		return users;
+	}
+	
+	public ArrayList<HashMap<String, String>> getEmployeeID(String code){
+		String sql = " SELECT * FROM LEAVE_MST_LEAVE WHERE CODE = '" + code + "'";
+		DbConnector dbconn = new DbConnector();
+		ArrayList<HashMap<String,String>> resultID = null;
+		try{
+			dbconn.doConnect();
+			resultID = dbconn.getData(sql);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
+		return resultID;
+	}
+	
+	public ArrayList<HashMap<String, String>> getEmailUser(String id){
+		String sql = " SELECT * FROM LEAVE_MST_USER WHERE ID = '" + id + "'";
+		DbConnector dbconn = new DbConnector();
+		ArrayList<HashMap<String,String>> result = null;
+		try{
+			dbconn.doConnect();
+			result = dbconn.getData(sql);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+			}
+		return result;
 	}
 	
 }

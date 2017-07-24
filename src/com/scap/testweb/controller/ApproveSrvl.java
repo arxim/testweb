@@ -45,6 +45,9 @@ public class ApproveSrvl extends HttpServlet {
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
+	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+		
 		String statusSrvl = request.getParameter("status");
 		String process = request.getParameter("process");
 		
@@ -61,8 +64,10 @@ public class ApproveSrvl extends HttpServlet {
 			out.print("{ \"data\":" + json + "}");
 		}
 		else {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
-			rd.forward(request, response);	
+//			RequestDispatcher rd = request.getRequestDispatcher("pages/approveOnLeave/approveOnLeave.jsp"); 
+//			rd.forward(request, response);	
+			String urlRedirect = request.getContextPath() + "/pages/approveOnLeave/approveOnLeave.jsp";
+			response.sendRedirect(urlRedirect);
 		}
 	}
 }

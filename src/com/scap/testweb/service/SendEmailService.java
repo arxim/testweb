@@ -137,7 +137,7 @@ public class SendEmailService {
 		  props.put("mail.smtp.port", auth_port);
 		  
 		  // Subject
-		  String subject = "New message from the leave system.";
+		  String subject = "มีข้อความใหม่จากหัวหน้าพนักงาน";
 		  // Content
 		  String body = rqt;
 

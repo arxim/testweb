@@ -4,13 +4,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>ประวัติการลา</title>
+	<title>รายงานการลา</title>
 	<!-- 	script-header import -->
 	<jsp:include page="/resources/template/script-header.jsp"></jsp:include>
 	<script type="text/javascript">
 		var ctx = '${pageContext.request.contextPath}';
 	</script>
-	<script type="text/javascript" src="resources/js/pages/reportOnLeave/reportOnLeave.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/pages/reportOnLeave/reportOnLeave.js"></script>
 </head>
 <body class="bg-info">
 	<div class="container" style="margin-top:10%; margin-bottom:12%;">
@@ -20,14 +20,14 @@
 			<div class="col-xs-12 col-sm-12">			
 				<div class="panel panel-primary text-center">
 				    <div class="panel-heading">
-				    	<h5 class="panel-title"><b>ประวัติการลาของพนักงาน</b></h5>
+				    	<h5 class="panel-title"><b>รายงานการลาของพนักงาน</b></h5>
 				 	</div>
 				    <div class="panel-body">
 				    	<div class="dataSearch-heading form-horizontal">
 							<div class="row container">
 								<div class="col-xs-4 col-sm-2 control-label">
 									 <p class="text-right">
-					   		 	 	 	 <b>ชื่อพนักงาน</b>
+					   		 	 	 	 <b>ชื่อพนักงาน:</b>
 					   		 	 	 </p>
 								</div>
 								<div class="col-xs-8 col-sm-3">
@@ -38,7 +38,7 @@
 								</div>
 								<div class="col-xs-4 col-sm-2 control-label">
 						      	     <p class="text-right">
-					   		 	 	 	 <b>นามสกุล</b>
+					   		 	 	 	 <b>นามสกุล:</b>
 					   		 	 	 </p>
 						      	 </div>
 							     <div class="col-xs-8 col-sm-3">
@@ -49,7 +49,7 @@
 							<div class="row container">
 								<div class="col-xs-4 col-sm-2 control-label">
 					   		 	 	 <p class="text-right">
-					   		 	 	 	 <b>แผนก</b>
+					   		 	 	 	 <b>แผนก:</b>
 					   		 	 	 </p>
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-3">
@@ -69,7 +69,7 @@
 						      	 
 						      	 <div class="col-xs-4 col-sm-2 control-label">
 						      	     <p class="text-right">
-					   		 	 	 	 <b>ตำแหน่ง</b>
+					   		 	 	 	 <b>ตำแหน่ง:</b>
 					   		 	 	 </p>
 						      	 </div>
 							     <div class="col-xs-8 col-sm-3">
@@ -85,7 +85,7 @@
 							<div class="row container">
 								<div class="col-xs-4 col-sm-2 control-label">
 						      	     <p class="text-right">
-					   		 	 	 	 <b>วันเริ่มต้น</b>
+					   		 	 	 	 <b>วันเริ่มต้น:</b>
 					   		 	 	 </p>
 						      	</div>
 						     	<div class="col-xs-8 col-sm-3">
@@ -101,7 +101,7 @@
 						      	</div>
 						      	<div class="col-xs-4 col-sm-2 control-label">
 						      	     <p class="text-right">
-					   		 	 	 	 <b>วันสิ้นสุด</b>
+					   		 	 	 	 <b>วันสิ้นสุด:</b>
 					   		 	 	 </p>
 						      	</div>
 						     	<div class="col-xs-8 col-sm-3">
@@ -117,7 +117,7 @@
 							<div class="row container">
 								<div class="col-xs-4 col-sm-2 control-label">
 					   		 	 	 <p class="text-right">
-					   		 	 	 	 <b>ประเภทการลา</b>
+					   		 	 	 	 <b>ประเภทการลา:</b>
 					   		 	 	 </p>
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-3">
@@ -133,7 +133,7 @@
 						      	</div>
 								<div class="col-xs-4 col-sm-2 control-label">
 					   		 	 	 <p class="text-right">
-					   		 	 	 	 <b>สถานะ</b>
+					   		 	 	 	 <b>สถานะ:</b>
 					   		 	 	 </p>
 						      	 </div>
 						      	 <div class="col-xs-8 col-sm-3">

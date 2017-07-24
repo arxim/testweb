@@ -1,22 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 	script-header import -->
 <jsp:include page="/resources/template/script-header.jsp"></jsp:include>
-<script type="text/javascript"
-	src="resources/libraries/datatables-1.10.13/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript"
-	src="resources/js/pages/approveOnLeave/approveOnLeave.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/libraries/datatables-1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/pages/approveOnLeave/approveOnLeave.js"></script>
 <script type="text/javascript">
-	var userLogin = '${sessionScope.userLogin}';
-	var ctx = '${pageContext.request.contextPath}';
-	var msgTimeout = '${sessionScope.msgTimeout}';
+var ctx = '${pageContext.request.contextPath}';
+var msgTimeout = '${sessionScope.msgTimeout}';
+var userLogin = '${sessionScope.userLogin}';
 </script>
-<title>อนุมัติคำร้องขอลา</title>
+<title>หน้าหลัก</title>
 </head>
 <body class="bg-info">
 	<form id="approve" method="post" action="">
@@ -39,13 +37,13 @@
 							<div class="col-sm-5">
 								<h5>Welcome : ${sessionScope.userLogin}</h5>
 							</div>
-							<div class="col-xs-5 col-xs-offset-7 col-sm-2 col-sm-offset-5">
+							<div class="col-sm-2 col-sm-offset-5">
 								<button type="submit" class="btn btn-block btn-danger"
 									id="btnLogout" formaction="/testweb/LogoutSrvl">Logout</button>
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-xs-5 col-xs-offset-7 col-sm-2 col-sm-offset-10">
+							<div class="col-sm-2 col-sm-offset-10">
 								<button type="button"
 									class="btn btn-block btn-primary text-white"
 									id="btnGoToRequest"
@@ -53,12 +51,12 @@
 									เพิ่มคำร้องขอลา</button>
 								<button type="button"
 									class="btn btn-block btn-primary text-white" id="btnGoToReport"
-									onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">รายงานการลา</button>
+									onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">ไปหน้ารายงานการลา</button>
 							</div>
 						</div>
 						<div class="form-group">
 							<label id="statusname"
-								class="col-xs-3 col-sm-offset-3 col-sm-2 control-label">สถานะ : </label>
+								class="col-sm-offset-4 col-sm-1 control-label">สถานะ : </label>
 							<div class="col-sm-3">
 								<select id="status" class="form-control">
 									<option value="รออนุมัติ" selected="selected">รออนุมัติ</option>

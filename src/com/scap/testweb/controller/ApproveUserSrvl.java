@@ -62,8 +62,12 @@ public class ApproveUserSrvl extends HttpServlet {
 			
 		}
 		else {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
-			rd.forward(request, response);	
+//			RequestDispatcher rd = request.getRequestDispatcher("pages/approveOnLeave/approveOnLeave.jsp"); 
+//			rd.forward(request, response);
+			response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
+		    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+			String urlRedirect = request.getContextPath() + "/pages/approveOnLeave/approveOnLeave.jsp";
+			response.sendRedirect(urlRedirect);
 		}
 	}
 }

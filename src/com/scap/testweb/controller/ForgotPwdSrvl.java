@@ -41,8 +41,12 @@ public class ForgotPwdSrvl extends HttpServlet {
 		processRequest(request,response);
 	}
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/login/forgotPwd.jsp"); 
-		rd.forward(request, response);
+//		RequestDispatcher rd = request.getRequestDispatcher("pages/login/forgotPwd.jsp"); 
+//		rd.forward(request, response);
+		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
+	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+		String urlRedirect = request.getContextPath() + "/pages/login/forgotPwd.jsp";
+		response.sendRedirect(urlRedirect);
 	}
 
 }

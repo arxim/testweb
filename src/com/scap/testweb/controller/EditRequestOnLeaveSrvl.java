@@ -78,36 +78,19 @@ public class EditRequestOnLeaveSrvl extends HttpServlet {
 		
 		if(userLogin.equals(mailBoss)){
 			if(approve != null){
+				editRequestService.setDataApprove(code, approve);
 				try{
-				String sendEmail=seService.sendApprove(emailUser,"คำร้องขอถูกอนุมัติ"); // send new password to Email
-				if(sendEmail=="PASS"){
-					boolean resultApprove = editRequestService.setDataApprove(code, approve);
-					if(resultApprove)
-						response.getWriter().write("true");
-					else
-						response.getWriter().write("false");
-				 }
-				 else{
-					 response.getWriter().write("false");
-				 } 
+				seService.sendApprove(emailUser,"คำร้องขอของคุณ  \"ได้รับการอนุมัติ \""); // send new password to Email
 				}catch (Exception e) {
 					e.printStackTrace();
 					response.getWriter().write("false");
 				}
 			}
 			else{
+				editRequestService.setDataApprove(code, notAllowed);
 				try{
-					String sendEmail=seService.sendApprove(emailUser,"คำร้องขอไม่ถูกอนุมัติ"); // send new password to Email
-					if(sendEmail=="PASS"){
-						boolean resultnotAllowed = editRequestService.setDataApprove(code, notAllowed);
-						if(resultnotAllowed)
-							response.getWriter().write("true");
-						else
-							response.getWriter().write("false");
-					 }
-					 else{
-						 response.getWriter().write("false");
-					 } 
+					seService.sendApprove(emailUser,"คำร้องขอของคุณ \"ไม่ได้รับการอนุมัติ\""); // send new password to Email
+					
 					}catch (Exception e) {
 						e.printStackTrace();
 						response.getWriter().write("false");
@@ -115,15 +98,9 @@ public class EditRequestOnLeaveSrvl extends HttpServlet {
 			}
 		}
 		else{
+			requestService.setEditDataRequest(code, typeLeave, startDate, endDate,dateDiff,note);
 			try{
-				String sendEmail=seService.sendRequest("purasri_p2p@hotmail.com",typeLeave,fullName); // send new password to Email
-				if(sendEmail=="PASS"){
-					requestService.setEditDataRequest(code, typeLeave, startDate, endDate,dateDiff,note);
-					System.out.println("ประเภทการลา: "+typeLeave+"\nเวลาเริ่ม: "+startDate+"\nเวลาสิ้นสุด: "+endDate+"\nจำนวนวัน: "+dateDiff+"\nหมายเหตุ: "+note);
-				 }
-				 else{
-					 System.out.println("error");
-				 } 
+				seService.sendRequest("purasri_p2p@hotmail.com",typeLeave,fullName); // send new password to Email
 				}catch (Exception e) {
 					e.printStackTrace();
 					System.out.println("error");

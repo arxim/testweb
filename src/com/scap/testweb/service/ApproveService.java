@@ -31,4 +31,14 @@ public class ApproveService {
 		ApproveDao data = new ApproveDao();
 		return data.selectLeave(userID);
 	}
+	
+	public String findEmployeeID(String code){
+		ApproveDao dbUser = new ApproveDao();
+		ArrayList<HashMap<String,String>> db1 = dbUser.getEmployeeID(code);
+		String id = db1.get(0).get("EMPLOYEE_ID");
+		ArrayList<HashMap<String,String>> db2 = dbUser.getEmailUser(id);
+		String email = db2.get(0).get("EMAIL");
+		return email;
+	}
+	
 }

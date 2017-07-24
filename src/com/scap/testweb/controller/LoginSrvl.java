@@ -48,24 +48,20 @@ public class LoginSrvl extends HttpServlet {
 	    
 		String emailSrvl = request.getParameter("txtEmailLogin");
 		String pwdSrvl = request.getParameter("txtPwdLogin");
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp");
+//		RequestDispatcher rd = request.getRequestDispatcher("/ApproveSrvl");
+		String urlRedirect = request.getContextPath() + "/pages/approveOnLeave/approveOnLeave.jsp";
 		try {
 			LoginService loginServ = new LoginService();
 			HttpSession session = request.getSession();
 			if (loginServ.chkLogin(emailSrvl, pwdSrvl)) {
 				
 				session.setAttribute("userLogin", emailSrvl);
-				
 				AlertService pwdDate = new AlertService();
-				if(pwdDate.compareDate(emailSrvl)){
-					rd.forward(request, response);
-					//response.sendRedirect("WEB-INF/pages/mainMenu/mainMenu.jsp");
-				}
-				else{
+				
+				if(!pwdDate.compareDate(emailSrvl)){
 					session.setAttribute("msgTimeout", "You have been using your password for more than 90 days. Please change your password.");
-					//response.sendRedirect("WEB-INF/pages/mainMenu/mainMenu.jsp");
-					rd.forward(request, response);
 				}
+				response.sendRedirect(urlRedirect);
 			}else {
 				session.setAttribute("msgLoginError", "E-mail or password is incorrect");
 				response.sendRedirect("/testweb/index.jsp");

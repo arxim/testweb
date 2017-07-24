@@ -25,7 +25,7 @@
 	var diff = '${txtDateDiff}';
 	var note = '${txtAreaNote}';
 </script>
-<script type="text/javascript" src="resources/js/pages/requestOnLeave/requestOnLeave.js"></script> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/pages/requestOnLeave/requestOnLeave.js"></script> 
 <title>Request on leave</title>
 </head>
 <body class="bg-info">
@@ -119,11 +119,11 @@
 					</div>
 					<br>
 					<div class="form-group">
-						<div class="col-sm-offset-4 col-sm-2">
+						<div class="col-xs-6 col-sm-offset-4 col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
 								id="btnSubmit" onclick="sendRequest();">ส่ง</button>
 						</div>
-						<div class="col-sm-2">
+						<div class="col-xs-6 col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
 								id="btnCancel" onclick="cancelRequest();">ยกเลิก</button>
 						</div>
@@ -136,17 +136,17 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-offset-3 col-sm-2">
+						<div class="col-xs-4 col-sm-offset-3 col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
 								id="btnApprove" onclick="sendApprove();">อนุมัติ</button>
 						</div>
-						<div class="col-sm-2">
+						<div class="col-xs-4 col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
 								id="btnNotAllowed" onclick="sendNotAllowed();">ไม่อนุมัติ</button>
 						</div>
-						<div class="col-sm-2">
+						<div class="col-xs-4 col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
-								id="btnBackMainMenuBoss" onclick="location.href='/testweb/ApproveSrvl'">กลับหน้าอนุมัติคำร้องขอ
+								id="btnBackMainMenuBoss" onclick="location.href='/testweb/ApproveSrvl'">กลับหน้าอนุมัติคำร้อง
 							</button>
 						</div>
 					</div>
@@ -156,7 +156,7 @@
 		</div>
 	</form>
 	
-	<div class="modal fade" id="myModalRequest" role="dialog">
+	<div class="modal fade" id="myModalRequest" role="dialog" onclick="btnClose();">
 			<div class="modal-dialog modal-sm">
 				<!-- Modal content-->
 				<div class="modal-content">

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.scap.testweb.service.ApproveService;
+import com.scap.testweb.service.SendEmailService;
 
 /**
  * Servlet implementation class ApproveButtonSrvl
@@ -49,10 +50,35 @@ public class ApproveButtonSrvl extends HttpServlet {
 		    
 		    ApproveService dt = new ApproveService();
 		    String result = dt.approveData(statusSrvl, rowIDSrvl);
-		    response.getWriter().write(result);
+		    
+		    SendEmailService seService = new SendEmailService();
+		    
+		    if(result.equals("อนุมัติ")){
+				try{
+				String emailUser = dt.findEmployeeID(rowIDSrvl);
+				seService.sendApprove(emailUser,"คำร้องขอของคุณ  \"ได้รับการอนุมัติ \""); // send new password to Email
+				}catch (Exception e) {
+					e.printStackTrace();
+					response.getWriter().write("false");
+				}
+		    }
+		    else{
+		    	try{
+		    	String emailUser = dt.findEmployeeID(rowIDSrvl);
+				seService.sendApprove(emailUser,"คำร้องขอของคุณ \"ไม่ได้รับการอนุมัติ\""); // send new password to Email
+				}catch (Exception e) {
+					e.printStackTrace();
+					response.getWriter().write("false");
+				}
+		    }
 		}else {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/approveOnLeave/approveOnLeave.jsp"); 
-			rd.forward(request, response);	
+//			RequestDispatcher rd = request.getRequestDispatcher("pages/approveOnLeave/approveOnLeave.jsp"); 
+//			rd.forward(request, response);
+			response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
+		    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+			String urlRedirect = request.getContextPath() + "/pages/approveOnLeave/approveOnLeave.jsp";
+			response.sendRedirect(urlRedirect);
 		}
+		
 	}
 }

@@ -45,12 +45,13 @@ public class LoadEditRequestOnLeaveSrvl extends HttpServlet {
 	}
 	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
+	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+	    
 		EditRequestService editRequestService = new EditRequestService();
 		RequestService requestService = new RequestService();
 		
 		String leaveCode = request.getParameter("code");
-//		String leaveCode = "2989763799";
 		
 		String status = editRequestService.findStatus(leaveCode);
 		String fName = editRequestService.findFristNameUser(leaveCode);
@@ -66,23 +67,26 @@ public class LoadEditRequestOnLeaveSrvl extends HttpServlet {
 		String txtAreaNote = editRequestService.findNote(leaveCode);
 		String mailBoss = requestService.findEmailBoss();
 		
-		request.setAttribute("leaveCode", leaveCode);
-		request.setAttribute("status", status);
-		request.setAttribute("fName",fName);
-		request.setAttribute("lName", lName);
-		request.setAttribute("comboDepartment", comboDepartment);
-		request.setAttribute("comboPosition", comboPosition);
-		request.setAttribute("txtemail", txtemail);
-		request.setAttribute("comboBoss", comboBoss);
-		request.setAttribute("comboTypeLeave", comboTypeLeave);
-		request.setAttribute("startDate", startDate);
-		request.setAttribute("endDate", endDate);
-		request.setAttribute("txtDateDiff", txtDateDiff);
-		request.setAttribute("txtAreaNote", txtAreaNote);
-		request.setAttribute("mailBoss", mailBoss);
+		request.getSession().setAttribute("leaveCode", leaveCode);
+		request.getSession().setAttribute("status", status);
+		request.getSession().setAttribute("fName",fName);
+		request.getSession().setAttribute("lName", lName);
+		request.getSession().setAttribute("comboDepartment", comboDepartment);
+		request.getSession().setAttribute("comboPosition", comboPosition);
+		request.getSession().setAttribute("txtemail", txtemail);
+		request.getSession().setAttribute("comboBoss", comboBoss);
+		request.getSession().setAttribute("comboTypeLeave", comboTypeLeave);
+		request.getSession().setAttribute("startDate", startDate);
+		request.getSession().setAttribute("endDate", endDate);
+		request.getSession().setAttribute("txtDateDiff", txtDateDiff);
+		request.getSession().setAttribute("txtAreaNote", txtAreaNote);
+		request.getSession().setAttribute("mailBoss", mailBoss);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/requestOnLeave/requestOnLeave.jsp"); 
-		rd.forward(request, response);
+//		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/requestOnLeave/requestOnLeave.jsp"); 
+//		rd.forward(request, response);
+		String urlRedirect = request.getContextPath() + "/pages/requestOnLeave/requestOnLeave.jsp";
+		response.sendRedirect(urlRedirect);
+
 	}
 
 }
