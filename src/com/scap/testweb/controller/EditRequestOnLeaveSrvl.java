@@ -78,33 +78,47 @@ public class EditRequestOnLeaveSrvl extends HttpServlet {
 		
 		if(userLogin.equals(mailBoss)){
 			if(approve != null){
-				editRequestService.setDataApprove(code, approve);
+				boolean rerult = editRequestService.setDataApprove(code, approve);
+				if(rerult){
 				try{
 				seService.sendApprove(emailUser,"คำร้องขอของคุณ  \"ได้รับการอนุมัติ \""); // send new password to Email
+				response.getWriter().write("true");
 				}catch (Exception e) {
 					e.printStackTrace();
-					response.getWriter().write("false");
+					response.getWriter().write("Send Email fail.");
+				}
+				}else{
+					response.getWriter().write("Failed to save data.");
 				}
 			}
 			else{
-				editRequestService.setDataApprove(code, notAllowed);
+				boolean rerult = editRequestService.setDataApprove(code, notAllowed);
+				if(rerult){
 				try{
 					seService.sendApprove(emailUser,"คำร้องขอของคุณ \"ไม่ได้รับการอนุมัติ\""); // send new password to Email
-					
+					response.getWriter().write("true");
 					}catch (Exception e) {
 						e.printStackTrace();
-						response.getWriter().write("false");
+						response.getWriter().write("Send Email fail.");
 					}
+				}else{
+					response.getWriter().write("Failed to save data.");
+				}
 			}
 		}
 		else{
-			requestService.setEditDataRequest(code, typeLeave, startDate, endDate,dateDiff,note);
+			boolean rerult = requestService.setEditDataRequest(code, typeLeave, startDate, endDate,dateDiff,note);
+			if(rerult){
 			try{
 				seService.sendRequest("purasri_p2p@hotmail.com",typeLeave,fullName); // send new password to Email
-				}catch (Exception e) {
+				response.getWriter().write("true");
+			}catch (Exception e) {
 					e.printStackTrace();
-					System.out.println("error");
+					response.getWriter().write("Send Email fail.");
 				}
+			}else{
+				response.getWriter().write("Failed to save data.");
+			}
 		}
 	}
 }

@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/pages/reportOnLeave/reportOnLeave.js"></script>
 </head>
 <body class="bg-info">
-	<div class="container" style="margin-top:10%; margin-bottom:12%;">
+	<div class="container" style="margin-top:5%; margin-bottom:12%;">
 			<div class="col-xs-12 col-sm-12 text-right">
 				<h5>Welcome : ${sessionScope.userLogin}</h5>
 			</div>

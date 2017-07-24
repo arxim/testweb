@@ -1,7 +1,6 @@
 package com.scap.testweb.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.scap.testweb.dao.RequestDao;
 import com.scap.testweb.service.RequestService;
 import com.scap.testweb.service.SendEmailService;
 
@@ -70,15 +68,17 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		String boss_id = requestService.findBossID();
 		
 		SendEmailService seService = new SendEmailService();
-		PrintWriter print = response.getWriter();
-		requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,dateDiff,note);
-		try{
-		seService.sendRequest("purasri_p2p@hotmail.com",typeLeave,fullName); // send new password to Email
-		}catch (Exception e) {
-			e.printStackTrace();
-			print.write("Send Email fail !!");// send new password fail (Problem in internet)
+		boolean rerult = requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,dateDiff,note);
+		if(rerult){
+			try {
+				seService.sendRequest("purasri_p2p@hotmail.com", typeLeave, fullName); // send new password to Email
+				response.getWriter().write("true");
+			} catch (Exception e) {
+				e.printStackTrace();
+				response.getWriter().write("Send Email fail.");
+			}
+		}else{
+			response.getWriter().write("Failed to save data.");
 		}
-		
-		
 	}
 }

@@ -96,6 +96,8 @@ function sendRequest() {
 	if((!$("#txtemail").val() == "")&& (!$("#comboBoss").val() == "")&& (!$("#comboTypeLeave").val() == "")&& (!$("#startDate").val() == "")&& (!$("#endDate").val() == "")&& (!$("#txtDateDiff").text() == "")){
 		$('#btnSubmit').prop('disabled', true);
 		$('#btnCancel').prop('disabled', true);
+		$("#msgModalRequest").text("กรุณารอสักครู่");
+    	$("#myModalRequest").modal("show");
 		var fName = $("#fName").val();
 		var lName = $("#lName").val();
 		var epyDepartment = $("#comboDepartment").val();
@@ -125,8 +127,14 @@ function sendRequest() {
     	    	  txtAreaNote : note
     	      },
     	      success: function(data) {
+    	    	  if(data === "true"){
     				$("#msgModalRequest").text("สำเร็จ");
     		    	$("#myModalRequest").modal("show");
+    	    	  }
+    	    	  else{
+    	    		  $("#msgModalRequest").text(data);
+      		    	$("#myModalRequest").modal("show");
+    	    	  }
     	      }
 		});
 		}
@@ -145,8 +153,14 @@ function sendRequest() {
 	    	    	  txtAreaNote : note
 	    	      },
 	    	      success: function(data) {
+	    	    	  if(data === "true"){
 	    				$("#msgModalRequest").text("แก้ไขแบบคำร้องสำเร็จ");
 	    		    	$("#myModalRequest").modal("show");
+	    	    	  }
+	    	    	  else{
+	    	    		  $("#msgModalRequest").text(data);
+		    		      $("#myModalRequest").modal("show");
+	    	    	  }
 	    	      }
 		});
 		}
@@ -176,7 +190,7 @@ function sendApprove(){
 			    	$("#myModalRequest").modal("show");
 		    	  }
 		    	  else{
-		    		$("#msgModalRequest").text("ERROR!!");
+		    		$("#msgModalRequest").text(data);
 				    $("#myModalRequest").modal("show"); 
 				    $('#btnApprove').prop('disabled', false);
 					$('#btnNotAllowed').prop('disabled', false);
@@ -206,7 +220,7 @@ function sendNotAllowed(){
 		    	$("#myModalRequest").modal("show");
 	    	  }
 	    	  else{
-	    		$("#msgModalRequest").text("ERROR!!");
+	    		$("#msgModalRequest").text(data);
 			    $("#myModalRequest").modal("show"); 
 			    $('#btnApprove').prop('disabled', false);
 				$('#btnNotAllowed').prop('disabled', false);

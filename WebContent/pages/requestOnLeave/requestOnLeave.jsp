@@ -26,7 +26,7 @@
 	var note = '${txtAreaNote}';
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/pages/requestOnLeave/requestOnLeave.js"></script> 
-<title>Request on leave</title>
+<title>ยื่นคำร้องขอลา</title>
 </head>
 <body class="bg-info">
 	<form id="frmRequest" method="post">

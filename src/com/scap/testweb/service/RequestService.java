@@ -72,7 +72,7 @@ public class RequestService {
 		return bossID;
 	}
 	
-	public void setDataRequest(String employee_id,String boss_id,String typeLeave,String startDate,String endDate,String dateDiff,String note){
+	public boolean setDataRequest(String employee_id,String boss_id,String typeLeave,String startDate,String endDate,String dateDiff,String note){
 		String date_s = "";
 		String date_e = "";
 		SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
@@ -88,10 +88,11 @@ public class RequestService {
 		}
 		String status = "รออนุมัติ";
 		RequestDao requestDao = new RequestDao();
-		requestDao.setRequestOnLeave(employee_id, boss_id, typeLeave, date_s, date_e,dateDiff,note,status);
+		boolean result = requestDao.setRequestOnLeave(employee_id, boss_id, typeLeave, date_s, date_e,dateDiff,note,status);
+		return result;
 	}
 	
-	public void setEditDataRequest(String leave_code,String typeLeave,String startDate,String endDate,String dateDiff,String note){
+	public boolean setEditDataRequest(String leave_code,String typeLeave,String startDate,String endDate,String dateDiff,String note){
 		String date_s = "";
 		String date_e = "";
 		SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
@@ -106,6 +107,7 @@ public class RequestService {
 		    exp.printStackTrace();
 		}
 		EditRequestDao requestDao = new EditRequestDao();
-		requestDao.setEditRequestOnLeave(leave_code, typeLeave, date_s, date_e,dateDiff,note);
+		boolean result = requestDao.setEditRequestOnLeave(leave_code, typeLeave, date_s, date_e,dateDiff,note);
+		return result;
 	}
 }
