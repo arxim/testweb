@@ -59,7 +59,7 @@ public class ApproveButtonSrvl extends HttpServlet {
 				seService.sendApprove(emailUser,"คำร้องขอของคุณ  \"ได้รับการอนุมัติ \""); // send new password to Email
 				}catch (Exception e) {
 					e.printStackTrace();
-					response.getWriter().write("false");
+					response.getWriter().write("Send Email fail.");
 				}
 		    }
 		    else{
@@ -68,7 +68,7 @@ public class ApproveButtonSrvl extends HttpServlet {
 				seService.sendApprove(emailUser,"คำร้องขอของคุณ \"ไม่ได้รับการอนุมัติ\""); // send new password to Email
 				}catch (Exception e) {
 					e.printStackTrace();
-					response.getWriter().write("false");
+					response.getWriter().write("Send Email fail.");
 				}
 		    }
 		}else {

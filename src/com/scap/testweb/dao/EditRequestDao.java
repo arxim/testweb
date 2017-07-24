@@ -41,7 +41,7 @@ public class EditRequestDao {
 	
 	public boolean setEditRequestOnLeave(String leave_code,String typeLeave,String startDate,String endDate,String dateDiff,String note){
 		String update_date = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-		String sql = "UPDATE LEAVE_MST_LEAVE SET LEAVE_TYPE = '"+ typeLeave +"', START_DATE = '"+ startDate +"', END_DATE = '"+ endDate +"', NUM_LEAVE = '"+ dateDiff +"', NOTE = '"+ note +"' WHERE CODE='"+ leave_code +"'";
+		String sql = "UPDATE LEAVE_MST_LEAVE SET LEAVE_TYPE = '"+ typeLeave +"', START_DATE = '"+ startDate +"', END_DATE = '"+ endDate +"', NUM_LEAVE = '"+ dateDiff +"',REQUEST_DATE = '"+ update_date +"', NOTE = '"+ note +"' WHERE CODE='"+ leave_code +"'";
 		DbConnector dbconn = new DbConnector();
 		boolean result = false;
 		try{
