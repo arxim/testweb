@@ -20,7 +20,7 @@ public class ApproveDao {
 				+ " LEAVE_MST_LEAVE.[STATUS], LEAVE_MST_LEAVE.[APPROVE_DATE] "
 				+ " FROM LEAVE_MST_LEAVE "
 				+ " JOIN LEAVE_MST_USER ON LEAVE_MST_LEAVE.EMPLOYEE_ID = LEAVE_MST_USER.ID "
-				+ " WHERE LEAVE_MST_LEAVE.STATUS = '��͹��ѵ�' ORDER BY REQUEST_DATE ASC";
+				+ " WHERE LEAVE_MST_LEAVE.STATUS = 'รออนุมัติ' ORDER BY REQUEST_DATE ASC";
 		
 				
 		if (status != null && !status.isEmpty()) {
@@ -60,23 +60,23 @@ public class ApproveDao {
 	
 	public String approveData (String status, String rowID){
 		//click button change status
-		if(status.equals("͹��ѵ�")){
+		if(status.equals("อนุมัติ")){
 			DbConnector dbconn = new DbConnector();
 			String approveDate = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = '͹��ѵ�', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
+			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
 			dbconn.doConnect();
 			dbconn.doSave(sql);
 			dbconn.doCommit();
-			return "͹��ѵ�";
+			return "อนุมัติ";
 		}
-		else if(status.equals("���͹��ѵ�")){
+		else if(status.equals("ไม่อนุมัติ")){
 			DbConnector dbconn = new DbConnector();
 			String approveDate = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = '���͹��ѵ�', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
+			String sql = "UPDATE LEAVE_MST_LEAVE SET STATUS = 'ไม่อนุมัติ', APPROVE_DATE = '"+approveDate+"' WHERE CODE = '" + rowID + "'";
 			dbconn.doConnect();
 			dbconn.doSave(sql);
 			dbconn.doCommit();
-			return "���͹��ѵ�";
+			return "ไม่อนุมัติ";
 		}
 		return "false";
 	}
