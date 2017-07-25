@@ -88,7 +88,7 @@ public class SendEmailService {
 		// Subject
 		String subject = "คำร้องขออนุมัติ \""+typeLeave+"\" ของ \""+name+"\"";
 		// Content
-		String body = name+" ได้ส่งคำร้องเพื่อขออนุมัติ  \""+typeLeave+"\" คลิก http://localhost:8080/testweb/index.jsp เพื่อดูลายละเอียดเพิ่มเติม";
+		String body = name+" ได้ส่งคำร้องเพื่อขออนุมัติ  \""+typeLeave+"\" คลิก http://localhost:8080/testweb/index.jsp เพื่อดูรายละเอียดเพิ่มเติม";
 		
 		try {
 			

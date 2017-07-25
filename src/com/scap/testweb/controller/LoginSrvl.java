@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.scap.testweb.service.AlertService;
 import com.scap.testweb.service.LoginService;
+import com.scap.testweb.service.RequestService;
 
 /**
  * Servlet implementation class LoginSrvl
@@ -46,6 +47,10 @@ public class LoginSrvl extends HttpServlet {
 		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
 	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 	    
+	    RequestService requestService = new RequestService();
+	    String mailBoss = requestService.findEmailBoss();
+	    request.getSession().setAttribute("mailBoss", mailBoss);
+
 		String emailSrvl = request.getParameter("txtEmailLogin");
 		String pwdSrvl = request.getParameter("txtPwdLogin");
 //		RequestDispatcher rd = request.getRequestDispatcher("/ApproveSrvl");

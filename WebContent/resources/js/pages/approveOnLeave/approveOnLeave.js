@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	if(userLogin=="boss@gmail.com"){
+
+	if(userLogin == mailBoss){
 		$('#tableEdit').hide();
 		$('#textApproveUser').hide();
 		$('#btnGoToRequest').hide();
@@ -73,7 +74,7 @@ $(document).ready(function() {
 					    	return '<button class="btn-link" id="'+row.code+'" type="button" value="ดูเพิ่มเติม" onclick="dataFull(this);">คลิก</button>'
 					    }
 					},
-		            {  "orderable": false,
+		            {  	"orderable": false,
 		            	"data": "code",
 		            	"className": "text-center",
 		            	render: function ( data, type, row ) {
@@ -117,20 +118,37 @@ $(document).ready(function() {
 		            }
 				},
 				"columns": [
-				    { "data": "firstandlastname","className": "text-center" },
-				    { "data": "department","className": "text-center" },
-				    { "data": "position","className": "text-center" },
+				    { 
+				    	"orderable": false,
+				    	"data": "firstandlastname",
+				    	"className": "text-center" 
+				    },
+				    { 
+				    	"orderable": false,
+				    	"data": "department",
+				    	"className": "text-center" 
+				    },
+				    { 
+				    	"orderable": false,
+				    	"data": "position",
+				    	"className": "text-center" 
+				    },
 				    { "data": "leaveType","className": "text-center" },
 				    { "data": "status","className": "text-center" },
 				    { "data": "requestDate","className": "text-center", "id": "+row.code+" },
 				    { "data": "approveDate","className": "text-center" },
-				    { "data": "code","className": "text-center", render: function ( data, type, row ) {
-				    	if(row.status == "รออนุมัติ"){
-				    		return '<button class="btn btn-xs btn-warning btn-block" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
-				    	}else{
-				    		return '<button class="btn btn-xs btn-warning btn-block" type="button" id="'+row.code+'" onclick="editClick(this)" value="รายละเอียด">รายละเอียด</button>';
-				   	}
-				    } } 
+				    { 
+				    	"orderable": false,
+				    	"data": "code",
+				    	"className": "text-center", 
+				    	render: function ( data, type, row ) {
+				    		if(row.status == "รออนุมัติ"){
+				    			return '<button class="btn btn-xs btn-warning btn-block" type="button" id="'+row.code+'" onclick="editClick(this)" value="แก้ไข">แก้ไข</button>';
+				    		}else{
+				    			return '<button class="btn btn-xs btn-warning btn-block" type="button" id="'+row.code+'" onclick="editClick(this)" value="รายละเอียด">รายละเอียด</button>';
+				    		}
+				    	} 
+				    } 
 				  ],
 				  "columnDefs": [{
 					  "defaultContent": "-",

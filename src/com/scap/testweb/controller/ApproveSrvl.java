@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.scap.testweb.model.User;
 import com.scap.testweb.service.ApproveService;
+import com.scap.testweb.service.RequestService;
 
 /**
  * Servlet implementation class ApproveSrvl
@@ -47,8 +48,8 @@ public class ApproveSrvl extends HttpServlet {
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");  // Set content type of the response so that jQuery knows what it can expect.
 	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-		
-		String statusSrvl = request.getParameter("status");
+	    
+	    String statusSrvl = request.getParameter("status");
 		String process = request.getParameter("process");
 		
 		if (process != null && !process.isEmpty()) {

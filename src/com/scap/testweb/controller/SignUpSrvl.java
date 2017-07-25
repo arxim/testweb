@@ -79,5 +79,4 @@ public class SignUpSrvl extends HttpServlet {
 	    // Response
 	    response.getWriter().write(result);
 	}
-	
 }

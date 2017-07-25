@@ -13,6 +13,7 @@
 	var ctx = '${pageContext.request.contextPath}';
 	var msgTimeout = '${sessionScope.msgTimeout}';
 	var userLogin = '${sessionScope.userLogin}';
+	var mailBoss = '${mailBoss}';
 </script>
 <title>หน้าหลัก</title>
 </head>
@@ -47,7 +48,7 @@
 								<button type="button"
 									class="btn btn-block btn-primary text-white"
 									id="btnGoToRequest"
-									onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">+เพิ่มคำร้องขอลา</button>
+									onclick="location.href='/testweb/LoadRequestOnLeaveSrvl'">+ เพิ่มคำร้องขอลา</button>
 								<button type="button"
 									class="btn btn-block btn-primary text-white" id="btnGoToReport"
 									onclick="location.href='/testweb/LoadReportOnLeaveSrvl'">ไปหน้ารายงานการลา</button>							</div>
