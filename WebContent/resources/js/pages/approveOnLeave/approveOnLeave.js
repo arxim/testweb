@@ -69,7 +69,7 @@ $(document).ready(function() {
 					    "orderable": false,
 					    "data":		"code",
 					    "className": "text-center",
-					    render: function ( data, type, row ) {
+					    render: function ( data, type, row ) { 
 					    	return '<button class="btn-link" id="'+row.code+'" type="button" value="ดูเพิ่มเติม" onclick="dataFull(this);">คลิก</button>'
 					    }
 					},
