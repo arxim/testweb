@@ -75,7 +75,7 @@ public class RequestService {
 	public boolean setDataRequest(String employee_id,String boss_id,String typeLeave,String startDate,String endDate,String dateDiff,String note){
 		String date_s = "";
 		String date_e = "";
-		SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
+		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
 		try{
 			Date sd = dt.parse(startDate);
 			Date ed = dt.parse(endDate);
@@ -95,7 +95,7 @@ public class RequestService {
 	public boolean setEditDataRequest(String leave_code,String typeLeave,String startDate,String endDate,String dateDiff,String note){
 		String date_s = "";
 		String date_e = "";
-		SimpleDateFormat dt = new SimpleDateFormat("dd/mm/yyyy");
+		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
 		try{
 			Date sd = dt.parse(startDate);
 			Date ed = dt.parse(endDate);

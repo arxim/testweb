@@ -71,7 +71,7 @@ public class RequestOnLeaveSrvl extends HttpServlet {
 		boolean rerult = requestService.setDataRequest(employee_id, boss_id, typeLeave, startDate, endDate,dateDiff,note);
 		if(rerult){
 			try {
-				seService.sendRequest("purasri_p2p@hotmail.com", typeLeave, fullName); // send new password to Email
+				seService.sendRequest(mailBoss, typeLeave, fullName); // send new password to Email
 				response.getWriter().write("true");
 			} catch (Exception e) {
 				e.printStackTrace();

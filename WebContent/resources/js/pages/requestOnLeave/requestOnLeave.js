@@ -94,6 +94,10 @@ $(document).ready(function () {
 
 function sendRequest() {
 	if((!$("#txtemail").val() == "")&& (!$("#comboBoss").val() == "")&& (!$("#comboTypeLeave").val() == "")&& (!$("#startDate").val() == "")&& (!$("#endDate").val() == "")&& (!$("#txtDateDiff").text() == "")){
+		$("#comboTypeLeave").prop('disabled', true);
+		$("#startDate").prop('disabled', true);
+		$("#endDate").prop('disabled', true);
+		$("#txtAreaNote").prop('disabled', true);
 		$('#btnSubmit').prop('disabled', true);
 		$('#btnCancel').prop('disabled', true);
 		var fName = $("#fName").val();
@@ -104,7 +108,7 @@ function sendRequest() {
 		var nameBoss = $("#comboBoss").val(); 
 		var typeLeave = $("#comboTypeLeave").val(); 
 		var startDate = $("#startDate").val(); 
-		var endDate = $("#endDate").val(); 
+		var endDate = $("#endDate").val();
 		var dateDiff = $("#txtDateDiff").text(); 
 		var note = $("#txtAreaNote").val(); 
 		if(code == ""){
@@ -251,7 +255,7 @@ function comfirm(){
 function dateDiff(){
 	var strStart = $("#startDate").val();
 	var strStop = $("#endDate").val();
-
+	
 	strStart = strStart.substr(3,2)+"/"+strStart.substr(0,2)+"/"+strStart.substr(6,9);
 	strStop = strStop.substr(3,2)+"/"+strStop.substr(0,2)+"/"+strStop.substr(6,9);
 

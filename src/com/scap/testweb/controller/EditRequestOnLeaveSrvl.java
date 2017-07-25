@@ -110,7 +110,7 @@ public class EditRequestOnLeaveSrvl extends HttpServlet {
 			boolean rerult = requestService.setEditDataRequest(code, typeLeave, startDate, endDate,dateDiff,note);
 			if(rerult){
 			try{
-				seService.sendRequest("purasri_p2p@hotmail.com",typeLeave,fullName); // send new password to Email
+				seService.sendRequest(mailBoss,typeLeave,fullName); // send new password to Email
 				response.getWriter().write("true");
 			}catch (Exception e) {
 					e.printStackTrace();
