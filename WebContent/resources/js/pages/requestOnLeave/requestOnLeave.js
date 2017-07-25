@@ -96,8 +96,6 @@ function sendRequest() {
 	if((!$("#txtemail").val() == "")&& (!$("#comboBoss").val() == "")&& (!$("#comboTypeLeave").val() == "")&& (!$("#startDate").val() == "")&& (!$("#endDate").val() == "")&& (!$("#txtDateDiff").text() == "")){
 		$('#btnSubmit').prop('disabled', true);
 		$('#btnCancel').prop('disabled', true);
-		$("#msgModalRequest").text("กรุณารอสักครู่");
-    	$("#myModalRequest").modal("show");
 		var fName = $("#fName").val();
 		var lName = $("#lName").val();
 		var epyDepartment = $("#comboDepartment").val();

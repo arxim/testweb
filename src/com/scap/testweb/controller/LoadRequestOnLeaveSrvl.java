@@ -63,6 +63,9 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 		String txtDateDiff = "";
 		String txtAreaNote = "";
 		
+		String leaveCode = "";
+		request.getSession().setAttribute("leaveCode", leaveCode);
+		
 		request.getSession().setAttribute("fName", fName);
 		request.getSession().setAttribute("lName", lName);
 		request.getSession().setAttribute("comboDepartment", comboDepartment);
@@ -75,7 +78,6 @@ public class LoadRequestOnLeaveSrvl extends HttpServlet {
 		request.getSession().setAttribute("endDate", endDate);
 		request.getSession().setAttribute("txtDateDiff", txtDateDiff);
 		request.getSession().setAttribute("txtAreaNote", txtAreaNote);
-		
 		
 //		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/requestOnLeave/requestOnLeave.jsp"); 
 //		rd.forward(request, response);
