@@ -58,7 +58,7 @@ $(document).ready(function() {
 		            }
 		        },
 		        "columns": [
-		            { "data": "firstandlastname", },
+		            { "data": "firstandlastname" },
 		            { "data": "department" },
 		            { "data": "position" },
 		            { "data": "leaveType","className": "text-center" },
@@ -149,9 +149,4 @@ function editClick(obj){
 function dataFull(obj){
 	var rowID = $(obj).attr('id');
 	location.href ='/testweb/LoadEditRequestOnLeaveSrvl?code='+rowID;
-}
-
-function addRequest(){
-	code = "";
-	location.href='/testweb/LoadRequestOnLeaveSrvl';
 }
