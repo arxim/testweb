@@ -243,15 +243,6 @@ function btnClose(){
 		location.href="/testweb/ApproveSrvl";
 }
 
-function cancelRequest(){
-	$("#msgModalCancelRequest").text("คุณต้องการยกเลิกการกรอกแบบฟอร์มใช่หรือไม่");
-	$("#myModalCancelRequest").modal("show");
-}
-
-function comfirm(){
-	location.href="/testweb/ApproveSrvl";
-}
-
 function dateDiff(){
 	var strStart = $("#startDate").val();
 	var strStop = $("#endDate").val();

@@ -125,7 +125,7 @@
 						</div>
 						<div class="col-xs-6 col-sm-2">
 							<button type="button" class="btn btn-primary btn-block"
-								id="btnCancel" onclick="cancelRequest();">ยกเลิก</button>
+								id="btnCancel" onclick="location.href='/testweb/ApproveSrvl'">ยกเลิก</button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -171,26 +171,6 @@
 					</div>
 					<div class="modal-footer bg-info">
 						<button type="button" class="btn btn-default" id="close-msg-modal" data-dismiss="modal" onclick="btnClose();">ปิด</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" id="myModalCancelRequest" role="dialog">
-			<div class="modal-dialog modal-sm">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header bg-primary">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h3 class="modal-title text-center">
-							<b>ยกเลิก!!</b>
-						</h3>
-					</div>
-					<div class="modal-body">
-						<h5 id="msgModalCancelRequest" class="text-center text-primary"><b></b></h5>
-					</div>
-					<div class="modal-footer bg-info">
-						<button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
-        				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="comfirm();">ยืนยัน</button>
 					</div>
 				</div>
 			</div>
