@@ -18,6 +18,7 @@ $(document).ready(function(){
 	});
 });
 
+
 function searchEngine(){
 	var nameEmployee=$("#txtNameEmployee").val();
 	var surnameEmployee=$("#txtSurnameEmployee").val();
@@ -53,6 +54,8 @@ function searchEngine(){
 		               {"className": "dt-body-left", "targets": [1]},
 		               {"className": "dt-center", "targets": [0,2,3,4,5,6,7,8]},
 		               {"className": "dt-right", "targets": []},
+		               {"className": "dt-right", "targets": []},
+		               {"targets": [9,10],"visible": false,"searchable": false}
 		             ],
 		"columns": [
 		            { "data": "userNo" },
@@ -63,10 +66,19 @@ function searchEngine(){
 		            { "data": "startDate" },
 		            { "data": "endDate" },
 		            { "data": "status" },
-		            { "data": "clickhere", render: function ( data, type, row ) {
-		                return '<button class="btn btn-info btn-xs " type="button" value="">รายงาน</button>';
-		            } }
+		            { "data": "clickhere", render: function (data,type,row) {
+		                return '<button class="btn btn-info btn-xs" id="'+row.userId+"/"+row.code+'" type="button" onclick="renderReport(this.id)">รายงาน</button>';
+		            } },
+		            { "data": "userId" },
+		            { "data": "code" }
 		        ]
 	});
 }
-
+function renderReport(id){
+	var sp = id.split("/");
+    var userId = sp[0];
+    var code = sp[1];
+    $("#user").val(userId);
+    $("#code").val(code);
+    $("#frmReport").submit();
+}

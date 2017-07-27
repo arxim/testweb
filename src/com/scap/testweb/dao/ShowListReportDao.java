@@ -29,7 +29,8 @@ public class ShowListReportDao {
 		return s;
 	}
 	public List<User> getListDataDB(String name,String surname,String department,String position,String fDBMinday,String fDBMaxday,String leavetype,String statustype){ // query select email for check in DB
-		String sql=" select ROW_NUMBER() OVER(ORDER BY LEAVE_MST_LEAVE.[REQUEST_DATE] ASC) AS NO,LEAVE_MST_USER.[FIRST_NAME],"
+		String sql=" select ROW_NUMBER() OVER(ORDER BY LEAVE_MST_LEAVE.[REQUEST_DATE] ASC) AS NO,LEAVE_MST_USER.[ID] AS ID,"
+				+"LEAVE_MST_LEAVE.[CODE] AS CODE,LEAVE_MST_USER.[FIRST_NAME],"
 				+"LEAVE_MST_USER.[LAST_NAME],LEAVE_MST_USER.[DEPARTMENT],LEAVE_MST_USER.[POSITION],LEAVE_MST_LEAVE.[LEAVE_TYPE],"
 				+"LEAVE_MST_LEAVE.[START_DATE],LEAVE_MST_LEAVE.[END_DATE],LEAVE_MST_LEAVE.[STATUS] FROM LEAVE_MST_USER" 
 				+" JOIN LEAVE_MST_LEAVE ON LEAVE_MST_LEAVE.[EMPLOYEE_ID]=LEAVE_MST_USER.[ID] WHERE"
@@ -62,6 +63,8 @@ public class ShowListReportDao {
 			while (rs.next()) {
 				User user = new User();
 				user.setUserNo(rs.getString("NO"));
+				user.setUserId(rs.getString("ID"));
+				user.setCode(rs.getString("CODE"));
 				user.setFirstAndLastname(rs.getString("FIRST_NAME"),rs.getString("LAST_NAME"));
 				user.setDepartment(rs.getString("DEPARTMENT"));
 				user.setPosition(rs.getString("POSITION"));

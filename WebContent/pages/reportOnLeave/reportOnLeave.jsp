@@ -183,5 +183,9 @@
 				</div>
 			</div>	
 		</div>
+		<form id="frmReport" method="post" action="/testweb/RenderReportSrvl">
+			<input type="hidden" id="user" name="user">
+			<input type="hidden" id="code" name="code">
+		</form>
 </body>
 </html>

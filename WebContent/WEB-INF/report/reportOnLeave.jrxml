@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportOnLeave" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6aced7a1-6006-4a18-b952-85f51a5c861e">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#000000">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="5197d9f2-a860-4f7a-8999-de96bf4e1652"/>
+	<subDataset name="New Dataset 1" uuid="73c3a54f-ca4f-474e-bff0-cd21ee3fe365"/>
+	<subDataset name="Table Dataset 2" uuid="ba934ee6-2f9f-4090-acae-6012096fdf53"/>
+	<subDataset name="Table Dataset 3" uuid="89244825-27dd-4c11-b52f-0d0229c2ae48"/>
+	<subDataset name="Table Dataset 4" uuid="a69d8a2b-f664-4355-b887-f6b8b4c22169"/>
+	<subDataset name="Table Dataset 5" uuid="3a20934f-d018-4b6d-ad0d-97771034c111"/>
+	<subDataset name="Table Dataset 6" uuid="635d6c9a-542a-4d2c-8d95-2951c94ded10"/>
+	<subDataset name="Table Dataset 7" uuid="3fbc4ed9-bdc2-4508-80e1-dc9925b41203"/>
+	<subDataset name="Table Dataset 8" uuid="1a35ab9c-9005-4e9b-9d4c-e58ca49fc29b"/>
+	<subDataset name="Table Dataset 9" uuid="deae0c44-90d1-4af0-822c-1b9fc0c9fd0a"/>
+	<subDataset name="Table Dataset 10" uuid="498e2f2f-6cc1-4b60-b3c0-7ae5a7c078b4"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="code" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT US.[ID],US.[TITLE_NAME],US.[FIRST_NAME],US.[LAST_NAME],US.[DEPARTMENT],US.[POSITION],US.[EMAIL],BOSS.*,LV.[CODE]
+,LV.[EMPLOYEE_ID],LV.[LEAVE_TYPE],LV.[START_DATE],LV.[END_DATE],LV.[NUM_LEAVE],LV.[NOTE]
+,ISNULL((SELECT SUM (CASE WHEN LV.LEAVE_TYPE = 'ลาป่วย' THEN NUM_LEAVE ELSE 0 END) FROM LEAVE_MST_LEAVE LV WHERE US.[ID]=LV.[EMPLOYEE_ID] AND LV.[CODE] != $P{code} AND LV.[EMPLOYEE_ID] = $P{id}),0) AS BEF_SICK_LEAVE
+,ISNULL((SELECT SUM (CASE WHEN LV.LEAVE_TYPE = 'ลากิจ' THEN NUM_LEAVE ELSE 0 END) FROM LEAVE_MST_LEAVE LV WHERE US.[ID]=LV.[EMPLOYEE_ID] AND LV.[CODE] != $P{code} AND LV.[EMPLOYEE_ID] = $P{id}),0) AS BEF_ERRAND_LEAVE
+,ISNULL((SELECT SUM (CASE WHEN LV.LEAVE_TYPE = 'ลาพักร้อน' THEN NUM_LEAVE ELSE 0 END) FROM LEAVE_MST_LEAVE LV WHERE US.[ID]=LV.[EMPLOYEE_ID] AND LV.[CODE] != $P{code} AND LV.[EMPLOYEE_ID] = $P{id}),0) AS BEF_VACATION_LEAVE
+,ISNULL((SELECT SUM (CASE WHEN LV.LEAVE_TYPE = 'ลาป่วย' THEN NUM_LEAVE ELSE 0 END) FROM LEAVE_MST_LEAVE LV WHERE US.[ID]=LV.[EMPLOYEE_ID] AND LV.[CODE] = $P{code} AND LV.[EMPLOYEE_ID] = $P{id}),0) AS THIS_SICK_LEAVE
+,ISNULL((SELECT SUM (CASE WHEN LV.LEAVE_TYPE = 'ลากิจ' THEN NUM_LEAVE ELSE 0 END) FROM LEAVE_MST_LEAVE LV WHERE US.[ID]=LV.[EMPLOYEE_ID] AND LV.[CODE] = $P{code} AND LV.[EMPLOYEE_ID] = $P{id}),0) AS THIS_ERRAND_LEAVE
+,ISNULL((SELECT SUM(CASE WHEN LV.LEAVE_TYPE = 'ลาพักร้อน' THEN NUM_LEAVE ELSE 0 END) FROM LEAVE_MST_LEAVE LV WHERE US.[ID]=LV.[EMPLOYEE_ID] AND LV.[CODE] = $P{code} AND LV.[EMPLOYEE_ID] = $P{id}),0) AS THIS_VACATION_LEAVE
+FROM LEAVE_MST_USER US JOIN LEAVE_MST_LEAVE LV ON US.[ID]=LV.[EMPLOYEE_ID] JOIN (SELECT US.[ID] AS ID,US.[TITLE_NAME] AS BTITLE_NAME,
+US.[FIRST_NAME] AS BFIRST_NAME,US.[LAST_NAME] AS BLAST_NAME,US.[DEPARTMENT] AS B_DEPARTMENT,US.[POSITION] AS B_POSITION FROM LEAVE_MST_USER US WHERE US.[POSITION]='หัวหน้าพนักงาน') BOSS ON BOSS.[ID]=LV.[BOSS_ID] WHERE LV.[CODE] = $P{code} AND LV.[EMPLOYEE_ID] = $P{id};]]>
+	</queryString>
+	<field name="ID" class="java.math.BigDecimal"/>
+	<field name="TITLE_NAME" class="java.lang.String"/>
+	<field name="FIRST_NAME" class="java.lang.String"/>
+	<field name="LAST_NAME" class="java.lang.String"/>
+	<field name="DEPARTMENT" class="java.lang.String"/>
+	<field name="POSITION" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="BTITLE_NAME" class="java.lang.String"/>
+	<field name="BFIRST_NAME" class="java.lang.String"/>
+	<field name="BLAST_NAME" class="java.lang.String"/>
+	<field name="B_DEPARTMENT" class="java.lang.String"/>
+	<field name="B_POSITION" class="java.lang.String"/>
+	<field name="CODE" class="java.math.BigDecimal"/>
+	<field name="EMPLOYEE_ID" class="java.math.BigDecimal"/>
+	<field name="LEAVE_TYPE" class="java.lang.String"/>
+	<field name="START_DATE" class="java.lang.String"/>
+	<field name="END_DATE" class="java.lang.String"/>
+	<field name="NUM_LEAVE" class="java.math.BigDecimal"/>
+	<field name="NOTE" class="java.lang.String"/>
+	<field name="BEF_SICK_LEAVE" class="java.math.BigDecimal"/>
+	<field name="BEF_ERRAND_LEAVE" class="java.math.BigDecimal"/>
+	<field name="BEF_VACATION_LEAVE" class="java.math.BigDecimal"/>
+	<field name="THIS_SICK_LEAVE" class="java.math.BigDecimal"/>
+	<field name="THIS_ERRAND_LEAVE" class="java.math.BigDecimal"/>
+	<field name="THIS_VACATION_LEAVE" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="702" splitType="Stretch">
+			<staticText>
+				<reportElement x="191" y="39" width="203" height="28" uuid="2e3736c2-0a06-4027-9366-0e78d1b477a6"/>
+				<textElement textAlignment="Justified">
+					<font fontName="TH Sarabun New" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[แบบฟอร์มลาป่วย ลากิจ ลาพักร้อน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="86" width="134" height="19" uuid="21a84241-7b78-4d94-bd40-9e11bdc8205d"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[บริษัท เอสแคป โซลูชั่นส์ จำกัด]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="419" y="105" width="134" height="20" uuid="a9e3aa04-abb4-46bb-a812-e8008e830c8c"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("วันที่ d MMMM พ.ศ. yyyy", new Locale("TH","th")).format(new Date());]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="135" width="25" height="20" uuid="f729c819-e577-470a-89be-ad4ed7f76a9a"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[เรื่อง]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="24" y="135" width="87" height="20" uuid="7017df7c-0077-4afa-a17d-004c2c8f6f59"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="TH Sarabun New" size="14" isBold="true" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LEAVE_TYPE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="54" y="185" width="57" height="20" uuid="931a5d22-ed23-4f06-9e71-5dce59109733"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ข้าพเจ้าชื่อ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="119" y="185" width="116" height="20" uuid="ac964f55-d919-4e2b-9a89-84594383fc83"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TITLE_NAME}+$F{FIRST_NAME}+"  "+$F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="259" y="185" width="58" height="20" uuid="9e017c05-39fc-4349-8fea-f2473eec6c37"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ทำงานที่แผนก]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="324" y="185" width="78" height="20" uuid="aa9353b8-7f76-4718-9cbd-58228150f9e7"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DEPARTMENT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="413" y="185" width="46" height="20" uuid="fc0c63a7-44dd-42dc-8bc0-e70e7e794329"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ตำแหน่ง]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="459" y="185" width="78" height="20" uuid="bdfce1ad-69ad-4ffc-8512-7ea3fe72303e"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{POSITION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="205" width="379" height="20" uuid="b715ea4d-d430-463a-809a-3e09d3194bef"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[สังกัด  บริษัทเอสแคปโซลูชั่นส์ จำกัด (สำนักงานใหญ่) อาคารเคเอสแอลทาวเวอร์ ชั้นที่ 18 ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="246" width="537" height="42" uuid="a8402d2d-da3e-4db7-b6b5-efccea0b36bf"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["                 "+"ข้าพเจ้าจึงขอ"+$F{LEAVE_TYPE}+"     เนื่องจาก"+"    "+$F{NOTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="288" width="138" height="20" uuid="007fcba6-dbd8-4700-999f-acfed0cfc92f"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[โดยเริ่มการลาตั้งแต่วันที่]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="288" width="41" height="20" uuid="d82cdc1f-2a6a-4f5c-9af1-e3a9f1a64077"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[จนถึงวันที่]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="288" width="102" height="20" uuid="69b3df49-b413-4fb2-934e-dca60f2feabc"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[เป็นระยะเวลาทั้งสิ้น]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="521" y="288" width="19" height="20" uuid="d9e5d68a-94fb-485a-b682-467626c8f83e"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[วัน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="308" width="390" height="20" uuid="3132b696-87af-4c62-ae58-538888a522f5"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ในระหว่างการลาครั้งนี้ ถ้ามีสถานการณ์ที่จำเป็นต้องติดต่อข้าพเจ้า ติดต่อข้าพเจ้าได้ที่อีเมลล์]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="389" y="308" width="148" height="20" uuid="5b733eb3-7d61-4cdc-a8a7-88de26a0b614"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<textField>
+					<reportElement x="493" y="288" width="21" height="20" uuid="5ff3ec99-0101-4728-ad19-8c4bac01ef84"/>
+					<textElement>
+						<font fontName="TH Sarabun New" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NUM_LEAVE}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<textField>
+				<reportElement x="111" y="288" width="112" height="20" uuid="d1bf382c-894a-40fd-abf5-66ce833e691b"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("d MMMM พ.ศ. yyyy", new Locale("TH","th")).format(new SimpleDateFormat("yyyyMMdd").parse($F{START_DATE}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="288" width="116" height="20" uuid="26aca808-274c-49ab-aed1-df914bb4b830"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("d MMMM พ.ศ. yyyy", new Locale("TH","th")).format(new SimpleDateFormat("yyyyMMdd").parse($F{END_DATE}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="500" width="115" height="20" uuid="e6b3568c-b1c0-43df-816f-db1260c6ee56"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TITLE_NAME}+$F{FIRST_NAME}+"  "+$F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="520" width="106" height="20" uuid="5dac6a1f-f8bc-4525-ac71-d3b5f24f2d21"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ตำแหน่ง   "+$F{POSITION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="365" y="540" width="164" height="20" uuid="bed07a75-ef94-4893-a31f-8122afdbb5b7"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลงชื่อผู้ลา]]></text>
+			</staticText>
+			<line>
+				<reportElement x="408" y="554" width="113" height="1" uuid="c17e00fa-476a-4fcf-93d9-ac0c951c2bd4"/>
+			</line>
+			<line>
+				<reportElement x="191" y="260" width="346" height="1" uuid="87256c94-d5a8-47f2-bad5-1ecc10e9b604"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="94" y="302" width="134" height="1" uuid="c12c13cd-7a2a-43fb-ab0a-549db55483bd"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="272" y="302" width="127" height="1" uuid="e6e202e8-56cb-4dbe-8872-cb4ed01173b6"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="482" y="302" width="37" height="1" uuid="9654e8c1-4143-4120-b6ca-8a8e58d2a1b5"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="348" y="322" width="189" height="1" uuid="d9ada319-b200-4e2d-814a-a66dbd2236ea"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="54" y="410" width="142" height="20" uuid="da988b20-d188-44df-8ed5-ac8223e0a28f"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[จึงเรียนมาเพื่อโปรดทราบ ณ ที่นี้]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="477" width="122" height="20" uuid="8ee5995f-9f59-4a02-ae07-0b2abdc702e9"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ขอแสดงความเคารพและนับถือ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="392" y="614" width="14" height="12" uuid="8541d711-7132-4e83-abfc-fd0b7102c474"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="470" y="614" width="14" height="12" uuid="baf928a7-f10c-4ca3-84ec-6168e3ec1730"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="413" y="611" width="26" height="21" uuid="c2085971-6fd0-4305-8c9b-8530ed7a00d7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[อนุมัติ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="491" y="611" width="37" height="21" uuid="ae6ce45c-0c5d-44c3-b5ae-4d2a17fba69f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ไม่อนุมัติ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="676" width="187" height="20" uuid="173a6b35-1fcb-4007-94b7-ddabec9f0ebf"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลงชื่ออนุมัติ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="394" y="689" width="126" height="1" uuid="14f8c724-f9d5-41b8-9250-4144653d8dcc"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="155" width="130" height="20" uuid="b5c06af1-11b3-4e12-8b06-9306569bc6ff"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["เรียน"+"  "+$F{B_POSITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="588" width="132" height="20" uuid="b8ac1a38-00df-4ac9-b6f7-fbae6b37be92"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ความคิดเห็นของ"+$F{B_POSITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="656" width="192" height="20" uuid="8e03c664-015d-4e5a-8594-58e65578d22d"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ตำแหน่ง   "+$F{B_POSITION}+"   แผนก   "+$F{B_DEPARTMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="413" y="636" width="115" height="20" uuid="0c865c3c-590c-43f2-a0c6-e7db87780c3b"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BTITLE_NAME}+$F{BFIRST_NAME}+"  "+$F{BLAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="64" y="476" width="149" height="20" uuid="9eb8c502-1cee-4ead-b576-39bcf2559541"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["สถิติการลาของท่านในปี "+new SimpleDateFormat("พ.ศ. yyyy", new Locale("TH","th")).format(new SimpleDateFormat("yyyyMMdd").parse($F{START_DATE}))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="506" width="57" height="33" uuid="27e018d3-407d-4e8f-9af5-0d7c95021172"/>
+				<box>
+					<topPen lineWidth="0.75" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="TH Sarabun New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ประเภทการลา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="506" width="58" height="33" uuid="6bf7d2a9-7a7e-4293-a986-a7a10a43848f"/>
+				<box>
+					<topPen lineWidth="0.75" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="TH Sarabun New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลามาแล้ว (วันทำการ)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="506" width="63" height="33" uuid="be3de7a2-d87a-45c4-bcd3-cffffe5edb42"/>
+				<box>
+					<topPen lineWidth="0.75" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="TH Sarabun New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลาครั้งนี้ (วันทำการ)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="506" width="62" height="33" uuid="4eafd22d-012a-4939-a5b7-1ef67a357618"/>
+				<box>
+					<topPen lineWidth="0.75" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="TH Sarabun New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[รวมเป็น (วันทำการ)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="539" width="58" height="30" uuid="b08dbe3c-a78e-4585-8f8f-88eaf6849278"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BEF_SICK_LEAVE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="539" width="63" height="30" uuid="b4596da3-f2fd-4f73-99bb-f2da69df7169"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THIS_SICK_LEAVE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="539" width="62" height="30" uuid="029e0b63-073f-4ef5-ad24-107131484feb"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Integer($F{BEF_SICK_LEAVE}.intValue() + $F{THIS_SICK_LEAVE}.intValue())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="569" width="58" height="30" uuid="3fb5d175-7152-48cc-b72a-862c4c362740"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BEF_ERRAND_LEAVE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="569" width="63" height="30" uuid="f5b54dab-ed44-4023-99ad-8491241f586d"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THIS_ERRAND_LEAVE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="569" width="62" height="30" uuid="831f86b1-7c95-4cc5-a2b6-6afee2671d76"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Integer($F{BEF_ERRAND_LEAVE}.intValue() + $F{THIS_ERRAND_LEAVE}.intValue())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="599" width="58" height="30" uuid="8a314d59-6bb9-44f8-88ea-0b36c6092dee"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BEF_VACATION_LEAVE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="599" width="62" height="30" uuid="8f5a6fda-8e9e-4b8e-9531-0450d53c2432"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Integer($F{BEF_VACATION_LEAVE}.intValue() + $F{THIS_VACATION_LEAVE}.intValue())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="599" width="63" height="30" uuid="527b8b2d-4ea5-4ddc-ad2d-d95ee096322a"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{THIS_VACATION_LEAVE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="539" width="57" height="30" uuid="d7a4cd48-4c87-44b3-a67e-684c4203f440"/>
+				<box>
+					<topPen lineWidth="0.75" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลาป่วย]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="569" width="57" height="30" uuid="5e4e779c-5a8e-4238-9065-d156799c54ad"/>
+				<box>
+					<topPen lineWidth="0.75" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลากิจ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="599" width="57" height="30" uuid="75cdd1d4-5bb8-43f0-9bfb-3aac8ebde09a"/>
+				<box>
+					<topPen lineWidth="0.75" lineColor="#000000"/>
+					<leftPen lineWidth="0.75" lineColor="#000000"/>
+					<bottomPen lineWidth="0.75" lineColor="#000000"/>
+					<rightPen lineWidth="0.75" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ลาพักร้อน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="328" width="389" height="20" uuid="d2f6d5a4-57b1-4c64-8a64-79d22ef4c7f7"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[เมื่อเสร็จสิ้นการลาแล้วจะกลับมาปฎิบัติหน้าที่ตามปกติ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="205" width="159" height="20" uuid="86ff66e5-4ca5-445c-b745-fd4a56df13d9"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ในขณะนี้ข้าพเจ้าอยู่ภายใต้การดูแลของ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="8" y="225" width="130" height="20" uuid="d03f8bc4-6422-401d-a1ab-eafa4d1530b0"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["คุณ"+$F{BFIRST_NAME}+"  "+$F{BLAST_NAME}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="239" width="149" height="1" uuid="4deedc5f-a181-47d1-9512-c11dcc23e6b8"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="98" y="199" width="159" height="1" uuid="43c73b0f-ff9d-469f-8b72-4b10745fa3a4"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="317" y="199" width="94" height="1" uuid="236a301e-3781-40b7-9728-6d5dd72d38bd"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="448" y="199" width="89" height="1" uuid="7c3d3dfc-e855-4105-89be-16eeaa536797"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="154" y="225" width="27" height="20" uuid="ee9e4c44-2d61-48f1-8f9a-360ea6773dca"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[แผนก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="225" width="38" height="20" uuid="7451b034-6a16-428b-bc44-c1d7692813a8"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ตำแหน่ง]]></text>
+			</staticText>
+			<line>
+				<reportElement x="311" y="239" width="105" height="1" uuid="a783deb0-f696-4b0a-bd07-83a3d413eb4c"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="190" y="226" width="78" height="20" uuid="e6a6d2aa-e4bd-459c-b340-b69e64ac2c29"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{B_DEPARTMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="226" width="87" height="20" uuid="a928dae8-06ed-43f0-9acb-bca482b547c4"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="TH Sarabun New" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{B_POSITION}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="280" width="537" height="1" uuid="32386c06-ebb2-4719-8222-cb03d993f9e3"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="181" y="239" width="92" height="1" uuid="86b8516c-4321-47af-a303-056f17e0e74a"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="42" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="3" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="7" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="4" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="7" splitType="Stretch"/>
+	</summary>
+</jasperReport>
